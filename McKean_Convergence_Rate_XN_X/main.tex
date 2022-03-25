@@ -1,6 +1,10 @@
 \documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber, style=numeric, url=false, isbn=false, doi=false]{biblatex}
+\usepackage{bbm}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
 
 \title{Convergence rate of $X^N - X$ for McKean equations}
 \author{Luis Mario Chaparro Jaquez}
@@ -19,7 +23,42 @@ for the case of McKean SDEs
 proposed in
 \cite{issoglio_mckean_2021}.
 
-\section{}
+The proof builds on a number of results presented in the sections below.
+
+\begin{definition}
+For any real-valued continuous semi-martingale, the local time at zero
+$L^0_t (\bar{Y})$
+is defined as
+\begin{equation}
+    L^0_t (\bar{Y}) = \lim_{\epsilon \to 0} \frac{1}{2 \epsilon} \int_0^t \mathbb{1}_{|\bar{Y}| \leq \epsilon} d \langle \bar{Y} \rangle_s
+    \text{, }
+    \mathbb{P}
+    \text{-a.s.}
+\end{equation}
+For all
+$t \geq 0$.
+\end{definition}
+
+\section{Lemma 5.1}
+The first result,
+\cite[Lemma 5.1]{de_angelis_numerical_2020},
+is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
+
+\begin{lemma}
+[Lemma 5.1]
+For any
+$\epsilon \in (0,1)$
+and any real-valued, continuous semi-martingale
+
+\end{lemma}
+
+\section{Lemma 5.2}
+
+\section{Lemma 5.3}
+
+\section{Proposition 5.4}
+
+\section{Proposition 3.1 (main result)}
 
 \printbibliography
 
