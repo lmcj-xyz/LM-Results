@@ -3,6 +3,11 @@
 \usepackage[backend=biber, style=numeric, url=false, isbn=false, doi=false]{biblatex}
 \usepackage{bbm}
 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+
+
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 
@@ -30,7 +35,7 @@ For any real-valued continuous semi-martingale, the local time at zero
 $L^0_t (\bar{Y})$
 is defined as
 \begin{equation}
-    L^0_t (\bar{Y}) = \lim_{\epsilon \to 0} \frac{1}{2 \epsilon} \int_0^t \mathbb{1}_{|\bar{Y}| \leq \epsilon} d \langle \bar{Y} \rangle_s
+    L^0_t (\bar{Y}) = \lim_{\epsilon \to 0} \frac{1}{2 \epsilon} \int_0^t \mathbbm{1}_{\{|\bar{Y}| \leq \epsilon\}} d \langle \bar{Y} \rangle_s
     \text{, }
     \mathbb{P}
     \text{-a.s.}
