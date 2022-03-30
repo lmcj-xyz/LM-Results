@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.12.2)  25 MAR 2022 21:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.12.2)  30 MAR 2022 16:44
 entering extended mode
 **./main.tex
 (main.tex
@@ -361,15 +361,16 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-\c@lemma=\count395
-\c@definition=\count396
-\@quotelevel=\count397
-\@quotereset=\count398
+\c@proposition=\count395
+\c@lemma=\count396
+\c@definition=\count397
+\@quotelevel=\count398
+\@quotereset=\count399
 
 (C:\Users\mmlmcj\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pd
 ftex.def
 File: l3backend-pdftex.def 2021-10-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count399
+\l__color_backend_stack_int=\count400
 \l__pdf_internal_box=\box52
 ) (main.aux)
 \openout1 = `main.aux'.
@@ -439,21 +440,33 @@ LaTeX Font Info:    Trying to load font information for U+bbm on input line 38.
 
 (C:\Users\mmlmcj\AppData\Local\Programs\MiKTeX\tex/latex/bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [1
+)
+Overfull \hbox (8.3776pt too wide) in paragraph at lines 71--78
+[]\OT1/cmr/m/it/10 Let $\OML/cmm/m/it/10  \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10 (
+0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 2)$ \OT1
+/cmr/m/it/10 and $\OML/cmm/m/it/10 b \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 C[]\OM
+S/cmsy/m/n/10 C[]$\OT1/cmr/m/it/10 .
+ []
 
-{C:/Users/mmlmcj/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2] (main.aux)
+[1
+
+{C:/Users/mmlmcj/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2]
+(main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 9296 strings out of 478681
- 179723 string characters out of 2846061
- 880628 words of memory out of 3000000
- 27329 multiletter control sequences out of 15000+600000
+ 9304 strings out of 478681
+ 179825 string characters out of 2846061
+ 882698 words of memory out of 3000000
+ 27337 multiletter control sequences out of 15000+600000
  413840 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 54i,6n,62p,756b,1297s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,7n,62p,756b,1297s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\mmlmcj\AppData\Local\MiKTeX\fonts/pk/ljfour/public/bbm/dpi600\bbm1
 0.pk><C:/Users/mmlmcj/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Users/mmlmcj/AppData/Local/Programs/MiKTeX/fonts/type1/publi
@@ -472,7 +485,7 @@ nts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/mmlmcj/AppData/Local/Programs/
 MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/mmlmcj/AppData/Local
 /Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/mmlmcj/App
 Data/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (2 pages, 174966 bytes).
+Output written on main.pdf (2 pages, 183789 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
