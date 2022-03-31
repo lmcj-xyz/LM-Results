@@ -1,15 +1,20 @@
 \documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber, style=numeric, url=false, isbn=false, doi=false]{biblatex}
 \usepackage{bbm}
-
-\usepackage{amsmath}
-\usepackage{amsfonts}
-
+\usepackage[margin=4cm]{geometry}
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage{todonotes}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
+
+\allowdisplaybreaks
 
 \title{Convergence rate of $X^N - X$ for McKean equations}
 \author{Luis Mario Chaparro Jaquez}
@@ -19,6 +24,8 @@
 \begin{document}
 
 \maketitle
+
+\listoftodos
 
 \section{What is this?}
 
@@ -30,9 +37,16 @@ proposed in
 
 The proof builds on a number of results presented in the sections below.
 
+\section{Some useful definitions and results}
+
+Here we present some results and definitions to refer on the text.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition Local time
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}
 For any real-valued continuous semi-martingale, the local time at zero
-$L^0_t (\bar{Y})$
+$L^{0}_{t} (\bar{Y})$
 is defined as
 \begin{equation}
     L^0_t (\bar{Y}) = \lim_{\epsilon \to 0} \frac{1}{2 \epsilon} \int_0^t \mathbbm{1}_{\{|\bar{Y}| \leq \epsilon\}} d \langle \bar{Y} \rangle_s
@@ -44,12 +58,15 @@ For all
 $t \geq 0$.
 \end{definition}
 
-\section{Lemma 5.1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Local time at zero, Lemma 5.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The first result,
 \cite[Lemma 5.1]{de_angelis_numerical_2020},
 is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
 
 \begin{lemma}
+\todo{Type down this lemma}
 [Lemma 5.1]
 For any
 $\epsilon \in (0,1)$
@@ -57,15 +74,234 @@ and any real-valued, continuous semi-martingale
 
 \end{lemma}
 
+Let us introduce the original and regularised Kolmogorov equations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kolmogorov equations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}
+	[Kolmogorov equations]
+For
+$\beta \in (0, 1/2)$
+let
+$b \in C_T \mathcal{C}^{-\beta}$,
+$u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$, 
+and
+$b^N \to b$
+as
+$N \to \infty$
+in
+$C_T \mathcal{C}^{-\beta}$
+	The equations
+
+	\begin{equation}
+	\begin{cases}
+	\partial u_i + \frac{1}{2} b_i \Delta u_i = \lambda u_i - b_i
+	\\
+	u_i(T) = 0,
+	\end{cases}
+	\end{equation}
+	
+	\begin{equation}
+	\begin{cases}
+	\partial u^N_i + \frac{1}{2} b^N_i \Delta u^N_i = \lambda u^N_i - b^N_i
+	\\
+	u^N_i(T) = 0.
+	\end{cases}
+	\end{equation}
+
+	are called Kolmogorov and regularised Kolmogorov equations.
+	Here written component wise.
+	\label{def:kolmogorov_eqns}
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lemma 5.2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Lemma 5.2}
 
-Lemma 5.2 builds on the following result:
+Adaptation of Lemma 5.2 builds on the following result:
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bound for the rho-equivalent norm of the difference u-uN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
-h
+Let
+$u, u^N$
+be (mild) solutions to the Kolmogorov equations from
+\cref{def:kolmogorov_eqns}
+then as
+$N \to \infty$
+
+\begin{equation}
+\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{1 + \alpha}}
+	\leq
+	\frac{c T^{\frac{1 - \beta - \alpha}{2}} \| b_i - b^N_i \|_{C_T\mathcal{C}^{-\beta}} (\| u_i \|_{C_T\mathcal{C}^{1 + \alpha}} - 1) }{1 - c \rho^{\frac{\alpha + \beta - 1}{2}} (\| b \|_{C_T\mathcal{C}^{-\beta}} + \lambda)}
+\end{equation}
+
+for
+$\rho \geq \rho_0$,
+where
+
+\begin{equation}
+	\rho_0 = 2 c ( \|  b_i \|_{C_T \mathcal{1+\alpha}} + \lambda ) ^ { \frac{ 2 }{ \alpha + \beta + 1}}
+\end{equation}
+
+and
+$\lambda \neq 0$.
+\todo{Is it just different to zero or greater?}
+
 \label{prop:diff_u_uN}
 \end{proposition}
 
+\begin{proof}
+
+	See that
+	$u^N(T) = u(T) = 0$,
+	and in
+	\cite{issoglio_pde_nodate},
+	set
+	$g^N, g$
+	as
+	$b^N, b$
+	respectively.
+	See that
+	$b^N \to b$.
+	Then let us reformulate the rest of the aforementioned result for
+	$\lambda \neq 0$.
+
+	As
+	$u^N, u$
+	are mild solutions, we have
+
+	\begin{align*}
+		u_i(t) - u^N_i(t)
+		&=
+		P_{T-t} (u_i(T) - u^N_i(T))
+		\\
+		&+
+		\int_t^T P_{s-t}(\nabla u_i b_i - \nabla u^N_i b^N_i) ds
+		\\
+		&-
+		\int_t^T P_{s-t}(\lambda u_i + b_i - \lambda u^N_i + b^N_i) ds
+		\\
+		&=
+		\int_t^T P_{s-t}(\nabla u_i b_i - \nabla u^N_i b^N_i) ds
+		\\
+		&-
+		\lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds
+		\\
+		&-
+		\int_t^T P_{s-t}(b_i - b^N_i) ds
+		\\
+		&=
+		\int_t^T P_{s-t}[(\nabla u_i b_i - \nabla u_i b^N_i) + (\nabla u_i b^N_i - \nabla u^N_i b^N_i)] ds
+		\\
+		&-
+		\lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds
+		\\
+		&-
+		\int_t^T P_{s-t}(b_i - b^N_i) ds
+		\\
+		&=
+		\int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds
+		\\
+		&+
+		\int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds
+		\\
+		&-
+		\lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds
+		\\
+		&-
+		\int_t^T P_{s-t}(b_i - b^N_i) ds
+	\end{align*}
+
+	Now let us compute the $\rho$-equivalent norm of
+	$u-u^N$,
+	for some
+	$\alpha > \beta$
+
+	\begin{align*}
+		\| u_i - u^N_i \| ^ {(\rho)}_{C_T \mathcal{C}^{-\beta}}
+		&=
+		\sup_{0\leq t \leq T} e^{-\rho(T-t)} \| u(t) - u^N(t) \|_{1 + \alpha}
+		\\
+		&\leq
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \|_{1+\alpha}
+	     	\\ 
+		&+
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds\|_{1+\alpha}
+	     	\\ 
+		&-
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{1+\alpha}
+	     	\\ 
+		&-
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(b_i - b^N_i) ds\|_{1+\alpha}
+		.
+	\end{align*}
+
+	Let us take each term from the right hand side of the inequality and bound them.
+
+	For the first term, using
+	$\gamma + 2\theta = 1 + \alpha$,
+	$\gamma = -\beta$,
+	$\theta = \frac{1 + \alpha + \beta}{2}$,
+	$\| P_t f \|_{\gamma + 2 \theta} \leq c t ^{-\theta} \| f \|_{\gamma} \|$
+	and
+	$\| \nabla g \|_\xi \leq c \|g \|_{\xi + 1}$
+
+	\begin{align*}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \|_{1+\alpha}
+		&\leq
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\theta} \| \nabla u_i\|_\alpha \| b_i - b^N_i \|_{-\beta}
+		\\
+		&\leq
+		c \| u_i \|_{C_T \mathcal{C}_{1 + \alpha}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}} \sup_{0 \leq t \leq T} e^{-\rho(T-t)}(T-t)^{\frac{1 - \beta -\alpha}{2}}
+		\\
+		&\leq
+		c T^{\frac{1 - \beta - \alpha}{2}} \| u_i \|_{C_T \mathcal{C}_{1 + \alpha}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}}
+	\end{align*}
+
+	For the second term, see that for
+	$N \to \infty$,
+	we have
+	$\| b^N \|_{C_T \mathcal{C}^{-\beta}} \leq 2 \| b \|_{C_T \mathcal{C}^{-\beta}}$
+
+	\begin{align*}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds\|_{1+\alpha}
+		&\leq
+		c \sup_{0\leq t\leq T} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} 2 \| b_i \|_{-\beta} \| \nabla u_i - \nabla u^N_i \|_{\alpha} ds
+		\\
+		&\leq
+		c \| b_i \|_{C_T \mathcal{C}^{-\beta}} \| u_i - u^N_i \|_{C_T \mathcal{C}^{-\beta}}^{(\rho)} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} ds
+		\\
+		&\leq
+		c \| b_i \|_{C_T \mathcal{C}^{-\beta}} \| u_i - u^N_i \|_{C_T \mathcal{C}^{-\beta}}^{(\rho)} \rho^{\frac{\alpha + \beta - 1}{2}}
+	\end{align*}
+
+	For the third term, which is the one that difers from the proof in
+	\cite{issoglio_pde_nodate}
+	we need to use that
+	$\| P_t f \|_{\gamma + 2\theta} \leq ct^{-\theta} \| f \|_{\gamma}$,
+	and in this case we have
+	$\gamma + 2 \theta = 1 + \alpha$
+	and
+	$\gamma = 1 + \alpha$,
+	so that
+	$\theta = 0$
+	because
+	$u, u^N \in C_T \mathcal{C}^{1+\alpha}$,
+	so we will have
+
+	\begin{align*}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{1+\alpha}
+	\end{align*}
+
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Adaptation of Lemma 5.2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
 [Adaptation of Lemma 5.2]
 Let
@@ -74,28 +310,54 @@ and
 $b \in C_T \mathcal{C}^{-\beta}$.
 Let 
 $u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$
-be (mild) solutions to the Kolmogorov equations
+be (mild) solutions to the Kolmogorov equations from
+\cref{def:kolmogorov_eqns}
+
+Assume that for some $\alpha > \beta$
 
 \begin{equation}
-\begin{cases}
-\partial u_i + \frac{1}{2} b_i \Delta u_i = \lambda u_i - b_i
-\\
-u_i(T) = 0,
-\end{cases}
+	\| u - u^N \|^{(\rho)}_{C_{T} \mathcal{C}^{1+\alpha}}
+	\leq
+	c(\rho)
+	\| b - b^N \|_{C_{T} \mathcal{C}^{-\beta}}
+	.
 \end{equation}
 
+With
+$c(\rho)$
+as in
+\cref{prop:diff_u_uN}
 and
+$\rho_0$
+is large enough such that
+$c(\rho) > 0$
+for all
+$\rho > \rho_0$.
 
-\begin{equation}
-\begin{cases}
-\partial u^N_i + \frac{1}{2} b^N_i \Delta u^N_i = \lambda u^N_i - b^N_i
-\\
-u^N_i(T) = 0.
-\end{cases}
-\end{equation}
+Then for all
+$t \in [0, T]$
 
-From $\alpha > \beta$
-\label{prop:}
+
+\begin{enumerate}
+	\item
+	$
+	\| u^N(t) - u(t) \|_{L^\infty}
+	\leq
+	\kappa_\rho \| b - b^N \|_{C_T\mathcal{C}^{-\beta}}
+	$
+
+	\item
+	$
+	\| \nabla u^N(t) - \nabla u(t) \|_{L^\infty}
+	\leq
+	\kappa_\rho \| b - b^N \|_{C_T\mathcal{C}^{-\beta}}
+	$
+\end{enumerate}
+
+with
+$\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
+
+\label{prop:diff_X_XN}
 \end{proposition}
 
 \section{Lemma 5.3}
