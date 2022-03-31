@@ -295,9 +295,83 @@ $\lambda \neq 0$.
 
 	\begin{align*}
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{1+\alpha}
+		&\leq
+		c \lambda \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-0} \| u_i - u^N_i \|_{1 + \alpha} ds
+		\\
+		&=
+		c \lambda \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T e ^{-\rho(T-s)} \sup_{0\leq s\leq T} e ^{-\rho(T-s)} \| u_i - u^N_i \|_{1 + \alpha} ds
+		\\
+		&=
+	c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \int_t^T e ^{-\rho(T-s)} e ^{-\rho(T-t)} ds
+		\\
+		&=
+	c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \int_t^T e^{-\rho(s-t)} ds
+		\\
+		&=
+		c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \sup_{0\leq t\leq T} \rho^{-1} [1 - e^{-\rho(T-t)}]
+		\\
+		&\leq
+		c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \rho^{-1}
+		\\
+		&\leq
+		c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \rho^{\frac{\alpha+\beta-1}{2}}
 	\end{align*}
 
+	And for the last term
+	\begin{align*}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{T-s}(b_i - b^N_i) ds\|_{1+\alpha}
+		&\leq
+		c \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\frac{\alpha+\beta-1}{2}} \| b_i - b^N_i \|_{-\beta} ds
+		\\
+		&\leq
+		c \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}} \sup_{0\leq t\leq T} e ^{-\rho(T-t)} (s - t)^{-\frac{\alpha+\beta-1}{2}}
+		\\
+		&\leq
+		c T^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}}
+	\end{align*}
+
+	Putting everything together
+
+	\begin{align*}
+		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+		&\leq
+		c T^{\frac{1-\beta-\alpha}{2}} \|u_i\|_{C_T \mathcal{C}^{1+\alpha}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}}
+			\\
+		&+
+		c \| b_i \|_{C_T \mathcal{C}^{-\beta}} \| u_i - u^N_i \|_{C_T \mathcal{C}^{-\beta}}^{(\rho)} \rho^{\frac{\alpha + \beta - 1}{2}}
+		\\
+		&-
+		c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \rho^{\frac{\alpha+\beta-1}{2}}
+		\\
+		&-
+		c T^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}}
+		\\
+		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} (1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} + \lambda])
+		&\leq
+		cT^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)
+		\\
+		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+		&\leq
+	\frac{cT^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)}{(1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} + \lambda])}
+	\end{align*}
+
+	As required.
 \end{proof}
+
+Note that in the above we can represent the right hand side of the inequality as
+
+\begin{equation}
+	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+	\leq
+	\frac{cT^{\frac{1-\beta-\alpha}{2}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)}{(1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} + \lambda])} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} 
+\end{equation}
+
+	\todo{Check this norm}
+\begin{equation}
+	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+	\leq
+	c(\rho) \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} 
+\end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Adaptation of Lemma 5.2

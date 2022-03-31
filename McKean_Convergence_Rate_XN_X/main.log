@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.3.27)  31 MAR 2022 02:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/Arch Linux) (preloaded format=pdflatex 2022.3.27)  31 MAR 2022 08:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -860,7 +860,22 @@ Overfull \hbox (73.05412pt too wide) detected at line 280
 []
  []
 
-[3] [4] (./main.aux)
+
+Overfull \hbox (84.2833pt too wide) detected at line 318
+[]
+ []
+
+[3]
+Overfull \hbox (19.34926pt too wide) detected at line 331
+[]
+ []
+
+
+Overfull \hbox (5.23178pt too wide) detected at line 356
+[]
+ []
+
+[4] [5] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 943988CC931A7D476A0AA90EF8960810;850.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -868,18 +883,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 29758 strings out of 478276
- 572542 string characters out of 5853013
- 1243982 words of memory out of 5000000
- 47503 multiletter control sequences out of 15000+600000
+ 29770 strings out of 478276
+ 572767 string characters out of 5853013
+ 1250122 words of memory out of 5000000
+ 47511 multiletter control sequences out of 15000+600000
  479669 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 115i,9n,118p,754b,1350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 115i,10n,118p,754b,1352s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/lmcj/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm10.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (4 pages, 217389 bytes).
+Output written on main.pdf (5 pages, 220611 bytes).
 PDF statistics:
- 187 PDF objects out of 1000 (max. 8388607)
- 142 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
+ 195 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
