@@ -93,6 +93,7 @@ $N \to \infty$
 in
 $C_T \mathcal{C}^{-\beta}$
 	The equations
+	%EI: mistake in PDEs, correct please
 
 	\begin{equation}
 	\begin{cases}
@@ -118,14 +119,28 @@ $C_T \mathcal{C}^{-\beta}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Lemma 5.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Lemma 5.2}
+\section{Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$}
 
-Adaptation of Lemma 5.2 builds on the following result:
+We need a bound for
+$u - u^N$
+and
+$\nabla u - \nabla u^N$
+in
+$L_\infty$ 
+for the case in which 
+$u \in C_T \mathcal{C}^{1+\alpha}$
+for some
+$\alpha > \beta$
+which is an adaptation of
+\cite[Lemma 5.2]{de_angelis_numerical_2020}.
+
+The result builds on top of the following result:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bound for the rho-equivalent norm of the difference u-uN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
+[Bound for the $\rho$-equivalent norm of $u - u^N$]
 Let
 $u, u^N$
 be (mild) solutions to the Kolmogorov equations from
@@ -148,8 +163,7 @@ where
 \end{equation}
 
 and
-$\lambda \neq 0$.
-\todo{Is it just different to zero or greater?}
+$\lambda > 0$.
 
 \label{prop:diff_u_uN}
 \end{proposition}
@@ -220,7 +234,9 @@ $\lambda \neq 0$.
 	$u-u^N$,
 	for some
 	$\alpha > \beta$
-
+	
+	
+    \todo{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}
 	\begin{align*}
 		\| u_i - u^N_i \| ^ {(\rho)}_{C_T \mathcal{C}^{-\beta}}
 		&=
@@ -377,7 +393,7 @@ Note that in the above we can represent the right hand side of the inequality as
 % Adaptation of Lemma 5.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
-[Adaptation of Lemma 5.2]
+[Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$]
 Let
 $\beta \in (0, 1/2)$
 and
@@ -411,23 +427,17 @@ $\rho > \rho_0$.
 Then for all
 $t \in [0, T]$
 
-
-\begin{enumerate}
-	\item
-	$
+\begin{equation}
 	\| u^N(t) - u(t) \|_{L^\infty}
 	\leq
 	\kappa_\rho \| b - b^N \|_{C_T\mathcal{C}^{-\beta}}
-	$
+\end{equation}
 
-	\item
-	$
+\begin{equation}
 	\| \nabla u^N(t) - \nabla u(t) \|_{L^\infty}
 	\leq
 	\kappa_\rho \| b - b^N \|_{C_T\mathcal{C}^{-\beta}}
-	$
-\end{enumerate}
-
+\end{equation}
 with
 $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
 
