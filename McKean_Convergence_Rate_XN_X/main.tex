@@ -78,6 +78,7 @@ For any
 $\epsilon \in (0,1)$
 and any real-valued, continuous semi-martingale
 
+\label{lemma:local-time-at-0}
 \end{lemma}
 
 Let us introduce the original and regularised Kolmogorov equations.
@@ -452,7 +453,53 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
 
 \section{Lemma 5.3}
 
-\section{Proposition 5.4}
+\section{Bound for the local time at zero of $Y^N - Y$}
+
+We need a bound for
+$\mathbb{E} [L^0_T ( Y^N - Y ) ]$,
+for Sobolev spaces, this is result
+\cite[Proposition 5.4]{de_angelis_numerical_2020}
+we present it here for the solutions to the SDE blonging to the appropriate Besov spaces.
+
+\begin{proposition}
+	Let
+	$b \in C_T \mathcal{C}^{-\beta}$
+	and
+	$b^N \to b$
+	in
+	$C_T \mathcal{C}^{-\beta}$
+	as
+	$N \to \infty$
+	for
+	$\beta \in (0, \frac{1}{4})$
+	and for any
+	$\alpha > \beta$
+
+
+\end{proposition}
+
+\begin{proof}
+	Recall that
+	$Y^N, Y$
+	are solutions to the SDEs
+	\begin{equation}
+		Y_t = y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s
+	\end{equation}
+	and
+	\begin{equation}
+		Y^N_t = y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s
+	\end{equation}
+	so that the difference
+	$Y^N - Y$
+	is
+	\begin{equation}
+		Y^N - Y_t = 
+		(y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s)
+		-
+		(y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s)
+	\end{equation}
+
+\end{proof}
 
 \section{Proposition 3.1 (main result)}
 

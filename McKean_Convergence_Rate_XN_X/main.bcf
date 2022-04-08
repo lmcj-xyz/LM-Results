@@ -2347,11 +2347,13 @@
     <bcf:citekey order="1">de_angelis_numerical_2020</bcf:citekey>
     <bcf:citekey order="2">issoglio_mckean_2021</bcf:citekey>
     <bcf:citekey order="3">de_angelis_numerical_2020</bcf:citekey>
-    <bcf:citekey order="4">issoglio_pde_nodate</bcf:citekey>
+    <bcf:citekey order="4">de_angelis_numerical_2020</bcf:citekey>
     <bcf:citekey order="5">issoglio_pde_nodate</bcf:citekey>
-    <bcf:citekey order="6">de_angelis_numerical_2020</bcf:citekey>
-    <bcf:citekey order="7">issoglio_mckean_2021</bcf:citekey>
-    <bcf:citekey order="8">issoglio_pde_nodate</bcf:citekey>
+    <bcf:citekey order="6">issoglio_pde_nodate</bcf:citekey>
+    <bcf:citekey order="7">de_angelis_numerical_2020</bcf:citekey>
+    <bcf:citekey order="8">de_angelis_numerical_2020</bcf:citekey>
+    <bcf:citekey order="9">issoglio_mckean_2021</bcf:citekey>
+    <bcf:citekey order="10">issoglio_pde_nodate</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
