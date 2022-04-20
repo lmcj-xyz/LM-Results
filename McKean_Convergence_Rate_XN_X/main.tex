@@ -15,6 +15,7 @@
 }
 \usepackage[capitalise]{cleveref}
 \usepackage{todonotes}
+\usepackage{physics}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
@@ -73,10 +74,21 @@ is not necessary to prove for this particular setting since the result holds for
 
 \begin{lemma}
 \todo{Type down this lemma}
-[Lemma 5.1]
 For any
 $\epsilon \in (0,1)$
 and any real-valued, continuous semi-martingale
+$Z$
+we have
+
+\begin{align*}
+    \mathbb{E}[L^0_t(Z_s)]
+    \leq
+    &
+    4 \epsilon
+    - \mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
+    \\
+    &+ \frac{1}{\epsilon} \mathbb{E} \left[ \int_0^t \mathbbm{1}_{\{Z > \epsilon} e^{1 - Z_s/\epsilon\}} d \langle Z \rangle_s \right].
+\end{align*}
 
 \label{lemma:local-time-at-0}
 \end{lemma}
@@ -399,8 +411,12 @@ Note that in the above we can represent the right hand side of the inequality as
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Adaptation of Lemma 5.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Here is the adaptation of
+\cite[Lemma 5.2]{de_angelis_numerical_2020}.
+
 \begin{proposition}
-[Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$]
+{Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$}
+
 Let
 $\beta \in (0, 1/2)$
 and
@@ -408,9 +424,12 @@ $b \in C_T \mathcal{C}^{-\beta}$.
 Let 
 $u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$
 be (mild) solutions to the Kolmogorov equations from
-\cref{def:kolmogorov_eqns}
+\cref{def:kolmogorov_eqns}.
 
-Assume that for some $\alpha > \beta$
+Assume, by
+\cref{prop:diff_u_uN},
+that for some 
+$\alpha > \beta$
 
 \begin{equation}
 	\| u - u^N \|^{(\rho)}_{C_{T} \mathcal{C}^{1+\alpha}}
@@ -418,6 +437,7 @@ Assume that for some $\alpha > \beta$
 	c(\rho)
 	\| b - b^N \|_{C_{T} \mathcal{C}^{-\beta}}
 	.
+	\label{eq:u-uNb-bN}
 \end{equation}
 
 With
@@ -438,20 +458,209 @@ $t \in [0, T]$
 	\| u^N(t) - u(t) \|_{L^\infty}
 	\leq
 	\kappa_\rho \| b - b^N \|_{C_T\mathcal{C}^{-\beta}}
+	\label{eq:uNu_bounded_by_bNb}
 \end{equation}
 
 \begin{equation}
 	\| \nabla u^N(t) - \nabla u(t) \|_{L^\infty}
 	\leq
 	\kappa_\rho \| b - b^N \|_{C_T\mathcal{C}^{-\beta}}
+	\label{eq:graduNu_bounded_by_bNb}
 \end{equation}
 with
 $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
 
-\label{prop:diff_X_XN}
+\label{prop:diff_uN_graduN}
 \end{proposition}
 
-\section{Lemma 5.3}
+\begin{proof}
+    First let us prove
+    \cref{eq:uNu_bounded_by_bNb}.
+    
+    Let
+    $t \in [0, T]$,
+    and see that since
+    $u, u^N \in C_T \mathcal{C}^{(1 + \beta)+}$
+    there exists
+    $\alpha > \beta$
+    such that
+    $u, u^N \in C_T \mathcal{C}^{1 + \alpha}$,
+    then for any
+    $f \in \mathcal{C}^{1 + \alpha}$
+    we have
+    \begin{equation}
+        \| f \|_{C^{1 + \alpha}}
+        \leq
+        c
+        \left(
+        \sup_{x \in \mathbb{R}^d} | f(x) |
+        + \sup_{x \neq y \in \mathbb{R}^d}
+        \frac{|\nabla f (x) - \nabla f(y)|}{|x - y|^\alpha}
+        \right)
+    \end{equation}
+    
+    so we have
+    
+    \begin{equation}
+    \begin{split}
+        \| u^N(t) - u(t) \|_{L^\infty}
+        &=
+        \sup_{x \in \mathbb{R}^d} | u^N(t, x) - u(t, x) |
+        \\
+        &\leq
+        c \| u^N(t) - u(t) \|_{\mathcal{C}^{\alpha + 1}}
+    \end{split}
+    \label{eq:u-uN_in_Linfinity_bounded_by_u-uN_in_Calpha1}
+    \end{equation}
+    
+    Moreover, using the
+    $(\rho)$-equivalent
+    norm
+    \begin{equation}
+        \| f \|_{\mathcal{C}^{1 + \alpha}} = \sup_{t \in [0, T]} e^{- \rho (T - t)} \norm{f(t)}_{\mathcal{C}^{1 + \alpha}},
+    \end{equation}
+    and
+    \cref{eq:u-uNb-bN}
+    we see that
+    \begin{equation}
+        \begin{split}
+            \norm{u^N - u}_{C_T \mathcal{C}^{1 + \alpha}}
+            &=
+            \sup_{t \in [0,T]}\norm{u^N - u}_{\mathcal{C}^{1 + \alpha}}
+            \\
+            &=
+            \sup_{t \in [0,T]} e^{\rho(T- t)} e^{-\rho(T- t)} \norm{u^N - u}_{\mathcal{C}^{1 + \alpha}}
+            \\
+            &\leq
+            e^{\rho T} \sup_{t \in [0,T]} e^{-\rho(T- t)} \norm{u^N - u}_{\mathcal{C}^{1 + \alpha}}
+            \\
+            &=
+            e^{\rho T} \norm{u^N - u}_{C_T \mathcal{C}^{1 + \alpha}}^{(\rho)}.
+        \end{split}
+        \label{eq:norm_bounded_by_rho_norm}
+    \end{equation}
+    
+    Plugging
+    \cref{eq:norm_bounded_by_rho_norm}
+    into
+    \cref{eq:u-uN_in_Linfinity_bounded_by_u-uN_in_Calpha1}
+    
+    \begin{equation}
+    \begin{split}
+        \| u^N(t) - u(t) \|_{L^\infty}
+        &\leq
+        c \| u^N(t) - u(t) \|_{\mathcal{C}^{\alpha + 1}}
+        \\
+        &\leq
+        \sup_{t \in [0,T]} c \norm{u^N(t) - u(t)}_{\mathcal{C}^{\alpha + 1}}
+        \\
+        &=
+        c \norm{u^N - u}_{C_T \mathcal{C}^{\alpha + 1}}
+        \\
+        &\leq
+        c e^{\rho T} \norm{u^N - u}_{C_T \mathcal{C}^{\alpha + 1}}^{(\rho)}.
+    \end{split}
+    \end{equation}
+    
+    And finally by
+    \cref{eq:u-uNb-bN}
+    
+    \begin{equation}
+        \norm{u^N(t) - u(t)}_{L^\infty}
+        \leq
+        c \cdot c(\rho) \cdot e^{\rho T} \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
+    \end{equation}
+    
+    which proves
+   \cref{eq:uNu_bounded_by_bNb}.
+   
+   For
+   \cref{eq:graduNu_bounded_by_bNb}
+   recall that if
+   $f \in \mathcal{C}^{1 + \alpha}$
+   then
+   $\nabla f \in \mathcal{C}^{\alpha}$.
+   Also, by Bernstein inequality
+   \cite[Eqn. (9)]{issoglio_mckean_2021}
+   \begin{equation}
+    \norm{\nabla f}_{\mathcal{\alpha}}
+    \leq
+    c \norm{f}_{\mathcal{1+ \alpha}}.
+   \end{equation}
+   
+  Using the equivalent norm
+    \begin{equation}
+        \| f \|_{C^{1 + \alpha}}
+        \leq
+        c
+        \left(
+        \sup_{x \in \mathbb{R}^d} | f(x) |
+        + \sup_{x \in \mathbb{R}^d} | \nabla f(x) |
+        + \sup_{x \neq y \in \mathbb{R}^d}
+        \frac{|\nabla f (x) - \nabla f(y)|}{|x - y|^\alpha}
+        \right)
+    \end{equation}
+    
+    we can see that
+    
+    \begin{equation}
+        \begin{split}
+        \norm{\nabla u^N(t) - \nabla u(t)}_{L^\infty}
+        &\leq
+        c \norm{u^N(t) - u(t)}_{\mathcal{C}^{1+\alpha}}.
+        \end{split}
+    \end{equation}
+    
+    And usign the same bounds that we used above for
+    $c \norm{u^N(t) - u(t)}_{\mathcal{C}^{1+\alpha}}$
+    this point follows.
+    
+\end{proof}
+
+\section{Bound for $\psi(t, x) - \psi^N(t, x)$}
+This is the adaptation of result
+\cite[Lemma 5.3]{de_angelis_numerical_2020}.
+
+\begin{proposition}
+
+    \label{prop:bound_psi-psiN}
+    Take
+    $\rho > \rho_0$
+    as in
+    \cref{prop:diff_u_uN},
+    $N \to \infty$,
+    $\kappa_\rho$
+    from
+    \cref{prop:diff_uN_graduN},
+    and
+    $\beta \in (0, 1/2)$,
+    then we have
+\begin{equation}
+    \sup_{(t,x) \in [0,T] \times \mathbb{R}}
+    \abs{\psi (t,x) - \psi^N(t,x)} \leq 2 \kappa_\rho \norm{b - b^N}_{C_T\mathcal{C}^{-\beta}}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+    Recall the definition of
+    $\psi, \phi \in C_T \mathcal{C}^{1} $
+    
+    \begin{equation}
+        \phi(t, x) := x + u(t, x)
+    \end{equation}
+    
+    \begin{equation}
+        \psi(t, \cdot) = \phi^{-1} (t, \cdot).
+    \end{equation}
+    
+    Note that
+    
+    \begin{equation}
+        u(y) = \int_0^1 \nabla u(\alpha y) y d \alpha + u(0)
+    \end{equation}
+    
+    
+\end{proof}
 
 \section{Bound for the local time at zero of $Y^N - Y$}
 
