@@ -42,6 +42,7 @@ for the case of McKean SDEs
 proposed in
 \cite{issoglio_mckean_2021}.
 
+Hola
 The proof builds on a number of results presented in the sections below.
 
 \section{Some useful definitions and results}
@@ -73,7 +74,7 @@ The first result,
 is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
 
 \begin{lemma}
-\todo{Type down this lemma}
+%%%%\todo{Type down this lemma}
 For any
 $\epsilon \in (0,1)$
 and any real-valued, continuous semi-martingale
@@ -98,8 +99,8 @@ Let us introduce the original and regularised Kolmogorov equations.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kolmogorov equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{definition}
-	[Kolmogorov equations]
+\begin{definition}{Kolmogorov equations}
+
 For
 $\beta \in (0, 1/2)$
 let
@@ -136,9 +137,20 @@ $C_T \mathcal{C}^{-\beta}$
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bounds for the gradient of u
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lemma}
+	Let
+	\label{lemma:bounds_gradients}
+	\todo{type this result which is lemma 4.2 in the paper}
+\end{lemma}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Lemma 5.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$}
+\section{Bounds for the difference of solutions to the Kolmogorov equations}
 
 We need a bound for
 $u - u^N$
@@ -286,7 +298,9 @@ $\lambda > 0$.
 	$\| \nabla g \|_\xi \leq c \|g \|_{\xi + 1}$
 
 	\begin{align*}
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
+		&\norm{ \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds }_{1+\alpha}
+		\\
 		&\leq
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\theta} \| \nabla u_i\|_\alpha \| b_i - b^N_i \|_{-\beta}
 		\\
@@ -303,7 +317,9 @@ $\lambda > 0$.
 	$\| b^N \|_{C_T \mathcal{C}^{-\beta}} \leq 2 \| b \|_{C_T \mathcal{C}^{-\beta}}$
 
 	\begin{align*}
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds\|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
+		&\norm{ \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds}_{1+\alpha}
+		\\
 		&\leq
 		c \sup_{0\leq t\leq T} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} 2 \| b_i \|_{-\beta} \| \nabla u_i - \nabla u^N_i \|_{\alpha} ds
 		\\
@@ -329,7 +345,9 @@ $\lambda > 0$.
 	so we will have
 
 	\begin{align*}
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
+		&\norm{ \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds}_{1+\alpha}
+		\\
 		&\leq
 		c \lambda \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-0} \| u_i - u^N_i \|_{1 + \alpha} ds
 		\\
@@ -354,7 +372,8 @@ $\lambda > 0$.
 
 	And for the last term
 	\begin{align*}
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{T-s}(b_i - b^N_i) ds\|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} &\norm{ \int_t^T P_{T-s}(b_i - b^N_i) ds}_{1+\alpha}
+		\\
 		&\leq
 		c \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\frac{\alpha+\beta-1}{2}} \| b_i - b^N_i \|_{-\beta} ds
 		\\
@@ -379,9 +398,15 @@ $\lambda > 0$.
 		c \lambda \sup_{0\leq t\leq T} \| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}_{1 + \alpha}} \rho^{\frac{\alpha+\beta-1}{2}}
 		\\
 		&-
-		c T^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}}
+		c T^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}},
 		\\
-		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} (1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} + \lambda])
+	\end{align*}
+
+and finally,
+
+	\begin{align*}
+		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} (1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} &+ \lambda])
+		\\
 		&\leq
 		cT^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)
 		\\
@@ -617,7 +642,7 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     
 \end{proof}
 
-\section{Bound for $\psi(t, x) - \psi^N(t, x)$}
+\section{Bound for the difference of the auxiliary functions}
 This is the adaptation of result
 \cite[Lemma 5.3]{de_angelis_numerical_2020}.
 
@@ -656,13 +681,43 @@ This is the adaptation of result
     Note that
     
     \begin{equation}
-        u(y) = \int_0^1 \nabla u(\alpha y) y d \alpha + u(0)
+        u(y) = \int_0^1 \nabla u(\alpha y) y d \alpha + u(0).
     \end{equation}
     
-    
+    From there we have
+
+    \begin{equation}
+	    u(t, y) - u(t, y') = \int_0^1 \nabla u (t, \alpha(y - y')) (y - y') d \alpha
+    \end{equation}
+
+    and therefore
+
+    \begin{equation}
+	    \abs{u(t, y) - u(t, y')} 
+	    \geq
+	    \left(\int_0^1 \abs{ \nabla u (t, \alpha(y - y')) }^2 d \alpha \right)^{1/2} \abs{y - y'},
+    \end{equation}
+
+    and by
+    \ref{lemma:bounds_gradients}
+    we finally have
+
+    \begin{equation}
+	    \begin{split}
+		    \abs{u(t, y) - u(t, y')}
+		    &\leq
+		    \left(\frac{1}{4} \int_0^1 d \alpha \right)^{1/2} \abs{y - y'}
+		    \\
+		    \abs{u(t, y) - u(t, y')}^2
+		    &\leq
+		    \frac{1}{4} \abs{y - y'}^2
+	    \end{split}
+    \end{equation}
+    \todo{continue from page three in notes}
+
 \end{proof}
 
-\section{Bound for the local time at zero of $Y^N - Y$}
+\section{Bound for the local time at zero of the solution to the SDEs}
 
 We need a bound for
 $\mathbb{E} [L^0_T ( Y^N - Y ) ]$,
@@ -702,12 +757,55 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	$Y^N - Y$
 	is
 	\begin{equation}
-		Y^N - Y_t = 
+		\begin{split}
+			Y^N - Y_t &= 
 		(y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s)
-		-
+		\\
+				  &-
 		(y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s)
+		\\
+				  &=
+		(y^N_0 - y_0) + \lambda \int_0^t ( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)) ) ds
+		\\
+				  &-
+		\int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) - \nabla u (s, \psi(s, Y_t))) dW_s,
+		\end{split}
+
 	\end{equation}
 
+	and using
+	\cref{lemma:local-time-at-0}
+	we have the following bound
+	
+	\begin{equation}
+		\begin{split}
+			\mathbb{E} [L_t^0 (Y^N - Y)]
+			&\leq
+			4 \epsilon +1
+			\\
+			&-
+			2(1+\lambda)
+			\mathbb{E}
+			\qty[
+				\int_0^t
+				\qty( 
+				\mathbbm{1}_{\qty{Y^N_s - Y_s \in (0, \epsilon)}} 
+				+ \mathbbm{1}_\qty{Y^N_s - Y_s \geq \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+					)
+			\qty( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds
+			]
+		      	\\
+			&+
+			\frac{1}{\epsilon}
+			\mathbb{E}
+			\qty[
+			\int_0^t \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+			\qty( \nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)))^2 ds
+			].
+		\end{split}
+	\end{equation}
+
+	This expression is possible because
 \end{proof}
 
 \section{Proposition 3.1 (main result)}
