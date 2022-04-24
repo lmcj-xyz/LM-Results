@@ -1,0 +1,75 @@
+\section{Bound for the difference of the auxiliary functions}
+This is the adaptation of result
+\cite[Lemma 5.3]{de_angelis_numerical_2020}.
+
+\begin{proposition}{Bound for $ \abs{\psi (t,x) - \psi^N(t,x) }$}{bound_aux_psi}
+
+    \label{prop:bound_psi-psiN}
+    Take
+    $\rho > \rho_0$
+    as in
+    \cref{prop:diff_u_uN},
+    $N \to \infty$,
+    $\kappa_\rho$
+    from
+    \cref{prop:diff_uN_graduN},
+    and
+    $\beta \in (0, 1/2)$,
+    then we have
+\begin{equation}
+    \sup_{(t,x) \in [0,T] \times \mathbb{R}}
+    \abs{\psi (t,x) - \psi^N(t,x)} \leq 2 \kappa_\rho \norm{b - b^N}_{C_T\mathcal{C}^{-\beta}}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+    Recall the definition of
+    $\psi, \phi \in C_T \mathcal{C}^{1} $
+    
+    \begin{equation}
+        \phi(t, x) := x + u(t, x)
+    \end{equation}
+    
+    \begin{equation}
+        \psi(t, \cdot) = \phi^{-1} (t, \cdot).
+    \end{equation}
+    
+    Note that
+    
+    \begin{equation}
+        u(y) = \int_0^1 \nabla u(\alpha y) y d \alpha + u(0).
+    \end{equation}
+    
+    From there we have
+
+    \begin{equation}
+	    u(t, y) - u(t, y') = \int_0^1 \nabla u (t, \alpha(y - y')) (y - y') d \alpha
+    \end{equation}
+
+    and therefore
+
+    \begin{equation}
+	    \abs{u(t, y) - u(t, y')} 
+	    \geq
+	    \left(\int_0^1 \abs{ \nabla u (t, \alpha(y - y')) }^2 d \alpha \right)^{1/2} \abs{y - y'},
+    \end{equation}
+
+    and by
+    \ref{lemma:bounds_gradients}
+    we finally have
+
+    \begin{equation}
+	    \begin{split}
+		    \abs{u(t, y) - u(t, y')}
+		    &\leq
+		    \left(\frac{1}{4} \int_0^1 d \alpha \right)^{1/2} \abs{y - y'}
+		    \\
+		    \abs{u(t, y) - u(t, y')}^2
+		    &\leq
+		    \frac{1}{4} \abs{y - y'}^2
+	    \end{split}
+    \end{equation}
+    \todo{continue from page three in notes}
+
+\end{proof}
+

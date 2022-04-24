@@ -1,0 +1,95 @@
+\section{Some useful definitions and results}
+
+Here we present some results and definitions to refer on the text.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition Local time
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}{Local time at zero}{local_time_zero}
+  For any real-valued continuous semi-martingale, the local time at zero
+  $L^{0}_{t} (\bar{Y})$
+  is defined as
+  \begin{equation}
+    L^0_t (\bar{Y}) = \lim_{\epsilon \to 0} \frac{1}{2 \epsilon} \int_0^t \mathbbm{1}_{\{|\bar{Y}| \leq \epsilon\}} d \langle \bar{Y} \rangle_s
+    \text{, }
+    \mathbb{P}
+    \text{-a.s.}
+  \end{equation}
+  For all
+  $t \geq 0$.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Local time at zero, Lemma 5.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The first result,
+\cite[Lemma 5.1]{de_angelis_numerical_2020},
+is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
+
+\begin{lemma}{Bound for local time at zero for a semi-martingale}{local-time-at-0}
+%%%%\todo{Type down this lemma}
+For any
+$\epsilon \in (0,1)$
+and any real-valued, continuous semi-martingale
+$Z$
+we have
+
+\begin{align*}
+    \mathbb{E}[L^0_t(Z_s)] \leq & 4 \epsilon
+    - \mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
+    \\
+    &+ \frac{1}{\epsilon} \mathbb{E} \left[ \int_0^t \mathbbm{1}_{\{Z > \epsilon} e^{1 - Z_s/\epsilon\}} d \langle Z \rangle_s \right].
+\end{align*}
+
+\end{lemma}
+
+Let us introduce the original and regularised Kolmogorov equations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kolmogorov equations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}{Kolmogorov equations}{kolmogorov_eqns}
+
+For
+$\beta \in (0, 1/2)$
+let
+$b \in C_T \mathcal{C}^{-\beta}$,
+$u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$, 
+and
+$b^N \to b$
+as
+$N \to \infty$
+in
+$C_T \mathcal{C}^{-\beta}$
+	The equations
+	%EI: mistake in PDEs, correct please
+
+	\begin{equation}
+	\begin{cases}
+	\partial u_i + \frac{1}{2} b_i \Delta u_i = \lambda u_i - b_i
+	\\
+	u_i(T) = 0,
+	\end{cases}
+	\end{equation}
+	
+	\begin{equation}
+	\begin{cases}
+	\partial u^N_i + \frac{1}{2} b^N_i \Delta u^N_i = \lambda u^N_i - b^N_i
+	\\
+	u^N_i(T) = 0.
+	\end{cases}
+	\end{equation}
+
+	are called Kolmogorov and regularised Kolmogorov equations.
+	Here written component wise.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bounds for the gradient of u
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lemma}{Bounds for $ \nabla u, \nabla u^N $}{lemma:bounds_gradients}
+	Let
+	\todo{type this result which is lemma 4.2 in the paper}
+\end{lemma}
+
