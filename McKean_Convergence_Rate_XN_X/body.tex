@@ -1,3 +1,112 @@
+\section{What is this?}
+
+An adaptation of
+\cite[Proposition 3.1]{de_angelis_numerical_2020}
+for the case of
+\cancel{McKean SDEs}
+SDEs with drift in a Besov space of negative order
+proposed in
+\cite{issoglio_pde_nodate}
+and
+\cite{issoglio_mckean_2021}.
+
+The proof builds on a number of results presented in the sections below.
+
+\section{Some useful definitions and results}
+
+Here we present some results and definitions to refer on the text.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition Local time
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}{Local time at zero}\label{def:local_time_zero}
+  For any real-valued continuous semi-martingale, the local time at zero
+  $L^{0}_{t} (\bar{Y})$
+  is defined as
+  \begin{equation}
+    L^0_t (\bar{Y}) = \lim_{\epsilon \to 0} \frac{1}{2 \epsilon} \int_0^t \mathbbm{1}_{\{|\bar{Y}| \leq \epsilon\}} d \langle \bar{Y} \rangle_s
+    \text{, }
+    \mathbb{P}
+    \text{-a.s.}
+  \end{equation}
+  For all
+  $t \geq 0$.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Local time at zero, Lemma 5.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The first result,
+\cite[Lemma 5.1]{de_angelis_numerical_2020},
+is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
+
+\begin{lemma}{Bound for local time at zero for a semi-martingale}\label{lemma:local-time-at-0}
+%%%%\todo{Type down this lemma}
+For any
+$\epsilon \in (0,1)$
+and any real-valued, continuous semi-martingale
+$Z$
+we have
+
+\begin{align*}
+    \mathbb{E}[L^0_t(Z_s)] \leq & 4 \epsilon
+    - \mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
+    \\
+    &+ \frac{1}{\epsilon} \mathbb{E} \left[ \int_0^t \mathbbm{1}_{\{Z > \epsilon} e^{1 - Z_s/\epsilon\}} d \langle Z \rangle_s \right].
+\end{align*}
+
+\end{lemma}
+
+Let us introduce the original and regularised Kolmogorov equations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Kolmogorov equations
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{definition}{Kolmogorov equations}\label{def:kolmogorov_eqns}
+
+For
+$\beta \in (0, 1/2)$
+let
+$b \in C_T \mathcal{C}^{-\beta}$,
+$u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$, 
+and
+$b^N \to b$
+as
+$N \to \infty$
+in
+$C_T \mathcal{C}^{-\beta}$
+	The equations
+	%EI: mistake in PDEs, correct please
+
+	\begin{equation}
+	\begin{cases}
+	\partial u_i + \frac{1}{2} b_i \Delta u_i = \lambda u_i - b_i
+	\\
+	u_i(T) = 0,
+	\end{cases}
+	\end{equation}
+	
+	\begin{equation}
+	\begin{cases}
+	\partial u^N_i + \frac{1}{2} b^N_i \Delta u^N_i = \lambda u^N_i - b^N_i
+	\\
+	u^N_i(T) = 0.
+	\end{cases}
+	\end{equation}
+
+	are called Kolmogorov and regularised Kolmogorov equations.
+	Here written component wise.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bounds for the gradient of u
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lemma}{Bounds for $ \nabla u, \nabla u^N $}\label{lemma:bounds_gradients}
+	Let
+	\todo{type this result which is lemma 4.2 in the paper}
+\end{lemma}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Lemma 5.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -23,12 +132,12 @@ The result builds on top of the following result:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
 {Bound for the $\rho$-equivalent norm of $u - u^N$}
-{prop:diff_u_uN}
+\label{prop:diff_u_uN}
 
 Let
 $u, u^N$
 be (mild) solutions to the Kolmogorov equations from
-\cref{def:kolmogorov_eqns}
+\ref{def:kolmogorov_eqns}
 then as
 $N \to \infty$
 
@@ -293,7 +402,7 @@ Here is the adaptation of
 
 \begin{proposition}
 {Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$}
-{diff_uN_graduN}
+\label{prop:diff_uN_graduN}
 
 Let
 $\beta \in (0, 1/2)$
@@ -302,10 +411,10 @@ $b \in C_T \mathcal{C}^{-\beta}$.
 Let 
 $u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$
 be (mild) solutions to the Kolmogorov equations from
-\cref{def:kolmogorov_eqns}.
+\ref{def:kolmogorov_eqns}.
 
 Assume, by
-\cref{prop:diff_u_uN},
+\ref{prop:diff_u_uN},
 that for some 
 $\alpha > \beta$
 
@@ -321,7 +430,7 @@ $\alpha > \beta$
 With
 $c(\rho)$
 as in
-\cref{prop:diff_u_uN}
+\ref{prop:diff_u_uN}
 and
 $\rho_0$
 is large enough such that
@@ -352,7 +461,7 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
 
 \begin{proof}
     First let us prove
-    \cref{eq:uNu_bounded_by_bNb}.
+    \ref{eq:uNu_bounded_by_bNb}.
     
     Let
     $t \in [0, T]$,
@@ -397,7 +506,7 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
         \| f \|_{\mathcal{C}^{1 + \alpha}} = \sup_{t \in [0, T]} e^{- \rho (T - t)} \norm{f(t)}_{\mathcal{C}^{1 + \alpha}},
     \end{equation}
     and
-    \cref{eq:u-uNb-bN}
+    \ref{eq:u-uNb-bN}
     we see that
     \begin{equation}
         \begin{split}
@@ -418,9 +527,9 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     \end{equation}
     
     Plugging
-    \cref{eq:norm_bounded_by_rho_norm}
+    \ref{eq:norm_bounded_by_rho_norm}
     into
-    \cref{eq:u-uN_in_Linfinity_bounded_by_u-uN_in_Calpha1}
+    \ref{eq:u-uN_in_Linfinity_bounded_by_u-uN_in_Calpha1}
     
     \begin{equation}
     \begin{split}
@@ -440,7 +549,7 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     \end{equation}
     
     And finally by
-    \cref{eq:u-uNb-bN}
+    \ref{eq:u-uNb-bN}
     
     \begin{equation}
         \norm{u^N(t) - u(t)}_{L^\infty}
@@ -449,10 +558,10 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     \end{equation}
     
     which proves
-   \cref{eq:uNu_bounded_by_bNb}.
+   \ref{eq:uNu_bounded_by_bNb}.
    
    For
-   \cref{eq:graduNu_bounded_by_bNb}
+   \ref{eq:graduNu_bounded_by_bNb}
    recall that if
    $f \in \mathcal{C}^{1 + \alpha}$
    then
@@ -494,3 +603,377 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     
 \end{proof}
 
+\section{Bound for the difference of the auxiliary functions}
+This is the adaptation of result
+\cite[Lemma 5.3]{de_angelis_numerical_2020}.
+
+\begin{proposition}{Bound for $ \abs{\psi (t,x) - \psi^N(t,x) }$}\label{prop:bound_aux_psi}
+
+    \label{prop:bound_psi-psiN}
+    Take
+    $\rho > \rho_0$
+    as in
+    \ref{prop:diff_u_uN},
+    $N \to \infty$,
+    $\kappa_\rho$
+    from
+    \ref{prop:diff_uN_graduN},
+    and
+    $\beta \in (0, 1/2)$,
+    then we have
+\begin{equation}
+    \sup_{(t,x) \in [0,T] \times \mathbb{R}}
+    \abs{\psi (t,x) - \psi^N(t,x)} \leq 2 \kappa_\rho \norm{b - b^N}_{C_T\mathcal{C}^{-\beta}}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+    Recall the definition of
+    $\psi, \phi \in C_T \mathcal{C}^{1} $
+    
+    \begin{equation}
+        \phi(t, x) := x + u(t, x)
+    \end{equation}
+    
+    \begin{equation}
+        \psi(t, \cdot) = \phi^{-1} (t, \cdot).
+    \end{equation}
+    
+    Note that
+    
+    \begin{equation}
+        u(y) = \int_0^1 \nabla u(\alpha y) y d \alpha + u(0).
+    \end{equation}
+    
+    From there we have
+
+    \begin{equation}
+	    u(t, y) - u(t, y') = \int_0^1 \nabla u (t, \alpha(y - y')) (y - y') d \alpha
+    \end{equation}
+
+    and therefore
+
+    \begin{equation}
+	    \abs{u(t, y) - u(t, y')} 
+	    \geq
+	    \left(\int_0^1 \abs{ \nabla u (t, \alpha(y - y')) }^2 d \alpha \right)^{1/2} \abs{y - y'},
+    \end{equation}
+
+    and by
+    \ref{lemma:bounds_gradients}
+    we finally have
+
+    \begin{equation}
+	    \begin{split}
+		    \abs{u(t, y) - u(t, y')}
+		    &\leq
+		    \left(\frac{1}{4} \int_0^1 d \alpha \right)^{1/2} \abs{y - y'}
+		    \\
+		    \abs{u(t, y) - u(t, y')}^2
+		    &\leq
+		    \frac{1}{4} \abs{y - y'}^2
+	    \end{split}
+    \end{equation}
+    \todo{continue from page three in notes}
+
+\end{proof}
+
+\section{Bound for the local time at zero of the solution to the SDEs}
+
+We need a bound for
+$\mathbb{E} [L^0_T ( Y^N - Y ) ]$,
+for Sobolev spaces, this is result
+\cite[Proposition 5.4]{de_angelis_numerical_2020}
+we present it here for the solutions to the SDE blonging to the appropriate Besov spaces.
+
+\begin{proposition}
+				{Bound for local time of solutions to the SDE}
+				\label{prop:bound_local_time_sde}
+	Let
+	$b \in C_T \mathcal{C}^{-\beta}$
+	and
+	$b^N \to b$
+	in
+	$C_T \mathcal{C}^{-\beta}$
+	as
+	$N \to \infty$
+	for
+	$\beta \in (0, \frac{1}{4})$
+	and for any
+	$\alpha > \beta$
+
+
+\end{proposition}
+
+\begin{proof}
+	Recall that
+	$Y^N, Y$
+	are solutions to the SDEs
+	\begin{equation}
+		Y_t = y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s
+	\end{equation}
+	and
+	\begin{equation}
+		Y^N_t = y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s
+	\end{equation}
+	so that the difference
+	$Y^N - Y$
+	is
+	\begin{equation}
+		\begin{split}
+			Y^N - Y_t &= 
+		(y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s)
+		\\
+				  &-
+		(y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s)
+		\\
+				  &=
+		(y^N_0 - y_0) + \lambda \int_0^t ( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)) ) ds
+		\\
+				  &-
+		\int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) - \nabla u (s, \psi(s, Y_t))) dW_s,
+		\end{split}
+	\end{equation}
+
+	and using
+	\ref{lemma:local-time-at-0}
+	we have the following bound
+	
+	\begin{equation}
+		\begin{split}
+			&\mathbb{E} [L_t^0 (Y^N - Y)]
+			\\
+			&\leq
+			4 \epsilon +1
+			\\
+			&-
+			2(1+\lambda)
+			\mathbb{E}
+			\qty[
+				\int_0^t
+				\qty( 
+				\mathbbm{1}_{\qty{Y^N_s - Y_s \in (0, \epsilon)}} 
+				+ \mathbbm{1}_\qty{Y^N_s - Y_s \geq \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+					)
+			\qty( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds
+			]
+		      	\\
+			&+
+			\frac{1}{\epsilon}
+			\mathbb{E}
+			\qty[
+			\int_0^t \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+			\qty( \nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)))^2 ds
+			].
+		\end{split}
+		\label{eq:local_time_diff}
+	\end{equation}
+
+	\todo{add the explanation of why to drop the difussion term}
+
+	For the second and third terms of
+	\ref{eq:local_time_diff}
+	let us bound the factors involving the differences of
+	$u, u^N$
+	and
+	$\nabla u, \nabla u^N$.
+
+	First, for $u, u^N$ adding and subtracting terms and using triangle inequality we have
+
+	\begin{equation}
+		\begin{split}
+			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+			&\leq
+			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
+			\\
+			&+
+			\abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
+			\\
+			&+
+			\abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}.
+		\end{split}
+	\end{equation}
+\end{proof}
+
+The terms in the right hand side will be bounded as follows:
+
+\begin{itemize}
+\item
+For the first term, by
+\ref{prop:diff_uN_graduN}
+
+\begin{equation}
+  \abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
+	\leq
+	\norm{ u^N(s) - u(s) }_{L^\infty}
+	\leq
+	\kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}},
+\end{equation}
+
+\item
+for the second term, observe that
+$u, u^N$
+are
+$\frac{1}{2}$-Lipschitz
+and by
+\ref{prop:bound_psi-psiN}
+we get
+
+\begin{equation}
+  \begin{split}
+    \abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
+    &\leq
+    \frac{1}{2}\abs{\psi^N(s, Y^N_s) - \psi(s, Y^N_s)}
+    \\
+    &\leq
+    \kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}},
+  \end{split} 
+\end{equation}
+
+\item
+and for the final term, note that
+$\psi, \psi^N$
+are
+2-Lipschitz
+
+so that
+
+\begin{equation}
+  \abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+	\leq
+	\frac{1}{2} \abs{\psi(s, Y^N_s) - \psi(s, Y_s)}
+	\leq
+	\abs{Y^N_s - Y_s}.
+\end{equation}
+\end{itemize}
+
+So that the following bound holds
+
+\begin{equation}
+	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+	\leq
+  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}},
+  +
+	\abs{Y^N_s - Y^N}.
+	\label{eq:bound_u_abs}
+\end{equation}
+
+Now for the third term in
+\ref{eq:local_time_diff}
+by adding and subtracting terms and using the triangle inequality
+
+\begin{equation}
+  \begin{split}
+				\abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+				&\leq
+				\abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s))}
+				\\
+				&+
+				\abs{\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s))}
+				\\
+				&+
+				\abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+  \end{split}.
+\end{equation}
+
+The terms on the right hand side will be bounded as follows:
+
+\begin{itemize}
+\item
+For the first term we use
+\ref{prop:diff_uN_graduN}
+and we have
+
+\begin{equation}
+  \begin{split}
+    \abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s))}
+		&\leq
+    \norm{\nabla u^N(s) - \nabla u(s) }_{L^\infty}
+		\\
+		&\leq
+	  \kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}},
+  \end{split}
+\end{equation}
+
+for the second term see that
+$\nabla u, \nabla u^N$
+are
+$\alpha$-Hölder
+continuous and using
+\ref{prop:bound_psi-psiN}
+we have
+
+\begin{equation}
+\begin{split}
+  \abs{\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s))}
+	&\leq
+	\abs{\psi^N(s, Y^N_s) - \psi(s, Y^N_s)}^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}
+	\\
+	&\leq
+	(2 \kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}})^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}.
+\end{split}
+\end{equation}
+
+\end{itemize}
+
+Therefore we get the bound
+
+\begin{equation}
+  \begin{split}
+				\abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+				&\leq
+	  \kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}}
+				\\
+				&+
+	2^\alpha \kappa_\rho^\alpha \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}
+				\\
+				&+
+				\abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+  \end{split}.
+	\label{eq:bound_gradu_abs}
+\end{equation}
+
+Using the bounds for
+\ref{eq:bound_u_abs}
+and
+\ref{eq:bound_gradu_abs}
+and the inequality
+
+\begin{equation}
+				(x_1 + \dotsm + x_k)^2 \leq k(x_1 + \dotsm + x_k),
+\end{equation}
+
+for some
+$k$,
+we get
+
+\begin{equation}
+\begin{split}
+&\mathbb{E} [L^0_t ( Y^N - Y)]
+\\
+&\leq
+4 \epsilon
++
+4 (1 + \lambda) \qty(
+  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t
+  +
+	\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]
+	)
+	\\
+&+
+\frac{1}{\epsilon} 3 t \norm{ b^N - b}_{C_T \mathcal{C}^{-\beta}}
+\qty(
+\kappa_\rho^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
++
+4(2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
+)
+\\
+&+
+\frac{1}{\epsilon} 3 \mathbb{E}
+\qty(
+			\int_0^t \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \qty| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))|^2 ds
+)
+\end{split}
+\end{equation}
+
+\section{Convergence rate of the solution to the regularised SDE and the original}
