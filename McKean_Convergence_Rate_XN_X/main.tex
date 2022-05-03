@@ -16,10 +16,14 @@
 \usepackage[capitalise]{cleveref}
 \usepackage{todonotes}
 \usepackage{physics}
+\usepackage{showkeys}
 
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
+
+% to add Elena's comments faster
+\def\ei{{\color{blue}EI: }\textcolor{blue}}
 
 \allowdisplaybreaks
 
@@ -38,9 +42,9 @@
 
 An adaptation of
 \cite[Proposition 3.1]{de_angelis_numerical_2020}
-for the case of McKean SDEs
+for the case of McKean  SDEs
 proposed in
-\cite{issoglio_mckean_2021}.
+\cite{issoglio_mckean_2021}. \ei{not yet for McKean SDEs, here you are only looking at SDEs with distributional coefficients in Besov spaces, SDEs framed as martingale problems}
 
 Hola
 The proof builds on a number of results presented in the sections below.
@@ -53,7 +57,7 @@ Here we present some results and definitions to refer on the text.
 % Definition Local time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}
-For any real-valued continuous semi-martingale, the local time at zero
+For any real-valued continuous semi-martingale \ei{you need to specify the name of this semimartingale, that is $\bar Y$}, the local time at zero
 $L^{0}_{t} (\bar{Y})$
 is defined as
 \begin{equation}
@@ -62,8 +66,8 @@ is defined as
     \mathbb{P}
     \text{-a.s.}
 \end{equation}
-For all
-$t \geq 0$.
+for all
+$t \geq 0$. 
 \end{definition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -72,6 +76,8 @@ $t \geq 0$.
 The first result,
 \cite[Lemma 5.1]{de_angelis_numerical_2020},
 is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
+\ei{Instead of this sentence you should write something like `The lemma below is from \cite{de_angelis_numerical_2020} and its
+proof can be found in \cite[Lemma 5.1]{de_angelis_numerical_2020}. We include the statement for ease of reading.'}
 
 \begin{lemma}
 %%%%\todo{Type down this lemma}
@@ -86,13 +92,14 @@ we have
     \leq
     &
     4 \epsilon
-    - \mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
+    - {\color{red}2}\mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
     \\
     &+ \frac{1}{\epsilon} \mathbb{E} \left[ \int_0^t \mathbbm{1}_{\{Z > \epsilon} e^{1 - Z_s/\epsilon\}} d \langle Z \rangle_s \right].
 \end{align*}
 
 \label{lemma:local-time-at-0}
 \end{lemma}
+\ei{It is confusing to call the semimartingale $\bar Y$ above and $Z$ in the lemma. It is not wrong, but not the best use of notation.}
 
 Let us introduce the original and regularised Kolmogorov equations.
 
@@ -113,7 +120,8 @@ $N \to \infty$
 in
 $C_T \mathcal{C}^{-\beta}$
 	The equations
-	%EI: mistake in PDEs, correct please
+	\ei{mistake in PDEs, correct please!!}
+
 
 	\begin{equation}
 	\begin{cases}
@@ -141,8 +149,9 @@ $C_T \mathcal{C}^{-\beta}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{lemma}
-	Let
+	Let..\\
 	\label{lemma:bounds_gradients}
+	$\|\nabla u\|< \frac12$
 	\todo{type this result which is lemma 4.2 in the paper}
 \end{lemma}
 
@@ -698,7 +707,7 @@ This is the adaptation of result
 	    \left(\int_0^1 \abs{ \nabla u (t, \alpha(y - y')) }^2 d \alpha \right)^{1/2} \abs{y - y'},
     \end{equation}
 
-    and by
+    and by Lemma
     \ref{lemma:bounds_gradients}
     we finally have
 
@@ -739,10 +748,12 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	and for any
 	$\alpha > \beta$
 
+...
 
 \end{proposition}
 
 \begin{proof}
+\ei{make sure that you write $\lambda$ and not $1+\lambda$}
 	Recall that
 	$Y^N, Y$
 	are solutions to the SDEs
@@ -780,7 +791,7 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 		\begin{split}
 			\mathbb{E} [L_t^0 (Y^N - Y)]
 			&\leq
-			4 \epsilon +1
+			4 \epsilon
 			\\
 			&-
 			2(1+\lambda)
@@ -807,6 +818,7 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 
 	\todo{add the explanation of why to drop the difussion term}
 
+ 
 	For the second and third terms of
 	\cref{eq:local_time_diff}
 	let us bound the factors involving the differences of
@@ -973,11 +985,11 @@ and
 and the inequality
 
 \begin{equation}
-				(x_1 + \dotsm + x_k)^2 \leq k(x_1 + \dotsm + x_k),
+				(x_1 + \dotsm + x_k)^2 \leq k(x_1^2 + \dotsm + x_k^2),
 \end{equation}
 
 for some
-$k$,
+$k$, from \eqref{eq:local_time_diff}
 we get
 
 \begin{equation}
@@ -990,7 +1002,7 @@ we get
 4 (1 + \lambda) \qty(
   2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t
   +
-	\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]
+	\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N_s} ds]
 	)
 	\\
 &+
@@ -1002,6 +1014,9 @@ we get
 )
 \end{split}
 \end{equation}
+ \ei{add explanation of why you use absolute value of difference of $u^N -u$, because in \eqref{eq:local_time_diff} there is no absolute value}
+\ei{explain how you get 4 in front of $(1+\lambda)$ by bounding the indicator functions under the integral in \eqref{eq:local_time_diff}}
+
 
 \section{Convergence rate of the solution to the regularised SDE and the original}
 
