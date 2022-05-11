@@ -4,7 +4,7 @@
 An adaptation of
 \cite[Proposition 3.1]{de_angelis_numerical_2020}
 for the case of
-\cancel{McKean SDEs}
+%\cancel{McKean SDEs}
 %\ei{not yet for McKean SDEs, here you are only looking at SDEs with distributional coefficients in Besov spaces, SDEs framed as martingale problems}
 %\lm{corrected}
 SDEs with drift in a Besov space of negative order
@@ -253,19 +253,19 @@ $\lambda > 0$.
 	\begin{align*}
 		\| u_i - u^N_i \| ^ {(\rho)}_{C_T \mathcal{C}^{-\beta}}
 		&=
-		\sup_{0\leq t \leq T} e^{-\rho(T-t)} \| u(t) - u^N(t) \|_{1 + \alpha}
+		\sup_{0\leq t \leq T} e^{-\rho(T-t)} \| u(t) - u^N(t) \|_{C_T \mathcal{C}^{1 + \alpha}}
 		\\
 		&\leq
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \|_{C_T \mathcal{C}^{1 + \alpha}}
 	     	\\ 
 		&+
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds\|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds\|_{C_T \mathcal{C}^{1 + \alpha}}
 	     	\\ 
 		&-
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{C_T \mathcal{C}^{1 + \alpha}}
 	     	\\ 
 		&-
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(b_i - b^N_i) ds\|_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(b_i - b^N_i) ds\|_{C_T \mathcal{C}^{1 + \alpha}}
 		.
 	\end{align*}
 
@@ -281,16 +281,16 @@ $\lambda > 0$.
 
 	\begin{align*}
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
-		&\norm{ \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds }_{1+\alpha}
+		&\norm{ \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds }_{C_T \mathcal{C}^{1+\alpha}}
 		\\
 		&\leq
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\theta} \| \nabla u_i\|_\alpha \| b_i - b^N_i \|_{-\beta}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\theta} \| \nabla u_i\|_{C_T \mathcal{C}^\alpha} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}}
 		\\
 		&\leq
 		c \| u_i \|_{C_T \mathcal{C}_{1 + \alpha}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}} \sup_{0 \leq t \leq T} e^{-\rho(T-t)}(T-t)^{\frac{1 - \beta -\alpha}{2}}
 		\\
 		&\leq
-		c T^{\frac{1 - \beta - \alpha}{2}} \| u_i \|_{C_T \mathcal{C}_{1 + \alpha}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}}
+		c T^{\frac{1 - \beta - \alpha}{2}} \| u_i \|_{C_T \mathcal{C}^{1 + \alpha}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}}
 	\end{align*}
 
 	For the second term, see that for
@@ -300,10 +300,10 @@ $\lambda > 0$.
 
 	\begin{align*}
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
-		&\norm{ \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds}_{1+\alpha}
+		&\norm{ \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds}_{C_T \mathcal{C}^{1+\alpha}}
 		\\
 		&\leq
-		c \sup_{0\leq t\leq T} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} 2 \| b_i \|_{-\beta} \| \nabla u_i - \nabla u^N_i \|_{\alpha} ds
+		c \sup_{0\leq t\leq T} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} 2 \| b_i \|_{C_T \mathcal{C}^{-\beta}} \| \nabla u_i - \nabla u^N_i \|_{C_T \mathcal{C}^{1+\alpha}} ds
 		\\
 		&\leq
 		c \| b_i \|_{C_T \mathcal{C}^{-\beta}} \| u_i - u^N_i \|_{C_T \mathcal{C}^{-\beta}}^{(\rho)} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} ds
@@ -354,10 +354,10 @@ $\lambda > 0$.
 
 	And for the last term
 	\begin{align*}
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} &\norm{ \int_t^T P_{T-s}(b_i - b^N_i) ds}_{1+\alpha}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} &\norm{ \int_t^T P_{T-s}(b_i - b^N_i) ds}_{C_T \mathcal{C}^{1+\alpha}}
 		\\
 		&\leq
-		c \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\frac{\alpha+\beta-1}{2}} \| b_i - b^N_i \|_{-\beta} ds
+		c \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\frac{\alpha+\beta-1}{2}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}} ds
 		\\
 		&\leq
 		c \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}} \sup_{0\leq t\leq T} e ^{-\rho(T-t)} (s - t)^{-\frac{\alpha+\beta-1}{2}}
@@ -703,6 +703,8 @@ This is the adaptation of result
 
 \section{Bound for the local time at zero of the solution to the SDEs}
 
+\lm{Here I still need to mention how we define $Y_t = \psi(t, X_t)$, because eventually I need to use that $X_t = \psi(t, Y_t)$, probably just neet to mention without defining the whole $Y_t$ as in the paper}
+
 We need a bound for
 $\mathbb{E} [L^0_T ( Y^N - Y ) ]$,
 for Sobolev spaces, this is result
@@ -733,7 +735,7 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
     \mathbb{E}
     [L^0_t(Y^N - Y)]
     &\leq
-    o(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1})
+    o\qty(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1})
     +
     A
     \mathbb{E}
@@ -767,10 +769,10 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	\begin{equation}
 		\begin{aligned}
 			Y^N - Y_t &= 
-		(y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s)
+		\qty(y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s)
 		\\
 				  &-
-		(y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s)
+		\qty(y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s)
 		\\
 				  &=
 		(y^N_0 - y_0) + \lambda \int_0^t ( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)) ) ds
@@ -816,22 +818,17 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	\end{align}
 	\lm{add the explanation of why to drop the difussion term}
 
-	For
-	\eqref{eq:local_time_diff_u}
+	First, for
+	\eqref{eq:local_time_diff_u},
+	let us bound the factor involving the difference of
+	$u^N$
 	and
-	\eqref{eq:local_time_diff_gradu}
-	let us bound the factors involving the differences of
-	$u, u^N$
-	and
-	$\nabla u, \nabla u^N$,
-	noting also that for any
+	$u$
+	adding and subtracting terms, using triangle inequality and noting that for any
 	$a, b$,
 	we have
-	$a - b \leq \abs{a - b}$
-
-	First, for
-	\eqref{eq:local_time_diff_u}
-	adding and subtracting terms and using triangle inequality we have
+	$a - b \leq \abs{a - b}$,
+	then
 
 	\begin{equation}
 		\begin{aligned}
@@ -954,14 +951,17 @@ leads to have
         2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t 
         + \mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]
     	)
+    	.
     \end{aligned}
     \label{eq:bound_integral_uNu}
 \end{equation}
 
 
 Now for
-\eqref{eq:local_time_diff_gradu}
-by adding and subtracting terms and using the triangle inequality
+\eqref{eq:local_time_diff_gradu},
+we use similar arguments as the ones for
+\eqref{eq:local_time_diff_u}
+above, and we get the following:
 
 \begin{equation}
   \begin{aligned}
@@ -974,10 +974,10 @@ by adding and subtracting terms and using the triangle inequality
 	\\
 	&+
 	\abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
-  \end{aligned}.
+	,
+  \end{aligned}
 \end{equation}
-
-The terms on the right hand side will be bounded as follows:
+where the terms on the right hand side will be bounded as follows:
 
 \begin{itemize}
 \item
@@ -1241,12 +1241,15 @@ is 2-Lipschitz
 \end{aligned}
 \end{equation}
 
-For the other term see that
-{\color{olive}$\nabla u$
+For the other term we need another way to bound it, because event though the event when
+$\abs{Y^N - Y} > \epsilon^\zeta$
+is small, we can potentially have a quantity that blows up for the bound.
+In order to solve this problem, we can use the fact that
+$\nabla u$
 is uniformly bounded by 1/2 thanks to
-Lemma \ref{lemma:bounds_gradients}}
+Lemma \ref{lemma:bounds_gradients},
 %\todo{Want to add a more convincing explanation (for me) to use each bound in each case}
-therefore,
+and then we can bound the difference of the gradients as follows:
 \begin{equation}
 \begin{aligned}
     \abs{\nabla u (s, \psi(s, Y^N_s)) - \nabla u (s, \psi(s, Y_s))}^2
@@ -1257,11 +1260,11 @@ therefore,
     \sup_{(s, x) \in [0, T] \times \mathbb{R}} \abs{\nabla u (s, \psi(s, Y^N_s)) + \nabla u (s, \psi(s, Y_s))}^2
     \\
     &=
-    \norm{2 \nabla u}_{L_\infty}^2
+    \norm{2 \nabla u}_{L_\infty}^2.
 \end{aligned}
 \end{equation}
-
 Therefore we have that for all $t\in[0,T]$
+\lm{check where else I need to say this}
 \begin{equation}
     \begin{aligned}
     I^{N, \epsilon}_t 
@@ -1313,10 +1316,11 @@ Therefore we have that for all $t\in[0,T]$
     2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
     +
     4 e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2
-    ) T
+    ) T.
     \end{aligned}
     \label{eq:INepsilon_bound}
 \end{equation}
+\lm{this is the last thing Elena and I checked on the 11th of May}
 %\lm{the last line above is not finished}
 
 Now by combining
@@ -1328,7 +1332,7 @@ and taking the sup over
 $[0, T]$
 we will get
 
-\question{Should I take that sup? It makes sense to me in order to have constants instead of something depending on $t$, but then the integral of the difference $Y^N - Y$ is from 0 to $t$ in the paper}
+%\question{Should I take that sup? It makes sense to me in order to have constants instead of something depending on $t$, but then the integral of the difference $Y^N - Y$ is from 0 to $t$ in the paper}
 
 \begin{equation}
     \begin{aligned}
@@ -1475,7 +1479,7 @@ therefore we can create the bound
     \mathbb{E}
     [L^0_t(Y^N - Y)]
     &\leq
-    o(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1})
+    o\qty(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1})
     +
     c_2
     \mathbb{E}
