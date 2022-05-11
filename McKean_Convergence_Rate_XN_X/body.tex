@@ -728,6 +728,7 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	$\alpha > \beta$
 
 \begin{equation}
+\label{eq:local_time_YNY_bound}
     \begin{aligned}
     \mathbb{E}
     [L^0_t(Y^N - Y)]
@@ -845,7 +846,6 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 			\abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}.
 		\end{aligned}
 	\end{equation}
-\end{proof}
 
 The terms in the right hand side will be bounded as follows:
 
@@ -949,7 +949,7 @@ leads to have
         	\qty(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} ) ds
         ]
         \\
-        &\quad\quad\quad\leq
+        &\leq
         4 \lambda \qty(
         2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t 
         + \mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]
@@ -1261,7 +1261,7 @@ therefore,
 \end{aligned}
 \end{equation}
 
-Therefore we have that
+Therefore we have that for all $t\in[0,T]$
 \begin{equation}
     \begin{aligned}
     I^{N, \epsilon}_t 
@@ -1296,7 +1296,7 @@ Therefore we have that
     %\norm{2 \nabla u}_{L_\infty}^2
     %ds
     4  e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2 t
-    )
+    ) 
     \\
     &\leq
     \sup_{t \in [0, T]}
@@ -1466,8 +1466,9 @@ $\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}$
 controls
 $\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}$
 therefore we can create the bound
+\eqref{eq:local_time_YNY_bound}
 
-\question{is this clear enough? Am I making sense?}
+\question{is this clear enough? Am I making sense if I am taking $\alpha$ fixed?}
 
 \begin{equation}
     \begin{aligned}
@@ -1487,4 +1488,5 @@ therefore we can create the bound
     \end{aligned}
 \end{equation}
 
+\end{proof}
 \section{Convergence rate of the solution to the regularised SDE and the original}
