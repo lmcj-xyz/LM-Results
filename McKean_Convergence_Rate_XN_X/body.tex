@@ -1,6 +1,5 @@
 \section{What is this?}
 
-
 An adaptation of
 \cite[Proposition 3.1]{de_angelis_numerical_2020}
 for the case of
@@ -14,6 +13,8 @@ and
 \cite{issoglio_mckean_2021}.
 
 The proof builds on a number of results presented in the sections below.
+
+\ei{add result about convergence of the scheme. This is done in two parts, $X^N \to X$ done in Russo Issoglio, and $X^{N,m} \to X^N$  Euler scheme convergence from De Angelis Germain Issoglio. Attention that the rate of convergence of Euler scheme depends of the smoothness of $b^N$.}
 
 \section{Some useful definitions and results}
 
@@ -735,13 +736,13 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
     \mathbb{E}
     [L^0_t(Y^N - Y)]
     &\leq
-    o\qty(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1})
+    o\left(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
     +
     A
     \mathbb{E}
-    \qty(
+    \left(
     \int_0^t \abs{Y^N - Y} ds
-    )
+    \right)
     +
     B
     \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}.
@@ -769,10 +770,14 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	\begin{equation}
 		\begin{aligned}
 			Y^N - Y_t &= 
-		\qty(y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s)
+		\left(
+		y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s
+		\right)
 		\\
 				  &-
-		\qty(y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s)
+		\left(
+		y_0 + \lambda \int_0^t u(s, \psi(s, Y_s)) ds + \int_0^t ( \nabla u (s, \psi(s, Y_t)) + 1 ) dW_s
+		\right)
 		\\
 				  &=
 		(y^N_0 - y_0) + \lambda \int_0^t ( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)) ) ds
@@ -797,23 +802,25 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 		&-
 		2\lambda
 		\mathbb{E}
-		\qty[
+		\left[
 			\int_0^t
-			\qty( 
-			\mathbbm{1}_{\qty{Y^N_s - Y_s \in (0, \epsilon)}} 
-			+ \mathbbm{1}_\qty{Y^N_s - Y_s \geq \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-				)
-		\qty( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds
-		]
+			\left( 
+			\mathbbm{1}_{\{Y^N_s - Y_s \in (0, \epsilon)\}} 
+			+ \mathbbm{1}_{\{Y^N_s - Y_s \geq \epsilon\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+			\right)
+		\left(
+		u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))
+		\right) ds
+		\right]
 		   \label{eq:local_time_diff_u}
 		     	\\
 		&+
 		\frac{1}{\epsilon}
 		\mathbb{E}
-		\qty[
-		\int_0^t \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-		\qty( \nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)))^2 ds
-		].
+		\left[
+		\int_0^t \mathbbm{1}_{\{ Y^N_s - Y_s > \epsilon \}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+		\left( \nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)) \right)^2 ds
+		\right].
 		\label{eq:local_time_diff_gradu}
 	\end{align}
 	\lm{add the explanation of why to drop the difussion term}
@@ -941,16 +948,16 @@ leads to have
         &\leq
         2\lambda
         \mathbb{E}
-        \qty[
+        \left[
         	\int_0^t 2
-        	\qty(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} ) ds
-        ]
+        	\left(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} \right) ds
+        \right]
         \\
         &\leq
-        4 \lambda \qty(
+        4 \lambda \left(
         2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t 
-        + \mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]
-    	)
+        + \mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds \right]
+    	\right)
     	.
     \end{aligned}
     \label{eq:bound_integral_uNu}
@@ -1065,32 +1072,32 @@ we can get the bound
 	\frac{1}{\epsilon}
 	\mathbb{E}
 	\int_0^t
-	\qty(
+	\left(
 	3 \kappa_\rho^2 \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}}^2
 	+ 3 \cdot 2^{2\alpha} \kappa_\rho^{2\alpha}
 	\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha}
 	\norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2
-	)ds
+	\right)ds
 	\\
 	&\quad\quad\quad +
 	\frac{1}{\epsilon}
 	\mathbb{E}
 	\int_0^t
-	3 \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}^2 ds
+	3 \mathbbm{1}_{\left\{Y^N_s - Y_s > \epsilon\right\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}^2 ds
 	\\
 	&\quad\quad\quad\leq
     \frac{1}{\epsilon} 3 t \norm{ b^N - b}_{C_T \mathcal{C}^{-\beta}}
-    \qty(
+    \left(
     \kappa_\rho^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
     +
     (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
-    )
+    \right)
     \\
 	&\quad\quad\quad +
     \frac{1}{\epsilon} 3 \mathbb{E}
-    \qty(
-    			\int_0^t \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \qty| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))|^2 ds
-    )
+    \left(
+    			\int_0^t \mathbbm{1}_{\left\{ Y^N_s - Y_s > \epsilon \right\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \left| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)) \right|^2 ds
+    \right)
     \end{aligned}
     \label{eq:bound_integral_graduNu}
 \end{equation}
@@ -1206,11 +1213,11 @@ Leading to the integral
 \begin{equation}
     I^{N,\epsilon}_t =
     \frac{1}{\epsilon} 3 \mathbb{E}
-    \qty(
-    \int_0^t \qty(\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} + \mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}})
+    \left(
+    \int_0^t \left(\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} + \mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}}\right)
     e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-    \qty| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))|^2 ds
-    )
+    \left| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\right|^2 ds
+    \right)
     \label{eq:INepsilon}
 \end{equation}
 
@@ -1218,7 +1225,7 @@ For the first term of
 \eqref{eq:INepsilon}
 we use the fact that $\nabla u$
 is
-$\alpha$-Holder
+$\alpha$-Hölder
 continuous uniformly in
 $s \in [0,T]$
 with constant
@@ -1243,7 +1250,7 @@ is 2-Lipschitz
 
 For the other term we need another way to bound it, because event though the event when
 $\abs{Y^N - Y} > \epsilon^\zeta$
-is small, we can potentially have a quantity that blows up for the bound.
+is small, we can potentially have a quantity that blows up for the bound. \ei{the explanation needs adjusting - speak to Elena}
 In order to solve this problem, we can use the fact that
 $\nabla u$
 is uniformly bounded by 1/2 thanks to
@@ -1270,57 +1277,57 @@ Therefore we have that for all $t\in[0,T]$
     I^{N, \epsilon}_t 
     &\leq
     \frac{1}{\epsilon} 3 \mathbb{E}
-    \qty(
-    \int_0^t \qty(\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} )
+    \left(
+    \int_0^t \left(\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} \right)
     e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
     2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \abs{Y^N_s - Y_s}^{2\alpha}
     ds
-    )
+    \right)
     \\
     &+ \frac{1}{\epsilon} 3 \mathbb{E}
-    \qty(
+    \left(
     \int_0^t
     \mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}}
     e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
     \norm{2 \nabla u}_{L_\infty}^2
     ds
-    )
+    \right)
     \\
     &\leq
     \frac{1}{\epsilon} 3 \mathbb{E}
-    \qty(
+    \left(
     2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \abs{\epsilon^\zeta}^{2\alpha} t
-    )
+    \right)
     + \frac{1}{\epsilon} 3 \mathbb{E}
-    \qty(
+    \left(
     %\int_0^t
     %\mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}}
     %e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
     %\norm{2 \nabla u}_{L_\infty}^2
     %ds
     4  e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2 t
-    ) 
+    \right) 
     \\
     &\leq
     \sup_{t \in [0, T]}
     \frac{3}{\epsilon}
-    \qty(
+    \left(
     2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
     +
     4 e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2
-    ) t
+    \right) t
     \\
     &=
     \frac{3}{\epsilon}
-    \qty(
+    \left(
     2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
     +
     4 e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2
-    ) T.
+    \right) T.
     \end{aligned}
     \label{eq:INepsilon_bound}
 \end{equation}
-\lm{this is the last thing Elena and I checked on the 11th of May}
+{\color{red}!!!!!!!!!!!!!!!!}\lm{the parts above the last things Elena and I checked on the 11th of May}{\color{red}!!!!!!!!!!!!!!!!} \ei{checked till the end  on 12/5}
 %\lm{the last line above is not finished}
 
 Now by combining
@@ -1345,7 +1352,7 @@ we will get
     {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+ 4 \lambda
-    {\color{magenta}\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]}
+    {\color{magenta}\mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds\right]}
     \\
     &+
     \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
@@ -1370,11 +1377,9 @@ we will get
     {\color{purple}e^{1 - \epsilon^{\zeta - 1}}}
     \end{aligned}
 \end{equation}
-
 then we take
 $\epsilon = \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}$
 and we get
-
 \begin{equation}
     \begin{aligned}
     \mathbb{E} [L^0_t(Y^N - Y)]
@@ -1387,7 +1392,7 @@ and we get
     {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+ 4 \lambda
-    {\color{magenta}\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]}
+    {\color{magenta}\mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds\right]}
     \\
     &+
     3 T
@@ -1406,7 +1411,7 @@ and we get
     &+
     4  \norm{\nabla u}_{L_\infty}^2 T 
     \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{-1}
-    {\color{purple}\exp\qty({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}})}
+    {\color{purple}\exp\left({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)}
     \end{aligned}
 \end{equation}
 
@@ -1419,7 +1424,7 @@ which can be written as
     {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
     +
     c_2
-    {\color{magenta}\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]}
+    {\color{magenta}\mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds\right]}
     \\
     &+
     c_3
@@ -1430,7 +1435,7 @@ which can be written as
     \\
     &+
     c_5
-    {\color{purple}\exp\qty({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}})}
+    {\color{purple}\exp\left({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)}
     \end{aligned}
     \label{eq:bound_constants}
 \end{equation}
@@ -1455,7 +1460,7 @@ where
 Finally, observe that since
 $\zeta \in (0,1)$,
 the term
-$\exp\qty({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}})$
+$\exp\left({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)$
 decays faster than any polynomial, thus controlling
 $c_5$,
 and the last term in
@@ -1473,19 +1478,21 @@ therefore we can create the bound
 \eqref{eq:local_time_YNY_bound}
 
 \question{is this clear enough? Am I making sense if I am taking $\alpha$ fixed?}
+\ei{no if $\alpha$ was fixed you could not do this. But $\alpha>\beta$ in your statement, hence it works. You need to explain the details however. Maybe at this stage you could introduce $\alpha'=\alpha\zeta$ to explain, that the result works for $\alpha'$ but since $\zeta$ can be chosen arbitrarily close to 1 then $\alpha'$ is arbitrarily close to $\alpha$  and $\alpha$ was chosen such that $\alpha>\beta$ which means the result is valid for all $\alpha'>\beta$. For simplicity we write $\alpha$ in place of  $\alpha'$ in the statement.\\
+Also it is better to explain the meaning of $o()$ and what terms go in there.}
 
 \begin{equation}
     \begin{aligned}
     \mathbb{E}
     [L^0_t(Y^N - Y)]
     &\leq
-    o\qty(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1})
+    o\left(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
     +
     c_2
     \mathbb{E}
-    \qty(
+    \left(
     \int_0^t \abs{Y^N - Y} ds
-    )
+    \right)
     +
     c_4
     \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
