@@ -122,11 +122,45 @@ $C_T \mathcal{C}^{-\beta}$
 
 \begin{lemma}{Bounds for $ \nabla u, \nabla u^N $}\label{lemma:bounds_gradients}
 	Let
-	\lm{type this result which is lemma 4.2 in the paper}
+	%\lm{type this result which is lemma 4.2 in the paper}
 	%\todo{type this result which is lemma 4.2 in the paper}
-	
-	...
+    $u, u^N$
+    be the solutions to the Kolmogorov equations
+    
 \end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Assumptions on b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{assumption}
+\label{as:b_in_ctcb}
+b
+
+...
+\end{assumption}
+
+\begin{assumption}
+\label{as:bN_converges_in_ctcb}
+b
+
+...
+\end{assumption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bound for u^N - u
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{lemma}
+\label{lemma:uN-n_bound_for_integral}
+Let
+
+...
+\end{lemma}
+
+\lm{the lemma is probably better to type it before the first time it is used since it requires of some results below}
+
+\lm{TYPE THIS}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Lemma 5.2
@@ -250,7 +284,7 @@ $\lambda > 0$.
 	
 	
     %\todo{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}
-    \lm{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}
+    {\color{red}!!!!!!!!!!!!!!!!!!!!!}\lm{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}    {\color{red}!!!!!!!!!!!!!!!!!!!!!}
 	\begin{align*}
 		\| u_i - u^N_i \| ^ {(\rho)}_{C_T \mathcal{C}^{-\beta}}
 		&=
@@ -769,7 +803,7 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	is
 	\begin{equation}
 		\begin{aligned}
-			Y^N - Y_t &= 
+			Y^N_t - Y_t &= 
 		\left(
 		y^N_0 + \lambda \int_0^t u^N(s, \psi^N(s, Y^N_s)) ds + \int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) + 1 ) dW_s
 		\right)
@@ -782,8 +816,8 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 				  &=
 		(y^N_0 - y_0) + \lambda \int_0^t ( u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)) ) ds
 		\\
-				  &-
-		\int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_t)) - \nabla u (s, \psi(s, Y_t))) dW_s,
+				  &+
+		\int_0^t ( \nabla u^N (s, \psi^N(s, Y^N_s)) - \nabla u (s, \psi(s, Y_s))) dW_s,
 		\end{aligned}
 	\end{equation}
 
@@ -1248,7 +1282,7 @@ is 2-Lipschitz
 \end{aligned}
 \end{equation}
 
-For the other term we need another way to bound it, because event though the event when
+For the other term we need another way to bound it, because even though the event when
 $\abs{Y^N - Y} > \epsilon^\zeta$
 is small, we can potentially have a quantity that blows up for the bound. \ei{the explanation needs adjusting - speak to Elena}
 In order to solve this problem, we can use the fact that
@@ -1327,7 +1361,7 @@ Therefore we have that for all $t\in[0,T]$
     \end{aligned}
     \label{eq:INepsilon_bound}
 \end{equation}
-{\color{red}!!!!!!!!!!!!!!!!}\lm{the parts above the last things Elena and I checked on the 11th of May}{\color{red}!!!!!!!!!!!!!!!!} \ei{checked till the end  on 12/5}
+%{\color{red}!!!!!!!!!!!!!!!!}\lm{the parts above the last things Elena and I checked on the 11th of May}{\color{red}!!!!!!!!!!!!!!!!} \ei{checked till the end  on 12/5}
 %\lm{the last line above is not finished}
 
 Now by combining
