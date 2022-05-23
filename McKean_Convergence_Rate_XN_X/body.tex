@@ -11,11 +11,13 @@ proposed in
 \cite{issoglio_pde_nodate}
 and
 \cite{issoglio_mckean_2021}.
-
 The proof builds on a number of results presented in the sections below.
 
 \ei{add result about convergence of the scheme. This is done in two parts, $X^N \to X$ done in Russo Issoglio, and $X^{N,m} \to X^N$  Euler scheme convergence from De Angelis Germain Issoglio. Attention that the rate of convergence of Euler scheme depends of the smoothness of $b^N$.}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful results
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Some useful definitions and results}
 
 Here we present some results and definitions to refer on the text.
@@ -48,20 +50,20 @@ is not necessary to prove for this particular setting since the result holds for
 \ei{ Instead of this sentence you should write something like 'The lemma below is from \cite{de_angelis_numerical_2020} and its proof can be found in \cite[Lemma 5.1]{de_angelis_numerical_2020}. We include the statement here for ease of reading' }
 
 \begin{lemma}{Bound for local time at zero for a semi-martingale}\label{lemma:local-time-at-0}
-%%%%\todo{Type down this lemma}
-For any
-$\epsilon \in (0,1)$
-and any real-valued, continuous semi-martingale
-$Z$
-we have
-
-\begin{align*}
-    \mathbb{E}[L^0_t(Z_s)] \leq & 4 \epsilon
-		- 2 \mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
+  %%%%\todo{Type down this lemma}
+  For any
+  $\epsilon \in (0,1)$
+  and any real-valued, continuous semi-martingale
+  $Z$
+  we have
+  
+  \begin{align*}
+    \mathbb{E}[L^0_t(Z_s)]
+  	\leq & 4 \epsilon
+    - 2 \mathbb{E} \left[ \int_0^t \left( \mathbbm{1}_{\{Z_s \in (0, \epsilon)\}} + \mathbbm{1}_{\{Z_s \geq \epsilon\}} e^{1 - Z_s/\epsilon} \right) dZ_s \right]
     \\
     &+ \frac{1}{\epsilon} \mathbb{E} \left[ \int_0^t \mathbbm{1}_{\{Z > \epsilon\}} e^{1 - Z_s/\epsilon} d \langle Z \rangle_s \right].
-\end{align*}
-
+  \end{align*}
 \end{lemma}
 
 %\ei{
@@ -75,41 +77,45 @@ we have
 %\lm{Now using $Z$ in both parts}
 
 Let us introduce the original and regularised Kolmogorov equations.
+To shorten notation we will denote the spaces
+$ C_T \mathcal{C}^{\gamma} (\mathbbm{R}) $
+as
+$ C_T \mathcal{C}^{\gamma} $.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kolmogorov equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{definition}{Kolmogorov equations}\label{def:kolmogorov_eqns}
-
-For
-$\beta \in (0, 1/2)$
-let
-$b \in C_T \mathcal{C}^{-\beta}$,
-$u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$, 
-and
-$b^N \to b$
-as
-$N \to \infty$
-in
-$C_T \mathcal{C}^{-\beta}$
+  For
+  $\beta \in (0, 1/2)$
+  let
+  $b \in C_T \mathcal{C}^{-\beta}$,
+  $u, u^N \in C_T\mathcal{C}^{(1 + \beta)+}$, 
+  and
+  $b^N \to b$
+  as
+  $N \to \infty$
+  in
+  $C_T \mathcal{C}^{-\beta}$
 	The equations
 	%\ei{		mistake in PDEs, correct please!!	}
-	
-
 	\begin{equation}
-	\begin{cases}
-	\partial_t u_i + \frac{1}{2} \Delta u_i + b_i \nabla u_i = \lambda u_i - b_i
-	\\
-	u_i(T) = 0,
-	\end{cases}
+	  \label{eq:kolmogorov}
+	  \begin{cases}
+	    \partial_t u_i + \frac{1}{2} \Delta u_i + b_i \nabla u_i = \lambda u_i - b_i
+	    \\
+	    u_i(T) = 0,
+	  \end{cases}
 	\end{equation}
 	
 	\begin{equation}
-	\begin{cases}
-	\partial u^N_i + \frac{1}{2} \Delta u^N_i + b_i^N \nabla u_i^N = \lambda u^N_i - b^N_i
-	\\
-	u^N_i(T) = 0.
-	\end{cases}
+	  \begin{cases}
+	    \partial u^N_i + \frac{1}{2} \Delta u^N_i + b_i^N \nabla u_i^N = \lambda u^N_i - b^N_i
+	    \\
+	    u^N_i(T) = 0.
+	  \end{cases}
+	\label{eq:kolmogorov_N}
 	\end{equation}
 
 	are called Kolmogorov and regularised Kolmogorov equations.
@@ -120,13 +126,24 @@ $C_T \mathcal{C}^{-\beta}$
 % Bounds for the gradient of u
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{lemma}{Bounds for $ \nabla u, \nabla u^N $}\label{lemma:bounds_gradients}
+\begin{lemma}%{Bounds for $ \nabla u, \nabla u^N $}
+  \label{lemma:bounds_gradients}
 	Let
 	%\lm{type this result which is lemma 4.2 in the paper}
 	%\todo{type this result which is lemma 4.2 in the paper}
-    $u, u^N$
-    be the solutions to the Kolmogorov equations
-    
+  $u, u^N$
+  be the solutions to the Kolmogorov equations
+  \eqref{eq:kolmogorov}
+	\eqref{eq:kolmogorov_N}
+	in
+	$ C_T \mathcal{C}^{1 + \alpha} $
+  respectivelly.
+	We have
+	\begin{equation}
+    \sup_{(t,x) \in [0,T] \times \mathbbm{R}} \left| \nabla u(t, x) \right| \leq \frac{1}{2}
+    \text{and}
+		\sup_{(t,x) \in [0,T] \times \mathbbm{R}} \left| \nabla u^N(t, x) \right| \leq \frac{1}{2}
+	\end{equation}
 \end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -134,36 +151,34 @@ $C_T \mathcal{C}^{-\beta}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{assumption}
-\label{as:b_in_ctcb}
-b
-
-...
+  \label{as:b_in_ctcb}
+  Let
+  $ 0 < \beta < 1/2 $
+  and
+  $ b \in C_T \mathcal{C}^{-\beta} $.
 \end{assumption}
 
 \begin{assumption}
-\label{as:bN_converges_in_ctcb}
-b
-
-...
+  \label{as:bN_converges_in_ctcb}
+  There exists a sequence
+  $ (b^N)_{N} \in C_T \mathcal{C}^{-\beta} $
+  such that for each
+  $ N $,
+  $ b^N(t, \cdot) \in C^{\infty}_{b}(\mathbbm{R}) $
+  for all
+  $ t \in [0, T] $
+  and such that
+  $ b^N \to b $
+  as
+  $ N \to \infty $.
 \end{assumption}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Bound for u^N - u
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{lemma}
-\label{lemma:uN-n_bound_for_integral}
-Let
-
-...
-\end{lemma}
 
 \lm{the lemma is probably better to type it before the first time it is used since it requires of some results below}
 
 \lm{TYPE THIS}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Lemma 5.2
+% Bounds for difference of Kolmogorov equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bounds for the difference of solutions to the Kolmogorov equations}
 
@@ -660,11 +675,14 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bound for psi^N - psi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bound for the difference of the auxiliary functions}
 This is the adaptation of result
 \cite[Lemma 5.3]{de_angelis_numerical_2020}.
 
-\begin{proposition}{Bound for $ \abs{\psi (t,x) - \psi^N(t,x) }$}\label{prop:bound_aux_psi}
+\begin{proposition}%{Bound for $ \abs{\psi (t,x) - \psi^N(t,x) }$}
 
     \label{prop:bound_psi-psiN}
     Take
@@ -736,6 +754,9 @@ This is the adaptation of result
 
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bound for local time
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Bound for the local time at zero of the solution to the SDEs}
 
 \lm{Here I still need to mention how we define $Y_t = \psi(t, X_t)$, because eventually I need to use that $X_t = \psi(t, Y_t)$, probably just neet to mention without defining the whole $Y_t$ as in the paper}
@@ -745,6 +766,116 @@ $\mathbb{E} [L^0_T ( Y^N - Y ) ]$,
 for Sobolev spaces, this is result
 \cite[Proposition 5.4]{de_angelis_numerical_2020}
 we present it here for the solutions to the SDE blonging to the appropriate Besov spaces.
+
+First let us state the following useful result.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bound for u^N - u
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lm{check that the statement makes sense and has all the necessary assumptions}
+\begin{lemma}
+\label{lemma:uN-n_bound_for_integral}
+Let
+$ u, u^N $ be solutions to the Kolmogorov equations
+\eqref{eq:kolmogorov}
+\eqref{eq:kolmogorov_N}
+then the following bound is satisfied:
+
+  \begin{equation}
+  	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\leq
+    2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N}.
+  	\label{eq:bound_u_abs}
+  \end{equation}
+
+\end{lemma}
+
+\begin{proof}
+	Adding and subtracting terms, using triangle inequality and noting that for any
+	$a, b$,
+	we have
+	$a - b \leq \abs{a - b}$,
+	then
+
+	\begin{equation}
+		\begin{aligned}
+			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+			&\leq
+			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
+			\\
+			&+
+			\abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
+			\\
+			&+
+			\abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}.
+		\end{aligned}
+	\end{equation}
+
+  The terms in the right hand side will be bounded as follows:
+  
+  \begin{itemize}
+  \item
+  For the first term, by
+  Proposition \ref{prop:diff_uN_graduN}
+  
+  \begin{equation}
+    \abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
+  	\leq
+  	\norm{ u^N(s) - u(s) }_{L^\infty}
+  	\leq
+  	\kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}},
+  \end{equation}
+  
+  \item
+  for the second term, observe that
+  $u, u^N$
+  are
+  $\frac{1}{2}$-Lipschitz
+  and by
+  Proposition \ref{prop:bound_psi-psiN}
+  we get
+  
+  \begin{equation}
+    \begin{aligned}
+      \abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
+      &\leq
+      \frac{1}{2}\abs{\psi^N(s, Y^N_s) - \psi(s, Y^N_s)}
+      \\
+      &\leq
+      \kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}},
+    \end{aligned} 
+  \end{equation}
+  
+  \item
+  and for the final term, note that
+  $\psi, \psi^N$
+  are
+  2-Lipschitz
+  
+  so that
+  
+  \begin{equation}
+    \abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\leq
+  	\frac{1}{2} \abs{\psi(s, Y^N_s) - \psi(s, Y_s)}
+  	\leq
+  	\abs{Y^N_s - Y_s}.
+  \end{equation}
+  \end{itemize}
+  
+  So that the following bound holds
+  
+  \begin{equation}
+  	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\leq
+    2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N},
+  \end{equation}
+
+	as required.
+  
+\end{proof}
+
 
 \begin{proposition}
 				%{Bound for local time of solutions to the SDE}
@@ -842,6 +973,13 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 			\mathbbm{1}_{\{Y^N_s - Y_s \in (0, \epsilon)\}} 
 			+ \mathbbm{1}_{\{Y^N_s - Y_s \geq \epsilon\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
 			\right)
+    \right.
+		\notag
+    \\
+		&
+		\left.
+    \quad\quad\quad\quad\quad\quad\quad\quad\quad
+    \quad\quad\quad\quad\quad\quad\quad\quad\quad
 		\left(
 		u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))
 		\right) ds
@@ -859,149 +997,80 @@ we present it here for the solutions to the SDE blonging to the appropriate Beso
 	\end{align}
 	\lm{add the explanation of why to drop the difussion term}
 
+	%\lm{add this as a result before}
 	First, for
 	\eqref{eq:local_time_diff_u},
-	let us bound the factor involving the difference of
+	we find a bound for the factor involving the difference of
 	$u^N$
 	and
 	$u$
-	adding and subtracting terms, using triangle inequality and noting that for any
-	$a, b$,
-	we have
-	$a - b \leq \abs{a - b}$,
-	then
+	in
+	Lemma
+	\ref{lemma:uN-n_bound_for_integral}.
+	Therefore
 
-	\begin{equation}
-		\begin{aligned}
-			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
-			&\leq
-			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
-			\\
-			&+
-			\abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
-			\\
-			&+
-			\abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}.
-		\end{aligned}
-	\end{equation}
+  \begin{equation}
+  	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\leq
+    2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N}.
+  \end{equation}
 
-The terms in the right hand side will be bounded as follows:
-
-\begin{itemize}
-\item
-For the first term, by
-Proposition \ref{prop:diff_uN_graduN}
-
-\begin{equation}
-  \abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
-	\leq
-	\norm{ u^N(s) - u(s) }_{L^\infty}
-	\leq
-	\kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}},
-\end{equation}
-
-\item
-for the second term, observe that
-$u, u^N$
-are
-$\frac{1}{2}$-Lipschitz
-and by
-Proposition \ref{prop:bound_psi-psiN}
-we get
-
-\begin{equation}
-  \begin{aligned}
-    \abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
-    &\leq
-    \frac{1}{2}\abs{\psi^N(s, Y^N_s) - \psi(s, Y^N_s)}
-    \\
-    &\leq
-    \kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}},
-  \end{aligned} 
-\end{equation}
-
-\item
-and for the final term, note that
-$\psi, \psi^N$
-are
-2-Lipschitz
-
-so that
-
-\begin{equation}
-  \abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}
-	\leq
-	\frac{1}{2} \abs{\psi(s, Y^N_s) - \psi(s, Y_s)}
-	\leq
-	\abs{Y^N_s - Y_s}.
-\end{equation}
-\end{itemize}
-
-So that the following bound holds
-
-\begin{equation}
-	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
-	\leq
-  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N}.
-	\label{eq:bound_u_abs}
-\end{equation}
-
-Now we need to bound the result of the local time of the difference
-$Y^N_s - Y_s$.
-First notice that
-$Y^N_s - Y_s \geq \epsilon$,
-then 
-$e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \leq 1$,
-also it is clear that
-$\mathbbm 1_{\{Y^N_s - Y_s \in (0, \epsilon)\}}$
-and
-$\mathbbm 1_{\{ Y^N_s - Y_s \geq \epsilon \}}$
-are bounded by 1,
-therefore
-$\mathbbm 1_{\{ Y^N_s - Y_s \geq \epsilon \}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \leq 1$.
-Using the previous arguments and
-\eqref{eq:bound_u_abs}
-leads to have
-
-%\lm{instead of copying write (30)}
-\begin{equation}
-    \begin{aligned}
-%        &2\lambda \mathbb{E}
-%        \qty[
-%        \int_0^t
-%        \qty(
-%        \mathbbm{1}_{\qty{Y^N_s - Y_s \in (0, \epsilon)}}
-%        + \mathbbm{1}_\qty{Y^N_s - Y_s \geq \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-%        )
-%        \qty(
-%        u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))
-%        ) ds
-%        ]
-%        \\
-        \eqref{eq:local_time_diff_u}
-        &\leq
-        2\lambda
-        \mathbb{E}
-        \left[
-        	\int_0^t 2
-        	\left(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} \right) ds
-        \right]
-        \\
-        &\leq
-        4 \lambda \left(
-        2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t 
-        + \mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds \right]
-    	\right)
-    	.
-    \end{aligned}
-    \label{eq:bound_integral_uNu}
-\end{equation}
-
+  Now we need to bound the result of the local time of the difference
+  $Y^N_s - Y_s$.
+  First notice that
+  $Y^N_s - Y_s \geq \epsilon$,
+  then 
+  $e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \leq 1$,
+  also it is clear that
+  $\mathbbm 1_{\{Y^N_s - Y_s \in (0, \epsilon)\}}$
+  and
+  $\mathbbm 1_{\{ Y^N_s - Y_s \geq \epsilon \}}$
+  are bounded by 1,
+  therefore
+  $\mathbbm 1_{\{ Y^N_s - Y_s \geq \epsilon \}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \leq 1$.
+  Using the previous arguments and
+  \eqref{eq:bound_u_abs}
+  lead to have
+  
+  %\lm{instead of copying write (30)}
+  \begin{equation}
+      \begin{aligned}
+  %        &2\lambda \mathbb{E}
+  %        \qty[
+  %        \int_0^t
+  %        \qty(
+  %        \mathbbm{1}_{\qty{Y^N_s - Y_s \in (0, \epsilon)}}
+  %        + \mathbbm{1}_\qty{Y^N_s - Y_s \geq \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+  %        )
+  %        \qty(
+  %        u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))
+  %        ) ds
+  %        ]
+  %        \\
+          \eqref{eq:local_time_diff_u}
+          &\leq
+          2\lambda
+          \mathbb{E}
+          \left[
+          	\int_0^t 2
+          	\left(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} \right) ds
+          \right]
+          \\
+          &\leq
+          4 \lambda \left(
+          2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t 
+          + \mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds \right]
+      	\right)
+      	.
+      \end{aligned}
+      \label{eq:bound_integral_uNu}
+  \end{equation}
 
 Now for
 \eqref{eq:local_time_diff_gradu},
-we use similar arguments as the ones for
-\eqref{eq:local_time_diff_u}
+we use similar arguments as the ones in Lemma
+	\ref{lemma:uN-n_bound_for_integral}
+%\eqref{eq:local_time_diff_u}
 above, and we get the following:
 
 \begin{equation}
@@ -1113,13 +1182,13 @@ we can get the bound
 	\norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2
 	\right)ds
 	\\
-	&\quad\quad\quad +
+	&\quad\quad +
 	\frac{1}{\epsilon}
 	\mathbb{E}
 	\int_0^t
 	3 \mathbbm{1}_{\left\{Y^N_s - Y_s > \epsilon\right\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}^2 ds
 	\\
-	&\quad\quad\quad\leq
+	&\quad\quad\leq
     \frac{1}{\epsilon} 3 t \norm{ b^N - b}_{C_T \mathcal{C}^{-\beta}}
     \left(
     \kappa_\rho^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
@@ -1127,7 +1196,7 @@ we can get the bound
     (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
     \right)
     \\
-	&\quad\quad\quad +
+	&\quad\quad +
     \frac{1}{\epsilon} 3 \mathbb{E}
     \left(
     			\int_0^t \mathbbm{1}_{\left\{ Y^N_s - Y_s > \epsilon \right\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \left| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)) \right|^2 ds
@@ -1245,13 +1314,20 @@ $\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} + \mathbbm 1_{\{Y^N_s 
 Leading to the integral
 
 \begin{equation}
-    I^{N,\epsilon}_t =
+  \begin{aligned}
+    I^{N,\epsilon}_t &=
     \frac{1}{\epsilon} 3 \mathbb{E}
     \left(
     \int_0^t \left(\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} + \mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}}\right)
     e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
+		\right.
+		\\
+    &
+		\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+		\left.
     \left| \nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\right|^2 ds
     \right)
+  \end{aligned}
     \label{eq:INepsilon}
 \end{equation}
 
@@ -1534,4 +1610,101 @@ Also it is better to explain the meaning of $o()$ and what terms go in there.}
 \end{equation}
 
 \end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Convergence rate for regularised solution
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Convergence rate of the solution to the regularised SDE and the original}
+In this section we present a bound for
+$ \mathbbm{E} [X^N - X] $
+in terms of
+$ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
+
+\begin{proposition}
+  Let assumptions
+	\ref{as:b_in_ctcb}
+	\ref{as:bN_converges_in_ctcb}
+	hold, then for any
+	$ \alpha > \beta $
+	there is a constant
+	$ C_\alpha $
+	such that
+	\begin{equation}
+	\label{eq:EXN-X}
+	  \mathbbm{E} [ X^N - X ] \leq C_{\alpha} \|b^N - b\|_{C_T \mathcal{C}^{-\beta}},
+	\end{equation}
+  as
+  $ N \to \infty $.
+\end{proposition}
+
+\begin{proof}
+  Note that by definition of
+	$ \psi, \psi^N $
+	we have
+	\begin{equation}
+	%\label{eq:}
+    \begin{aligned}
+      |X^N_t - X_t|
+			&=
+			| \psi^N(t, \phi^N(t, X^N_t)) - \psi(t, \phi(t, X_t)) |
+			\\
+			&=
+			| \psi^N(t, Y_t) - \psi(t, Y_t) |,
+    \end{aligned}
+	\end{equation}
+	then adding and subtracting, and using the triangle inequality we get
+	\begin{equation}
+	%\label{eq:}
+    |X^N_t - X_t|
+    \leq
+    | \psi^N(t, Y^N_t) - \psi(t, Y^N_t) | + | \psi(t, Y^N_t) - \psi(t, Y_t) |.
+	\end{equation}
+  Where the first term is bounded by
+	$ 2 \kappa \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $
+	(Proposition
+	\ref{prop:bound_psi-psiN})
+  and since
+	$ \psi $
+	is
+	2-Lipschitz uniformly in
+	$ t \in [0,T] $
+	the second term is bounded by
+	$ 2 |Y^N - Y| $, therefore
+	\begin{equation}
+	\label{eq:XN-X}
+	  |X^N - X|
+		\leq
+		2 \kappa \| b^N - b \|_{C_T \mathcal{C}^{-\beta}}
+		+ 2 |Y^N - Y| .
+	\end{equation}
+  By assumption the first term above goes to zero as
+	$ N \to \infty $,
+	then we only need a bound for the second term.
+
+	By Itô-Tanaka's formula
+	\begin{equation}
+	\label{eq:YNY_ito_tanaka}
+	  |Y^N - Y|
+		= |y^N_0 - y_0|
+		+ \frac{1}{2} L^0_t (Y^N - Y)
+		+ \int_0^t \mathrm{sgn} (Y^N - Y) d(Y^N - Y),
+	\end{equation}
+	by taking expectation and using the definitions of
+	$ Y^N, Y $
+	we have
+	\begin{equation}
+	\label{eq:EYNY}
+	  \begin{aligned}
+	    \mathbbm{E}|Y^N - Y|
+			&= \mathbbm{E}|y^N_0 - y_0| + \mathbbm{E}\frac{1}{2} L^0_t (Y^N - Y)
+			\\
+			&+ \lambda \mathbbm{E}\int_0^t \mathrm{sgn} (Y^N - Y)(u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds,
+	  \end{aligned}
+	\end{equation}
+	then as the first term above is a constant and for the second we have a bound in Proposition
+	\ref{prop:bound_local_time_sde}
+	it remains to bound the second term.
+
+	Observe that
+\end{proof}
