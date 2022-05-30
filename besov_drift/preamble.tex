@@ -1,0 +1,89 @@
+%%%%%%%%%%%%%%%%
+% Begin Packages
+%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=biber,
+		style=numeric,
+		url=false,
+		isbn=false,
+		doi=false]{biblatex}
+\usepackage{bbm}
+\usepackage[margin=4cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage{todonotes}
+\usepackage{physics}
+\usepackage{cancel}
+\usepackage{showkeys}
+%\usepackage{xr}
+%\usepackage{zref}
+%\usepackage{zref-xr}
+%%%%%%%%%%%%%%%%
+% End Packages
+%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%
+% Begin Packages setup
+%%%%%%%%%%%%%%%%
+
+% hyperref setup
+\hypersetup{
+    colorlinks,
+    linkcolor={red!80!black},
+    citecolor={blue!80!black},
+    urlcolor={green!80!black}
+}
+
+% Theorem like environments
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+
+% Making use of tcolorbox
+%\newtcbtheorem{proposition}{Proposition}{
+%  %breakable,
+%	colback=green!5,
+%	colframe=green!35!black,
+%  fonttitle=\bfseries
+%}{prop}
+%\newtcbtheorem{lemma}{Lemma}{
+%  %breakable,
+%	colback=blue!5,
+%	colframe=blue!35!black,
+%  fonttitle=\bfseries
+%}{lemma}
+%\newtcbtheorem{definition}{Definition}{
+%  %breakable,
+%	colback=red!5,
+%	colframe=red!35!black,
+%  fonttitle=\bfseries
+%}{def}
+
+%%%%%%%%%%%%%%%%
+% End Packages setup
+%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%
+% Definitions
+%%%%%%%%%%%%%%%%
+
+%Elena's comments
+\def\ei{{\color{blue}EI: }\textcolor{blue}}
+\def\lm{{\color{violet}LM: }\textcolor{violet}}
+\def\question{{\color{olive}Question: }\textcolor{olive}}
+%%%%%%%%%%%%%%%%
+% End Definitions
+%%%%%%%%%%%%%%%%
+
+\allowdisplaybreaks
+
+\title{Convergence rate of $X^N - X$ for McKean equations}
+\author{Luis Mario Chaparro Jaquez}
+
+\addbibresource{../references.bib}
