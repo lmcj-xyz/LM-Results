@@ -331,7 +331,7 @@ $\lambda > 0$.
 
 	\begin{align*}
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
-		&\norm{ \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds }_{C_T \mathcal{C}^{1+\alpha}}
+		&\left\| \int_t^T P_{s-t} \left(\nabla u_i b_i - \nabla u_i b^N_i \right)  ds \right\|_{C_T \mathcal{C}^{1+\alpha}}
 		\\
 		&\leq
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\theta} \| \nabla u_i\|_{C_T \mathcal{C}^\alpha} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}}
@@ -350,7 +350,7 @@ $\lambda > 0$.
 
 	\begin{align*}
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
-		&\norm{ \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds}_{C_T \mathcal{C}^{1+\alpha}}
+		&\left\| \int_t^T P_{s-t} b^N_i(\nabla u_i - \nabla u^N_i ) ds\right\|_{C_T \mathcal{C}^{1+\alpha}}
 		\\
 		&\leq
 		c \sup_{0\leq t\leq T} \int_t^T(s - t)^{-\theta} e^{-\rho(T-t)} 2 \| b_i \|_{C_T \mathcal{C}^{-\beta}} \| \nabla u_i - \nabla u^N_i \|_{C_T \mathcal{C}^{1+\alpha}} ds
@@ -378,7 +378,7 @@ $\lambda > 0$.
 
 	\begin{align*}
 		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
-		&\norm{ \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds}_{1+\alpha}
+		&\left\| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\right\|_{1+\alpha}
 		\\
 		&\leq
 		c \lambda \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-0} \| u_i - u^N_i \|_{1 + \alpha} ds
@@ -404,7 +404,7 @@ $\lambda > 0$.
 
 	And for the last term
 	\begin{align*}
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} &\norm{ \int_t^T P_{T-s}(b_i - b^N_i) ds}_{C_T \mathcal{C}^{1+\alpha}}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} &\left\| \int_t^T P_{T-s}(b_i - b^N_i) ds\right\|_{C_T \mathcal{C}^{1+\alpha}}
 		\\
 		&\leq
 		c \sup_{0\leq t\leq T} e ^{-\rho(T-t)} \int_t^T (s - t)^{-\frac{\alpha+\beta-1}{2}} \| b_i - b^N_i \|_{C_T \mathcal{C}^{-\beta}} ds
@@ -575,25 +575,25 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     $(\rho)$-equivalent
     norm
     \begin{equation}
-        \| f \|_{\mathcal{C}^{1 + \alpha}} = \sup_{t \in [0, T]} e^{- \rho (T - t)} \norm{f(t)}_{\mathcal{C}^{1 + \alpha}},
+        \| f \|_{\mathcal{C}^{1 + \alpha}} = \sup_{t \in [0, T]} e^{- \rho (T - t)} \left\|f(t)\right\|_{\mathcal{C}^{1 + \alpha}},
     \end{equation}
     and
     \eqref{eq:u-uNb-bN}
     we see that
     \begin{equation}
         \begin{split}
-            \norm{u^N - u}_{C_T \mathcal{C}^{1 + \alpha}}
+            \left\|u^N - u\right\|_{C_T \mathcal{C}^{1 + \alpha}}
             &=
-            \sup_{t \in [0,T]}\norm{u^N - u}_{\mathcal{C}^{1 + \alpha}}
+            \sup_{t \in [0,T]}\left\|u^N - u\right\|_{\mathcal{C}^{1 + \alpha}}
             \\
             &=
-            \sup_{t \in [0,T]} e^{\rho(T- t)} e^{-\rho(T- t)} \norm{u^N - u}_{\mathcal{C}^{1 + \alpha}}
+            \sup_{t \in [0,T]} e^{\rho(T- t)} e^{-\rho(T- t)} \left\|u^N - u\right\|_{\mathcal{C}^{1 + \alpha}}
             \\
             &\leq
-            e^{\rho T} \sup_{t \in [0,T]} e^{-\rho(T- t)} \norm{u^N - u}_{\mathcal{C}^{1 + \alpha}}
+            e^{\rho T} \sup_{t \in [0,T]} e^{-\rho(T- t)} \left\|u^N - u\right\|_{\mathcal{C}^{1 + \alpha}}
             \\
             &=
-            e^{\rho T} \norm{u^N - u}_{C_T \mathcal{C}^{1 + \alpha}}^{(\rho)}.
+            e^{\rho T} \left\|u^N - u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^{(\rho)}.
         \end{split}
         \label{eq:norm_bounded_by_rho_norm}
     \end{equation}
@@ -610,13 +610,13 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
         c \| u^N(t) - u(t) \|_{\mathcal{C}^{\alpha + 1}}
         \\
         &\leq
-        \sup_{t \in [0,T]} c \norm{u^N(t) - u(t)}_{\mathcal{C}^{\alpha + 1}}
+        \sup_{t \in [0,T]} c \left\|u^N(t) - u(t)\right\|_{\mathcal{C}^{\alpha + 1}}
         \\
         &=
-        c \norm{u^N - u}_{C_T \mathcal{C}^{\alpha + 1}}
+        c \left\|u^N - u\right\|_{C_T \mathcal{C}^{\alpha + 1}}
         \\
         &\leq
-        c e^{\rho T} \norm{u^N - u}_{C_T \mathcal{C}^{\alpha + 1}}^{(\rho)}.
+        c e^{\rho T} \left\|u^N - u\right\|_{C_T \mathcal{C}^{\alpha + 1}}^{(\rho)}.
     \end{split}
     \end{equation}
     
@@ -624,9 +624,9 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     \eqref{eq:u-uNb-bN}
     
     \begin{equation}
-        \norm{u^N(t) - u(t)}_{L^\infty}
+        \left\|u^N(t) - u(t)\right\|_{L^\infty}
         \leq
-        c \cdot c(\rho) \cdot e^{\rho T} \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
+        c \cdot c(\rho) \cdot e^{\rho T} \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
     \end{equation}
     
     which proves
@@ -641,9 +641,9 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
    Also, by Bernstein inequality
    \cite[Eqn. (9)]{issoglio_mckean_2021}
    \begin{equation}
-    \norm{\nabla f}_{\mathcal{\alpha}}
+    \left\|\nabla f\right\|_{\mathcal{\alpha}}
     \leq
-    c \norm{f}_{\mathcal{1+ \alpha}}.
+    c \left\|f\right\|_{\mathcal{1+ \alpha}}.
    \end{equation}
    
   Using the equivalent norm
@@ -663,14 +663,14 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
     
     \begin{equation}
         \begin{split}
-        \norm{\nabla u^N(t) - \nabla u(t)}_{L^\infty}
+        \left\|\nabla u^N(t) - \nabla u(t)\right\|_{L^\infty}
         &\leq
-        c \norm{u^N(t) - u(t)}_{\mathcal{C}^{1+\alpha}}.
+        c \left\|u^N(t) - u(t)\right\|_{\mathcal{C}^{1+\alpha}}.
         \end{split}
     \end{equation}
     
     And usign the same bounds that we used above for
-    $c \norm{u^N(t) - u(t)}_{\mathcal{C}^{1+\alpha}}$
+    $c \left\|u^N(t) - u(t)\right\|_{\mathcal{C}^{1+\alpha}}$
     this point follows.
     
 \end{proof}
@@ -682,7 +682,7 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
 This is the adaptation of result
 \cite[Lemma 5.3]{de_angelis_numerical_2020}.
 
-\begin{proposition}%{Bound for $ \abs{\psi (t,x) - \psi^N(t,x) }$}
+\begin{proposition}%{Bound for $ \|\psi (t,x) - \psi^N(t,x) \|$}
 
     \label{prop:bound_psi-psiN}
     Take
@@ -698,7 +698,7 @@ This is the adaptation of result
     then we have
 \begin{equation}
     \sup_{(t,x) \in [0,T] \times \mathbb{R}}
-    \abs{\psi (t,x) - \psi^N(t,x)} \leq 2 \kappa_\rho \norm{b - b^N}_{C_T\mathcal{C}^{-\beta}}
+    \|\psi (t,x) - \psi^N(t,x)\| \leq 2 \kappa_\rho \left\|b - b^N\right\|_{C_T\mathcal{C}^{-\beta}}
 \end{equation}
 \end{proposition}
 
@@ -729,9 +729,9 @@ This is the adaptation of result
     and therefore
 
     \begin{equation}
-	    \abs{u(t, y) - u(t, y')} 
+	    \|u(t, y) - u(t, y')\| 
 	    \geq
-	    \left(\int_0^1 \abs{ \nabla u (t, \alpha(y - y')) }^2 d \alpha \right)^{1/2} \abs{y - y'},
+	    \left(\int_0^1 \| \nabla u (t, \alpha(y - y')) \|^2 d \alpha \right)^{1/2} \|y - y'\|,
     \end{equation}
 
     and by
@@ -740,13 +740,13 @@ This is the adaptation of result
 
     \begin{equation}
 	    \begin{split}
-		    \abs{u(t, y) - u(t, y')}
+		    \|u(t, y) - u(t, y'\|)
 		    &\leq
-		    \left(\frac{1}{4} \int_0^1 d \alpha \right)^{1/2} \abs{y - y'}
+		    \left(\frac{1}{4} \int_0^1 d \alpha \right)^{1/2} \|y - y\|'
 		    \\
-		    \abs{u(t, y) - u(t, y')}^2
+		    \|u(t, y) - u(t, y')\|^2
 		    &\leq
-		    \frac{1}{4} \abs{y - y'}^2
+		    \frac{1}{4} \|y - y'\|^2
 	    \end{split}
     \end{equation}
     %\todo{continue from page three in notes}
@@ -783,9 +783,9 @@ $ u, u^N $ be solutions to the Kolmogorov equations
 then the following bound is satisfied:
 
   \begin{equation}
-  	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\|u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)\|)
   	\leq
-    2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N}.
+    2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} + \|Y^N_s - Y^N\|.
   	\label{eq:bound_u_abs}
   \end{equation}
 
@@ -795,20 +795,20 @@ then the following bound is satisfied:
 	Adding and subtracting terms, using triangle inequality and noting that for any
 	$a, b$,
 	we have
-	$a - b \leq \abs{a - b}$,
+	$a - b \leq \|a - b\|$,
 	then
 
 	\begin{equation}
 		\begin{aligned}
-			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+			\|u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)\|)
 			&\leq
-			\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
+			\|u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s)\|)
 			\\
 			&+
-			\abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
+			\|u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s)\|)
 			\\
 			&+
-			\abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}.
+			\|u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))\|.
 		\end{aligned}
 	\end{equation}
 
@@ -820,11 +820,11 @@ then the following bound is satisfied:
   Proposition \ref{prop:diff_uN_graduN}
   
   \begin{equation}
-    \abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s))}
+    \|u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi^N(s, Y^N_s)\|)
   	\leq
-  	\norm{ u^N(s) - u(s) }_{L^\infty}
+  	\left\| u^N(s) - u(s) \right\|_{L^\infty}
   	\leq
-  	\kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}},
+  	\kappa_\rho \left\| b - b^N \right\|_{C_T\mathcal{C}^{-\beta}},
   \end{equation}
   
   \item
@@ -838,12 +838,12 @@ then the following bound is satisfied:
   
   \begin{equation}
     \begin{aligned}
-      \abs{u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s))}
+      \|u(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y^N_s)\|)
       &\leq
-      \frac{1}{2}\abs{\psi^N(s, Y^N_s) - \psi(s, Y^N_s)}
+      \frac{1}{2}\|\psi^N(s, Y^N_s) - \psi(s, Y^N_s\|)
       \\
       &\leq
-      \kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}},
+      \kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}},
     \end{aligned} 
   \end{equation}
   
@@ -856,20 +856,20 @@ then the following bound is satisfied:
   so that
   
   \begin{equation}
-    \abs{u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+    \|u(s, \psi(s, Y^N_s)) - u(s, \psi(s, Y_s)\|)
   	\leq
-  	\frac{1}{2} \abs{\psi(s, Y^N_s) - \psi(s, Y_s)}
+  	\frac{1}{2} \|\psi(s, Y^N_s) - \psi(s, Y_s\|)
   	\leq
-  	\abs{Y^N_s - Y_s}.
+  	\|Y^N_s - Y_s\|.
   \end{equation}
   \end{itemize}
   
   So that the following bound holds
   
   \begin{equation}
-  	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\|u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)\|)
   	\leq
-    2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N},
+    2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} + \|Y^N_s - Y^N\|,
   \end{equation}
 
 	as required.
@@ -901,16 +901,16 @@ then the following bound is satisfied:
     \mathbb{E}
     [L^0_t(Y^N - Y)]
     &\leq
-    o\left(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
+    o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
     +
     A
     \mathbb{E}
     \left(
-    \int_0^t \abs{Y^N - Y} ds
+    \int_0^t \|Y^N - Y\| ds
     \right)
     +
     B
-    \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}.
+    \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}.
     \end{aligned}
 \end{equation}
 
@@ -1010,9 +1010,9 @@ then the following bound is satisfied:
 	Therefore
 
   \begin{equation}
-  	\abs{u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))}
+  	\|u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s)\|)
   	\leq
-    2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N}.
+    2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} + \|Y^N_s - Y^N\|.
   \end{equation}
 
   Now we need to bound the result of the local time of the difference
@@ -1053,13 +1053,13 @@ then the following bound is satisfied:
           \mathbb{E}
           \left[
           	\int_0^t 2
-          	\left(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} \right) ds
+          	\left(  2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} + \|Y^N_s - Y^N\| \right) ds
           \right]
           \\
           &\leq
           4 \lambda \left(
-          2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t 
-          + \mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds \right]
+          2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} t 
+          + \mathbb{E}\left[\int_0^t\|Y^N_s - Y^N\| ds \right]
       	\right)
       	.
       \end{aligned}
@@ -1075,15 +1075,15 @@ above, and we get the following:
 
 \begin{equation}
   \begin{aligned}
-	\abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)\|)
 	&\leq
-	\abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s))}
+	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s)\|)
 	\\
 	&+
-	\abs{\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s))}
+	\|\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s)\|)
 	\\
 	&+
-	\abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+	\|\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)\|)
 	,
   \end{aligned}
 \end{equation}
@@ -1097,12 +1097,12 @@ and we have
 
 \begin{equation}
   \begin{aligned}
-    \abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s))}
+    \|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s)\|)
 		&\leq
-    \norm{\nabla u^N(s) - \nabla u(s) }_{L^\infty}
+    \left\|\nabla u^N(s) - \nabla u(s) \right\|_{L^\infty}
 		\\
 		&\leq
-	  \kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}},
+	  \kappa_\rho \left\| b - b^N \right\|_{C_T\mathcal{C}^{-\beta}},
   \end{aligned}
 \end{equation}
 
@@ -1116,12 +1116,12 @@ we have
 
 \begin{equation}
 \begin{aligned}
-  \abs{\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s))}
+  \|\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s)\|)
 	&\leq
-	\abs{\psi^N(s, Y^N_s) - \psi(s, Y^N_s)}^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}
+	\|\psi^N(s, Y^N_s) - \psi(s, Y^N_s)\|^\alpha \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}
 	\\
 	&\leq
-	(2 \kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}})^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}.
+	(2 \kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}})^\alpha \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}.
 \end{aligned}
 \end{equation}
 
@@ -1131,15 +1131,15 @@ Therefore we get the bound
 %\ei{use aligned command} 
 \begin{equation}
   \begin{aligned}
-	\abs{\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}
+	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)\|)
 	&\leq
-\kappa_\rho \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}}
+\kappa_\rho \left\| b - b^N \right\|_{C_T\mathcal{C}^{-\beta}}
 	\\
 	&+
-\alpha \kappa_\rho^\alpha \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}
+\alpha \kappa_\rho^\alpha \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^\alpha \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}
 	\\
 	&+
-	\abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}.
+	\|\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\|.
   \end{aligned}
 	\label{eq:bound_gradu_abs}
 \end{equation}
@@ -1176,24 +1176,24 @@ we can get the bound
 	\mathbb{E}
 	\int_0^t
 	\left(
-	3 \kappa_\rho^2 \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}}^2
+	3 \kappa_\rho^2 \left\| b - b^N \right\|_{C_T\mathcal{C}^{-\beta}}^2
 	+ 3 \cdot 2^{2\alpha} \kappa_\rho^{2\alpha}
-	\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha}
-	\norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2
+	\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha}
+	\left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2
 	\right)ds
 	\\
 	&\quad\quad +
 	\frac{1}{\epsilon}
 	\mathbb{E}
 	\int_0^t
-	3 \mathbbm{1}_{\left\{Y^N_s - Y_s > \epsilon\right\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}^2 ds
+	3 \mathbbm{1}_{\left\{Y^N_s - Y_s > \epsilon\right\}} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \|\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\|^2 ds
 	\\
 	&\quad\quad\leq
-    \frac{1}{\epsilon} 3 t \norm{ b^N - b}_{C_T \mathcal{C}^{-\beta}}
+    \frac{1}{\epsilon} 3 t \left\| b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
     \left(
-    \kappa_\rho^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
+    \kappa_\rho^2 \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
     +
-    (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
+    (2 \kappa_\rho)^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2 \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
     \right)
     \\
 	&\quad\quad +
@@ -1242,7 +1242,7 @@ we can get the bound
 %	\mathbb{E}
 %	\qty[
 %		\int_0^t 2
-%		\qty(  2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} + \abs{Y^N_s - Y^N} ) ds
+%		\qty(  2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} + \|Y^N_s - Y^N\| ) ds
 %	]
 %      	\\
 %	&\phantom{\leq\leq}+
@@ -1250,34 +1250,34 @@ we can get the bound
 %	\mathbb{E}
 %	\int_0^t
 %	\qty(
-%	3 \kappa_\rho^2 \norm{ b - b^N }_{C_T\mathcal{C}^{-\beta}}^2
+%	3 \kappa_\rho^2 \left\| b - b^N \right\|_{C_T\mathcal{C}^{-\beta}}^2
 %	+ 3 \cdot 2^{2\alpha} \kappa_\rho^{2\alpha}
-%	\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha}
-%	\norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2
+%	\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha}
+%	\left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2
 %	)ds
 %	\\
 %	&\phantom{\leq\leq}+
 %	\frac{1}{\epsilon}
 %	\mathbb{E}
 %	\int_0^t
-%	3 \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \abs{\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))}^2 ds
+%	3 \mathbbm{1}_\qty{Y^N_s - Y_s > \epsilon} e^{1 - \frac{Y^N_s - Y_s}{\epsilon}} \|\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\|^2 ds
 %	\\
 %    &\phantom{\leq}\leq
 %    4 \epsilon
 %    \\
 %    &\phantom{\leq\leq}+
 %    4 \lambda \qty(
-%      2\kappa_\rho \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}} t
+%      2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} t
 %      +
-%    	\mathbb{E}\qty[\int_0^t\abs{Y^N_s - Y^N} ds]
+%    	\mathbb{E}\qty[\int_0^t\|Y^N_s - Y^N\| ds]
 %    	)
 %    	\\
 %    &\phantom{\leq\leq}+
-%    \frac{1}{\epsilon} 3 t \norm{ b^N - b}_{C_T \mathcal{C}^{-\beta}}
+%    \frac{1}{\epsilon} 3 t \left\| b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
 %    \qty(
-%    \kappa_\rho^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
+%    \kappa_\rho^2 \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
 %    +
-%    (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
+%    (2 \kappa_\rho)^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2 \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
 %    )
 %    \\
 %    &\phantom{\leq\leq}+
@@ -1339,27 +1339,27 @@ $\alpha$-Hölder
 continuous uniformly in
 $s \in [0,T]$
 with constant
-$\norm{u}_{C_T \mathcal{C}^{1+\alpha}}$
+$\left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}$
 and that
 $\psi$
 is 2-Lipschitz
 
 \begin{equation}
 \begin{aligned}
-    \abs{\nabla u (s, \psi(s, Y^N_s)) - \nabla u (s, \psi(s, Y_s))}^2
+    \|\nabla u (s, \psi(s, Y^N_s)) - \nabla u (s, \psi(s, Y_s))\|^2
     &\leq
-    \abs{\abs{\psi(s, Y^N_s) - \psi(s, Y_s)}^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}}^2
+    \|\|\psi(s, Y^N_s) - \psi(s, Y_s)\|^\alpha \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}\|^2
     \\
     &\leq
-    \abs{2^\alpha \abs{Y^N_s - Y_s}^\alpha \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}}^2
+    \|2^\alpha \|Y^N_s - Y_s\|^\alpha \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}\|^2
     \\
     &=
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \abs{Y^N_s - Y_s}^{2\alpha}
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 \|Y^N_s - Y_s\|^{2\alpha}
 \end{aligned}
 \end{equation}
 
 For the other term we need another way to bound it, because even though the event when
-$\abs{Y^N - Y} > \epsilon^\zeta$
+$\|Y^N - Y\| > \epsilon^\zeta$
 is small, we can potentially have a quantity that blows up for the bound. \ei{the explanation needs adjusting - speak to Elena}
 In order to solve this problem, we can use the fact that
 $\nabla u$
@@ -1369,15 +1369,15 @@ Lemma \ref{lemma:bounds_gradients},
 and then we can bound the difference of the gradients as follows:
 \begin{equation}
 \begin{aligned}
-    \abs{\nabla u (s, \psi(s, Y^N_s)) - \nabla u (s, \psi(s, Y_s))}^2
+    \|\nabla u (s, \psi(s, Y^N_s)) - \nabla u (s, \psi(s, Y_s))\|^2
     &\leq
-    \abs{\nabla u (s, \psi(s, Y^N_s)) + \nabla u (s, \psi(s, Y_s))}^2
+    \|\nabla u (s, \psi(s, Y^N_s)) + \nabla u (s, \psi(s, Y_s))\|^2
     \\
     &\leq
-    \sup_{(s, x) \in [0, T] \times \mathbb{R}} \abs{\nabla u (s, \psi(s, Y^N_s)) + \nabla u (s, \psi(s, Y_s))}^2
+    \sup_{(s, x) \in [0, T] \times \mathbb{R}} \|\nabla u (s, \psi(s, Y^N_s)) + \nabla u (s, \psi(s, Y_s))\|^2
     \\
     &=
-    \norm{2 \nabla u}_{L_\infty}^2.
+    \left\|2 \nabla u\right\|_{L_\infty}^2.
 \end{aligned}
 \end{equation}
 Therefore we have that for all $t\in[0,T]$
@@ -1390,7 +1390,7 @@ Therefore we have that for all $t\in[0,T]$
     \left(
     \int_0^t \left(\mathbbm 1_{\{\epsilon< Y^N_s -Y_s \leq\epsilon^\zeta\}} \right)
     e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \abs{Y^N_s - Y_s}^{2\alpha}
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 \|Y^N_s - Y_s\|^{2\alpha}
     ds
     \right)
     \\
@@ -1399,40 +1399,40 @@ Therefore we have that for all $t\in[0,T]$
     \int_0^t
     \mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}}
     e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-    \norm{2 \nabla u}_{L_\infty}^2
+    \left\|2 \nabla u\right\|_{L_\infty}^2
     ds
     \right)
     \\
     &\leq
     \frac{1}{\epsilon} 3 \mathbb{E}
     \left(
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \abs{\epsilon^\zeta}^{2\alpha} t
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 \|\epsilon^\zeta\|^{2\alpha} t
     \right)
     + \frac{1}{\epsilon} 3 \mathbb{E}
     \left(
     %\int_0^t
     %\mathbbm 1_{\{Y^N_s -Y_s >\epsilon^\zeta\}}
     %e^{1 - \frac{Y^N_s - Y_s}{\epsilon}}
-    %\norm{2 \nabla u}_{L_\infty}^2
+    %\left\|2 \nabla u\right\|_{L_\infty}^2
     %ds
-    4  e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2 t
+    4  e^{1 - \epsilon^{\zeta - 1}} \left\|\nabla u\right\|_{L_\infty}^2 t
     \right) 
     \\
     &\leq
     \sup_{t \in [0, T]}
     \frac{3}{\epsilon}
     \left(
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
     +
-    4 e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2
+    4 e^{1 - \epsilon^{\zeta - 1}} \left\|\nabla u\right\|_{L_\infty}^2
     \right) t
     \\
     &=
     \frac{3}{\epsilon}
     \left(
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 \epsilon^{2\alpha\zeta}
     +
-    4 e^{1 - \epsilon^{\zeta - 1}} \norm{\nabla u}_{L_\infty}^2
+    4 e^{1 - \epsilon^{\zeta - 1}} \left\|\nabla u\right\|_{L_\infty}^2
     \right) T.
     \end{aligned}
     \label{eq:INepsilon_bound}
@@ -1459,69 +1459,69 @@ we will get
     \\
     &+
     4 \lambda 2\kappa_\rho T
-    {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
+    {\color{brown}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+ 4 \lambda
-    {\color{magenta}\mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds\right]}
+    {\color{magenta}\mathbb{E}\left[\int_0^t\|Y^N_s - Y^N\| ds\right]}
     \\
     &+
-    \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
+    \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
     \frac{1}{\epsilon} 3 T
     \kappa_\rho^2 
-    {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
+    {\color{brown}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+
-    \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}
+    \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}
     \frac{1}{\epsilon} 3 T
-    (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2
-    {\color{teal}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}}
+    (2 \kappa_\rho)^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2
+    {\color{teal}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}}
     \\
     &+
     \frac{3}{\epsilon}
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 T
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 T
     {\color{orange}\epsilon^{2\alpha\zeta}}
     \\
     &+
     \frac{3}{\epsilon}
-    4  \norm{\nabla u}_{L_\infty}^2 T 
+    4  \left\|\nabla u\right\|_{L_\infty}^2 T 
     {\color{purple}e^{1 - \epsilon^{\zeta - 1}}}
     \end{aligned}
 \end{equation}
 then we take
-$\epsilon = \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}$
+$\epsilon = \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}$
 and we get
 \begin{equation}
     \begin{aligned}
     \mathbb{E} [L^0_t(Y^N - Y)]
     &\leq
     4 
-    {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
+    {\color{brown}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+
     4 \lambda 2\kappa_\rho T
-    {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
+    {\color{brown}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+ 4 \lambda
-    {\color{magenta}\mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds\right]}
+    {\color{magenta}\mathbb{E}\left[\int_0^t\|Y^N_s - Y^N\| ds\right]}
     \\
     &+
     3 T
     \kappa_\rho^2 
-    {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
+    {\color{brown}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}}
     \\
     &+
     3 T
-    (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2
-    {\color{teal}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}}
+    (2 \kappa_\rho)^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2
+    {\color{teal}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}}
     \\
     &+
-    2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 T
-    {\color{orange}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha\zeta - 1}}
+    2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 T
+    {\color{orange}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha\zeta - 1}}
     \\
     &+
-    4  \norm{\nabla u}_{L_\infty}^2 T 
-    \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{-1}
-    {\color{purple}\exp\left({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)}
+    4  \left\|\nabla u\right\|_{L_\infty}^2 T 
+    \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{-1}
+    {\color{purple}\exp\left({1 - \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)}
     \end{aligned}
 \end{equation}
 
@@ -1531,21 +1531,21 @@ which can be written as
     \mathbb{E} [L^0_t(Y^N - Y)]
     &\leq
     c_1
-    {\color{brown}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}}
+    {\color{brown}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}}
     +
     c_2
-    {\color{magenta}\mathbb{E}\left[\int_0^t\abs{Y^N_s - Y^N} ds\right]}
+    {\color{magenta}\mathbb{E}\left[\int_0^t\|Y^N_s - Y^N\| ds\right]}
     \\
     &+
     c_3
-    {\color{teal}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}}
+    {\color{teal}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}}
     +
     c_4
-    {\color{orange}\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha\zeta - 1}}
+    {\color{orange}\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha\zeta - 1}}
     \\
     &+
     c_5
-    {\color{purple}\exp\left({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)}
+    {\color{purple}\exp\left({1 - \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)}
     \end{aligned}
     \label{eq:bound_constants}
 \end{equation}
@@ -1558,11 +1558,11 @@ where
     \\
     c_2 &= 4 \lambda
     \\
-    c_3 &=  3 (2 \kappa_\rho)^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1 + \alpha}}^2 T
+    c_3 &=  3 (2 \kappa_\rho)^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1 + \alpha}}^2 T
     \\
-    c_4 &=  2^{2 \alpha} \norm{u}_{C_T \mathcal{C}^{1+\alpha}}^2 T
+    c_4 &=  2^{2 \alpha} \left\|u\right\|_{C_T \mathcal{C}^{1+\alpha}}^2 T
     \\
-    c_5 &=  4  \norm{\nabla u}_{L_\infty}^2 \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{-1} T
+    c_5 &=  4  \left\|\nabla u\right\|_{L_\infty}^2 \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{-1} T
     \end{aligned}
     \label{eq:constants_c}
 \end{equation}
@@ -1570,7 +1570,7 @@ where
 Finally, observe that since
 $\zeta \in (0,1)$,
 the term
-$\exp\left({1 - \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)$
+$\exp\left({1 - \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{\zeta - 1}}\right)$
 decays faster than any polynomial, thus controlling
 $c_5$,
 and the last term in
@@ -1581,9 +1581,9 @@ $\alpha \zeta$
 is arbitrarily close to
 $\alpha$,
 and
-$\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}$
+$\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}$
 controls
-$\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}$
+$\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}$
 therefore we can create the bound
 \eqref{eq:local_time_YNY_bound}
 
@@ -1596,16 +1596,16 @@ Also it is better to explain the meaning of $o()$ and what terms go in there.}
     \mathbb{E}
     [L^0_t(Y^N - Y)]
     &\leq
-    o\left(\norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
+    o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
     +
     c_2
     \mathbb{E}
     \left(
-    \int_0^t \abs{Y^N - Y} ds
+    \int_0^t \|Y^N - Y\| ds
     \right)
     +
     c_4
-    \norm{b^N - b}_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
+    \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
     \end{aligned}
 \end{equation}
 

@@ -6,19 +6,26 @@
 \usepackage{amsthm}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber,
-		style=numeric,
-		url=false,
-		isbn=false,
-		doi=false]{biblatex}
+						style=numeric,
+						url=false,
+						isbn=false,
+						doi=false]{biblatex}
 \usepackage{bbm}
 \usepackage[margin=4cm]{geometry}
-\usepackage[most]{tcolorbox}
+\usepackage[most,
+						many, 
+						breakable]{tcolorbox}
 \usepackage{hyperref}
+\hypersetup{pdftitle={Convergence rate of $X^N - X$ for McKean equations}, 
+						pdfsubject={Probability}, 
+						pdfauthor={Luis Mario Chaparro Jáquez},
+					  pdfkeywords={SDEs, Besov Space, Feynman-Kac}
+					 }
 \usepackage[capitalise]{cleveref}
 \usepackage{todonotes}
-\usepackage{physics}
 \usepackage{cancel}
 \usepackage{showkeys}
+%\usepackage{physics}
 %\usepackage{xr}
 %\usepackage{zref}
 %\usepackage{zref-xr}
@@ -44,7 +51,7 @@
 \newtheorem{definition}{Definition}
 \newtheorem{assumption}{Assumption}
 
-% Making use of tcolorbox
+% tcolorbox
 %\newtcbtheorem{proposition}{Proposition}{
 %  %breakable,
 %	colback=green!5,
@@ -63,6 +70,12 @@
 %	colframe=red!35!black,
 %  fonttitle=\bfseries
 %}{def}
+
+% Leeds colours
+\definecolor{leedsGreen}{RGB}{0, 80, 47}
+\definecolor{leedsRed}{RGB}{196, 18, 48}
+\definecolor{leedsBlack}{RGB}{0, 0, 0}
+\definecolor{leedsCream}{RGB}{246, 241, 228}
 
 %%%%%%%%%%%%%%%%
 % End Packages setup
