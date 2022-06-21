@@ -43,10 +43,11 @@ Here we present some results and definitions to refer on the text.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Local time at zero, Lemma 5.1
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The first result,
-\cite[Lemma 5.1]{de_angelis_numerical_2020},
-is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
-\ei{ Instead of this sentence you should write something like 'The lemma below is from \cite{de_angelis_numerical_2020} and its proof can be found in \cite[Lemma 5.1]{de_angelis_numerical_2020}. We include the statement here for ease of reading' }
+%The first result,
+%\cite[Lemma 5.1]{de_angelis_numerical_2020},
+%is not necessary to prove for this particular setting since the result holds for any semi-martingale, I include it here for self-containment reasons.
+%\ei{ Instead of this sentence you should write something like '
+The lemma below is from \cite{de_angelis_numerical_2020} and its proof can be found in \cite[Lemma 5.1]{de_angelis_numerical_2020}. We include the statement here for ease of reading.
 
 \begin{lemma}{Bound for local time at zero for a semi-martingale}\label{lemma:local-time-at-0}
   %%%%\todo{Type down this lemma}
@@ -1635,7 +1636,7 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 	such that
 	\begin{equation}
 	\label{eq:EXN-X}
-	  \mathbbm{E} [ X^N - X ] \leq C_{\alpha} \|b^N - b\|_{C_T \mathcal{C}^{-\beta}},
+	  \mathbbm{E} [ X^N - X ] \leq C_{\alpha} \|b^N - b\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha  - 1},
 	\end{equation}
   as
   $ N \to \infty $.
@@ -1653,7 +1654,7 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 			| \psi^N(t, \phi^N(t, X^N_t)) - \psi(t, \phi(t, X_t)) |
 			\\
 			&=
-			| \psi^N(t, Y_t) - \psi(t, Y_t) |,
+			| \psi^N(t, Y_t^N) - \psi(t, Y_t) |,
     \end{aligned}
 	\end{equation}
 	then adding and subtracting, and using the triangle inequality we get
@@ -1691,7 +1692,7 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 	  |Y^N - Y|
 		= |y^N_0 - y_0|
 		+ \frac{1}{2} L^0_t (Y^N - Y)
-		+ \int_0^t \mathrm{sgn} (Y^N - Y) d(Y^N - Y),
+		+ \int_0^t \sgn (Y^N - Y) d(Y^N - Y),
 	\end{equation}
 	by taking expectation and using the definitions of
 	$ Y^N, Y $
@@ -1700,14 +1701,102 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 	\label{eq:EYNY}
 	  \begin{aligned}
 	    \mathbbm{E}|Y^N - Y|
-			&= \mathbbm{E}|y^N_0 - y_0| + \mathbbm{E}\frac{1}{2} L^0_t (Y^N - Y)
+			&= \mathbbm{E}|y^N_0 - y_0| + {\color{magenta}\mathbbm{E}\frac{1}{2} L^0_t (Y^N - Y)}
 			\\
-			&+ \lambda \mathbbm{E}\int_0^t \mathrm{sgn} (Y^N - Y)(u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds,
+			&+ {\color{teal}\lambda \mathbbm{E}\int_0^t \sgn (Y^N - Y)(u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds,}
 	  \end{aligned}
 	\end{equation}
-	then as the first term above is a constant and for the second we have a bound in Proposition
-	\ref{prop:bound_local_time_sde}
-	it remains to bound the second term.
-
-	Observe that
+	then observe that the first term above is a constant, for the second we have a bound in Proposition
+	\ref{prop:bound_local_time_sde},
+	and for the third we use
+	\lm{Add the result to bound $u^N - u$}, and the fact that
+	$\sgn(x) \leq 1$
+	therefore
+	
+	\begin{equation}
+	\begin{aligned}
+	    \mathbbm{E}|Y^N - Y|
+	    &\leq
+	    |u^N(0, x) - u(0, x)|
+	    \\
+	    &+ {\color{magenta}\frac12 
+        \left[ o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
+        +
+        A
+        \mathbb{E}
+        \left(
+        \int_0^t \|Y^N - Y\| ds
+        \right)
+        +
+        B
+        \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
+        \right]}
+        \\
+        &+ {\color{teal}
+        \mathbb{E} \left[ 
+        \int_0^t \left(
+        2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} + \|Y^N_s - Y^N\|
+        \right) ds
+        \right]
+        }
+        \\
+        &\leq
+	    {\color{orange}|u^N(0, x) - u(0, x)|}
+	    \\
+	    &+ \frac12 
+        \left[ o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
+        +
+        A
+        \mathbb{E}
+        \left(
+        \int_0^t \|Y^N - Y\| ds
+        \right)
+        +
+        B
+        \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}
+        \right]
+        \\
+        &+ {\color{orange}\lambda 2\kappa_\rho \left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}} t }
+        +  \lambda \mathbb{E} \left(
+        \int_0^t
+        \|Y^N_s - Y^N\| ds
+        \right),
+	\end{aligned}
+	\end{equation}
+	Note that the terms in {\color{orange}orange} are controlled by $o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)$, so after merging those terms and the two involving $\mathbb{E} \left( \int_0^t \|Y^N_s - Y^N\| ds \right)$ we get
+    \begin{equation}
+    \label{eq:YN-Yineq}
+        \begin{aligned}
+	        \mathbbm{E}|Y^N - Y|
+	        &\leq
+            B \| b^N - b \|^{2 \alpha - 1}_{C_T \mathcal{C}^{-\beta}}
+            + (A + \lambda) \mathbb{E} \left( \int_0^t \|Y^N_s - Y^N\| ds \right)
+            + o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
+            .
+        \end{aligned}
+    \end{equation}
+    From there, using Gronwall's lemma we get the following bound
+    \begin{equation}
+    \label{eq:gronwallYNY}
+        \mathbbm{E}|Y^N - Y|
+        \leq
+        B \| b^N - b \|^{2 \alpha - 1}_{C_T \mathcal{C}^{-\beta}} T e^{(A+\lambda)T}
+        + o\left(\left\|b^N - b\right\|_{C_T \mathcal{C}^{-\beta}}^{2 \alpha - 1}\right)
+        .
+    \end{equation}
+    Now we use \eqref{eq:gronwallYNY} to bound \eqref{eq:XN-X}, and as the \textit{small-o} term controls the second term in \eqref{eq:XN-X} we obtain
+    \begin{equation}
+        \begin{aligned}
+            \mathbb{E}
+            \left[
+            \left|
+            X^N - X
+            \right|
+            \right]
+            &\leq
+            B \left\| b^N - b \right\|^{2\alpha - 1}_{C_T \mathcal{C}^{-\beta}} T e^{(A+\lambda)T}
+            + o \left( \left\| b^N - b \right\|^{2\alpha - 1}_{C_T \mathcal{C}^{-\beta}} \right)
+        \end{aligned}
+    \end{equation}
+    
 \end{proof}
