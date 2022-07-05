@@ -181,6 +181,9 @@ $ C_T \mathcal{C}^{\gamma} $.
 
 \lm{TYPE THIS}
 
+\lm{add Schauder estimates to reference in Prop. \ref{prop:diff_u_uN}, add small note of them and refernce}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bounds for difference of Kolmogorov equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -205,7 +208,7 @@ The result builds on top of the following result:
 % Bound for the rho-equivalent norm of the difference u-uN
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{proposition}
-{Bound for the $\rho$-equivalent norm of $u - u^N$}
+%{Bound for the $\rho$-equivalent norm of $u - u^N$}
 \label{prop:diff_u_uN}
 
 Let
@@ -249,7 +252,6 @@ $\lambda > 0$.
 	$b^N \to b$.
 	Then let us reformulate the rest of the aforementioned result for
 	$\lambda \neq 0$.
-
 	As
 	$u^N, u$
 	are mild solutions, we have
@@ -258,41 +260,35 @@ $\lambda > 0$.
 		u_i(t) - u^N_i(t)
 		&=
 		P_{T-t} (u_i(T) - u^N_i(T))
-		\\
-		&+
+		+
 		\int_t^T P_{s-t}(\nabla u_i b_i - \nabla u^N_i b^N_i) ds
 		\\
-		&-
+		&\hspace{15em}-
 		\int_t^T P_{s-t}(\lambda u_i + b_i - \lambda u^N_i + b^N_i) ds
 		\\
 		&=
 		\int_t^T P_{s-t}(\nabla u_i b_i - \nabla u^N_i b^N_i) ds
-		\\
-		&-
+		-
 		\lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds
-		\\
-		&-
+		-
 		\int_t^T P_{s-t}(b_i - b^N_i) ds
 		\\
 		&=
 		\int_t^T P_{s-t}[(\nabla u_i b_i - \nabla u_i b^N_i) + (\nabla u_i b^N_i - \nabla u^N_i b^N_i)] ds
 		\\
-		&-
+		&\hspace{10em}-
 		\lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds
-		\\
-		&-
+		-
 		\int_t^T P_{s-t}(b_i - b^N_i) ds
 		\\
 		&=
 		\int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds
-		\\
-		&+
+		+
 		\int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds
 		\\
-		&-
+		&\hspace{10em}-
 		\lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds
-		\\
-		&-
+		-
 		\int_t^T P_{s-t}(b_i - b^N_i) ds
 	\end{align*}
 
@@ -303,33 +299,38 @@ $\lambda > 0$.
 	
 	
     %\todo{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}
-    {\color{red}!!!!!!!!!!!!!!!!!!!!!}\lm{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}    {\color{red}!!!!!!!!!!!!!!!!!!!!!}
+    %{\color{red}!!!!!!!!!!!!!!!!!!!!!}\lm{this norm is wrong, should be $1+\alpha$ on the lhs and everywhere else}    {\color{red}!!!!!!!!!!!!!!!!!!!!!}
 	\begin{align*}
-		\| u_i - u^N_i \| ^ {(\rho)}_{C_T \mathcal{C}^{-\beta}}
+		\left\| u_i - u^N_i \right\| ^ {(\rho)}_{C_T \mathcal{C}^{1 + \alpha}}
 		&=
-		\sup_{0\leq t \leq T} e^{-\rho(T-t)} \| u(t) - u^N(t) \|_{C_T \mathcal{C}^{1 + \alpha}}
+		\sup_{0\leq t \leq T} e^{-\rho(T-t)} 
+		\left\| u(t) - u^N(t) \right\|_{C_T \mathcal{C}^{1 + \alpha}}
 		\\
 		&\leq
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \|_{C_T \mathcal{C}^{1 + \alpha}}
+		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} 
+		{\color{magenta}\Bigg[}
+		\left\| \int_t^T P_{s-t}(\nabla u_i b_i - \nabla u_i b^N_i)  ds \right\|_{C_T \mathcal{C}^{1 + \alpha}}
 	     	\\ 
-		&+
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds\|_{C_T \mathcal{C}^{1 + \alpha}}
+		&\hspace{5em}+
+		\left\| \int_t^T P_{s-t}(\nabla u_i b^N_i - \nabla u^N_i b^N_i) ds \right\|_{C_T \mathcal{C}^{1 + \alpha}}
 	     	\\ 
-		&-
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds\|_{C_T \mathcal{C}^{1 + \alpha}}
+		&\hspace{5em}-
+		\left\| \lambda  \int_t^T P_{s-t}(u_i - u^N_i) ds \right\|_{C_T \mathcal{C}^{1 + \alpha}}
 	     	\\ 
-		&-
-		\sup_{0\leq t\leq T} e ^{-\rho(T-t)} \| \int_t^T P_{s-t}(b_i - b^N_i) ds\|_{C_T \mathcal{C}^{1 + \alpha}}
+		&\hspace{5em}-
+	  \left\| \int_t^T P_{s-t}(b_i - b^N_i) ds \right\|_{C_T \mathcal{C}^{1 + \alpha}}
+{\color{magenta}\Bigg]}
 		.
 	\end{align*}
 
 	Let us take each term from the right hand side of the inequality and bound them.
 
+	\lm{when the Schauder estimates are added, check this again}
 	For the first term, using
 	$\gamma + 2\theta = 1 + \alpha$,
 	$\gamma = -\beta$,
 	$\theta = \frac{1 + \alpha + \beta}{2}$,
-	$\| P_t f \|_{\gamma + 2 \theta} \leq c t ^{-\theta} \| f \|_{\gamma} \|$
+	$\| P_t f \|_{\gamma + 2 \theta} \leq c t ^{-\theta} \| f \|_{\gamma}$
 	and
 	$\| \nabla g \|_\xi \leq c \|g \|_{\xi + 1}$
 
@@ -441,12 +442,12 @@ $\lambda > 0$.
 and finally,
 
 	\begin{align*}
-		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} (1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} &+ \lambda])
+		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{1+\alpha}} (1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} &+ \lambda])
 		\\
 		&\leq
 		cT^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)
 		\\
-		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+		\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{1+\alpha}} 
 		&\leq
 	\frac{cT^{\frac{1-\beta-\alpha}{2}} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)}{(1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} + \lambda])}
 	\end{align*}
@@ -457,15 +458,15 @@ and finally,
 Note that in the above we can represent the right hand side of the inequality as
 
 \begin{equation}
-	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{1+\alpha}} 
 	\leq
 	\frac{cT^{\frac{1-\beta-\alpha}{2}} (\| u_i \|_{C_T \mathcal{C}^{1+\alpha}} -1)}{(1 - c \rho^{\frac{\alpha + \beta - 1}{2}} [ \| b \|_{C_T \mathcal{C}^{-\beta}} + \lambda])} \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} 
 \end{equation}
 
 	%\todo{Check this norm}
-	\lm{Check this norm}
+	\lm{Check this norm, it was in $ -\beta $ now in $ 1+\alpha $}
 \begin{equation}
-	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{-\beta}} 
+	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{1+\alpha}} 
 	\leq
 	c(\rho) \| b_i - b^N_i \|_{C^T \mathcal{C}^{-\beta}} 
 \end{equation}
@@ -1626,6 +1627,7 @@ in terms of
 $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 
 \begin{proposition}
+	\label{prop:reg_to_original}
   Let assumptions
 	\ref{as:b_in_ctcb}
 	\ref{as:bN_converges_in_ctcb}
@@ -1799,4 +1801,159 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
         \end{aligned}
     \end{equation}
     
+\end{proof}
+
+\section{Small comment about convergence rate of Euler scheme to regularized equation}
+
+It works just like in
+\cite{de_angelis_numerical_2020}
+
+\section{Convergence rate of Euler scheme}
+
+\lm{check assumptions, maybe put them into the assumptions above or smth}
+
+\begin{proposition}
+	Let
+	$ X^{Nm}_{t} $
+	be the Euler approximation of the solution with
+	$ m $
+	time steps, and
+	$ X_{t} $
+	the real solution.
+	Let also
+	$ \beta_{0} \in (0, 1/4) $,
+	$ \beta \in (\beta_{0}, 1/2) $,
+	$ \alpha \in (\beta, 1 - \beta) $
+	and
+	$ \epsilon > 0 $,
+	then it holds that
+	\begin{equation}
+	  \label{eq:euler_rate}
+		\sup_{0 \leq t \leq T}
+		\mathbb{E}
+		\left[ \left| X^{Nm}_{t} - X_{t} \right| \right]
+	  \leq
+	  cm^{-\frac{1}{2} \mu},
+	\end{equation}
+	where
+	\begin{equation}
+	  \label{eq:mu}
+	  %\mu = \frac{(2\alpha - 1)(\beta - \beta_{0})}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}
+	  \mu = 1 + \frac{\beta_{0} + \epsilon}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}.
+	\end{equation}
+\end{proposition}
+\begin{proof}
+  First, by triangle inequality we have
+	\begin{equation}
+	  \label{eq:er01}
+		\ostar :=
+		\sup_{0 \leq t \leq T}
+		\mathbb{E} \left[\left| X^{Nm}_{t} - X_{t}\right|\right]
+		\leq
+		\mathbb{E} \left[\left| X^{Nm}_{t} - X^{N}_{t}\right|\right] + \mathbb{E} \left[\left| X^{N}_{t} - X_{t}\right|\right],
+	\end{equation}
+	the first term in the right hand side is bounded by
+	\cite{de_angelis_numerical_2020}[Proposition 3.4]
+	and the
+	second one by Proposition
+	\ref{prop:reg_to_original},
+	so that putting those results together we get
+	\begin{equation}
+		\label{eq:er_constants}
+		\begin{aligned}
+			\ostar &\leq A_{N} m^{-1} + B_{N} m^{-1/2} + c\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}
+			\\
+						 &\leq c
+						 \Big[
+						 \left\|b^{N}\right\|_{\infty,L^{\infty}}
+						 \left( 1 + \left\|\nabla b^{N}\right\|_{\infty,L^{\infty}} \right)
+						 {\color{purple}m^{-1}}
+						 + \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
+						 {\color{purple}m^{-1/2}}
+						 +\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}
+						 \Big].
+		\end{aligned}
+	\end{equation}
+	We require to find some bounds for the
+	$ L^{\infty} $
+	(semi) norms, so that we use Schauder estimates and Bernstein inequality \lm{add Bernstein inequality or reference}, this is possible thanks to the definition of
+	$ b^{N} := p_{f_{m}} \ast b $,
+	where
+	$ f_{m} \to 0 $
+	when
+	$ m \to \infty $,
+	and also consider the definition of the norm
+	\begin{equation*}
+		\left\| g \right\|_{C_T \mathcal{C}^{\delta}}
+		=
+	  \left\| b^{N} \right\|_{L^{\infty}}
+		+
+		\sup_{x \neq y}
+		\frac{|b^{N}(x) - b^{N}(y)|}{|x - y|^{\delta}},
+	\end{equation*}
+	and the seminorm
+  \begin{equation*}
+		[g]_{1/2, L^{\infty}} = \sup_{t \neq s\\t,s \in [0,T]} \frac{\|g(t) - g(s)\|_{L^{\infty}}}{|t - s|^{1/2}}.
+  \end{equation*}
+	We have the following bounds:
+	\begin{equation}
+	  \label{eq:er02}
+	  \left\| b^{N} \right\|_{L^{\infty}}
+		\leq
+	  \left\| b^{N} \right\|_{C_T \mathcal{C}^{\epsilon}}
+		\leq
+		c f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}},
+	\end{equation}
+
+	\begin{equation}
+	  \label{eq:er03}
+	  \left\| \nabla b^{N} \right\|_{L^{\infty}}
+		\leq
+	  \left\| \nabla b^{N} \right\|_{C_T \mathcal{C}^{\epsilon}}
+		\leq
+		c \left\|b^{N}\right\|_{C_T \mathcal{C}^{\epsilon+1}}
+		\leq
+		c f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}},
+	\end{equation}
+
+	\begin{equation}
+	  \label{eq:er04}
+		\begin{aligned}
+			\left[b^{N}\right]_{1/2,L^{\infty}}
+			&\leq
+			\sup_{t \neq s} \frac{\|b^{N}(t) - b^{N}(s)\|_{C_T \mathcal{C}^{\epsilon}}}{|t - s|^{1/2}}
+			\\
+			&\leq
+			\sup_{t \neq s} c f_{m}^{-\frac{\epsilon + \beta}{2}}\frac{\|b(t) - b(s)\|_{C_T \mathcal{C}^{-\beta}}}{|t - s|^{1/2}}
+			\\
+			&= c f_{m}^{-\frac{\epsilon + \beta}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta}}.
+		\end{aligned}
+	\end{equation}
+	
+	Plugging that into
+	\eqref{eq:er_constants}
+	we get
+	\begin{equation}
+		\label{eq:er_boundlinf}
+		\begin{aligned}
+			\ostar
+			&\leq
+			c
+			{\color{magenta}\bigg[}
+			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}
+			\\
+			&\hspace{3em}+
+			\left\|b^{N}\right\|_{\infty,L^{\infty}}
+			\left( 1 + \left\|\nabla b^{N}\right\|_{\infty,L^{\infty}} \right)
+			{\color{purple}m^{-1}}
+			\\
+			&\hspace{3em}+ \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
+			{\color{purple}m^{-1/2}}
+		{\color{magenta}\bigg]}
+		\\
+			&\leq
+			j
+		\end{aligned}
+	\end{equation}
+	
 \end{proof}
