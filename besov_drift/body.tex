@@ -1807,6 +1807,7 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 
 It works just like in
 \cite{de_angelis_numerical_2020}
+\lm{make all the comment}
 
 \section{Convergence rate of Euler scheme}
 
@@ -1870,7 +1871,7 @@ It works just like in
 						 {\color{purple}m^{-1}}
 						 + \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
 						 {\color{purple}m^{-1/2}}
-						 +\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}
+						 +\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta_0}}^{2\alpha - 1}
 						 \Big].
 		\end{aligned}
 	\end{equation}
@@ -1902,7 +1903,7 @@ It works just like in
 		\leq
 	  \left\| b^{N} \right\|_{C_T \mathcal{C}^{\epsilon}}
 		\leq
-		c f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}},
+		c f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}},
 	\end{equation}
 
 	\begin{equation}
@@ -1913,7 +1914,7 @@ It works just like in
 		\leq
 		c \left\|b^{N}\right\|_{C_T \mathcal{C}^{\epsilon+1}}
 		\leq
-		c f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}},
+		c f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}},
 	\end{equation}
 
 	\begin{equation}
@@ -1924,9 +1925,9 @@ It works just like in
 			\sup_{t \neq s} \frac{\|b^{N}(t) - b^{N}(s)\|_{C_T \mathcal{C}^{\epsilon}}}{|t - s|^{1/2}}
 			\\
 			&\leq
-			\sup_{t \neq s} c f_{m}^{-\frac{\epsilon + \beta}{2}}\frac{\|b(t) - b(s)\|_{C_T \mathcal{C}^{-\beta}}}{|t - s|^{1/2}}
+			\sup_{t \neq s} c f_{m}^{-\frac{\epsilon + \beta_0}{2}}\frac{\|b(t) - b(s)\|_{C_T \mathcal{C}^{-\beta_0}}}{|t - s|^{1/2}}
 			\\
-			&= c f_{m}^{-\frac{\epsilon + \beta}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta}}.
+			&= c f_{m}^{-\frac{\epsilon + \beta_0}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta_0}}.
 		\end{aligned}
 	\end{equation}
 	
@@ -1940,7 +1941,7 @@ It works just like in
 			&\leq
 			c
 			{\color{magenta}\bigg[}
-			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}
+			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta_0}}^{2\alpha - 1}
 			\\
 			&\hspace{3em}+
 			\left\|b^{N}\right\|_{\infty,L^{\infty}}
@@ -1949,11 +1950,127 @@ It works just like in
 			\\
 			&\hspace{3em}+ \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
 			{\color{purple}m^{-1/2}}
-		{\color{magenta}\bigg]}
-		\\
+		    {\color{magenta}\bigg]}
+		    \\
 			&\leq
-			j
+			c
+			{\color{magenta}\bigg[}
+			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta_0}}^{2\alpha - 1}
+			\\
+		    &+
+		    f_{m}^{-\frac{\epsilon + \beta_0}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+		    \left(
+		    1 + f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+		    \right)
+			{\color{purple}m^{-1}}
+			\\
+			&+
+			\left(
+			f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+			+
+	        f_{m}^{-\frac{\epsilon + \beta_0}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta_0}}
+	        \right)
+			{\color{purple}m^{-1/2}}
+		    {\color{magenta}\bigg]}
+		    \\
+			&\leq
+			c
+			{\color{magenta}\bigg[}
+			\left(f_m^{\nu/2} \left\| b \right\|_{C_T \mathcal{C}^{-\beta + \nu}}\right)^{2\alpha - 1}
+			\\
+		    &+
+		    f_{m}^{-\frac{\epsilon + \beta_0}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+		    \left(
+		    1 + f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+		    \right)
+			{\color{purple}m^{-1}}
+			\\
+			&+
+			\left(
+			f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+			+
+	        f_{m}^{-\frac{\epsilon + \beta_0}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta_0}}
+	        \right)
+			{\color{purple}m^{-1/2}}
+		    {\color{magenta}\bigg]}
 		\end{aligned}
 	\end{equation}
-	
+    Where the first term in the last inequality comes from Schauder estimates \lm{add this earlier and refer to it}. Also, since the norms are finite they can be absorbed by a constant and we have:
+   \begin{equation}
+   \label{eq:er_allnonorms}
+        \ostar
+		\leq
+		c
+		{\color{magenta}\bigg[}
+		f_m^{\nu/2(2 \alpha - 1)}
+		\\
+		+
+		\left(
+		f_{m}^{-\frac{\epsilon + \beta_0}{2}}
+		+
+		f_{m}^{-\frac{2\epsilon + 2\beta_0 + 1}{2}}
+		\right)
+		{\color{purple}m^{-1}}
+		\\
+		+
+		\left(
+		f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}}
+		+
+	    f_{m}^{-\frac{\epsilon + \beta_0}{2}}
+	    \right)
+		{\color{purple}m^{-1/2}}
+		{\color{magenta}\bigg]}
+   \end{equation} 
+    for some
+    $\nu \in [0, 1)$.
+    
+    Now, since we would like to have
+    $f_m = m^{-\theta}$,
+    and that converges to zero as 
+    $m \to \infty$,
+    we know that
+    $f_m^{\nu/2}$
+    converges even faster.
+    Because of that, we want
+    $\nu/2$
+    to be as large as possible.
+    Observe that we can go up to
+    $b \in C_T \mathcal{C}^{-\beta_0}$,
+    i.e.
+    $-\beta + \nu = -\beta_0$
+    or
+    $\nu = \beta -\beta_0$.
+    Considering only the slowest terms in
+   \eqref{eq:er_allnonorms}
+   and substituting
+   $\nu$
+   we get
+   \begin{equation}
+       \label{eq:er_slowest}
+       \ostar
+       \leq
+       f_m^{\frac{\beta - \beta_0}{2}(2 \alpha - 1)} + m^{-1/2} f_m^{-\frac{\epsilon + \beta_0}{2}}
+   \end{equation}
+   The optimal of this quantity is when the two terms on the left hand side are equal, this is
+   \begin{equation}
+       \label{eq:er_equaloptimal}
+    \begin{aligned}
+       m^{-1/2} &= f_m^{\frac{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}{2}}
+       \\
+       f_m &= m^{\frac{1}{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}}
+    \end{aligned}
+   \end{equation}
+   So, if we plug it into the rate (any of the two terms in
+   \eqref{eq:er_slowest}),
+   we get
+   \begin{equation}
+       \ostar
+       \leq
+       m^{-\frac{1}{2} \frac{(2 \alpha - 1)(\beta - \beta_0)}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
+       \leq
+       m^{-\frac{1}{2} \left(1 + \frac{\beta_0 + \epsilon}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}\right)}
+   \end{equation}
+   As required.
 \end{proof}
+
+Additionally, note that if we select
