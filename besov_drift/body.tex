@@ -24,7 +24,8 @@ Here we present some results and definitions to refer on the text.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition Local time
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{definition}{Local time at zero}\label{def:local_time_zero}
+\begin{definition}
+  \label{def:local_time_zero}
   For any real-valued continuous semi-martingale
 	$ Z $,
 	the local time at zero
@@ -49,7 +50,8 @@ Here we present some results and definitions to refer on the text.
 %\ei{ Instead of this sentence you should write something like '
 The lemma below is from \cite{de_angelis_numerical_2020} and its proof can be found in \cite[Lemma 5.1]{de_angelis_numerical_2020}. We include the statement here for ease of reading.
 
-\begin{lemma}{Bound for local time at zero for a semi-martingale}\label{lemma:local-time-at-0}
+\begin{lemma}
+  \label{lemma:local-time-at-0}
   %%%%\todo{Type down this lemma}
   For any
   $\epsilon \in (0,1)$
@@ -90,7 +92,8 @@ $ C_T \mathcal{C}^{\gamma} $.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kolmogorov equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{definition}{Kolmogorov equations}\label{def:kolmogorov_eqns}
+\begin{definition}
+  \label{def:kolmogorov_eqns}
   For
   $\beta \in (0, 1/2)$
   let
@@ -182,6 +185,30 @@ $ C_T \mathcal{C}^{\gamma} $.
 \lm{TYPE THIS}
 
 \lm{add Schauder estimates to reference in Prop. \ref{prop:diff_u_uN}, add small note of them and refernce}
+
+\begin{definition}
+  \label{def:heat_kernel}
+  The function is called heat kernel
+  \begin{equation}
+      \label{eq:heat_kernel}
+      p_{f} = \frac{1}{\sqrt{4 \pi f}} e^{-\frac{|x - y|^{2}}{4f}}.
+  \end{equation}
+  
+  This is the fundamental solution to the heat equation.
+  
+  The convolution of the heat kernel with a (generalised) function, is called heat semigroup:
+  \begin{equation}
+      \label{eq:heat_semigroup}
+      P_{f} = p_{f} \ast g = \int_{\Omega} p_{f}(x) g(x - y) dx
+  \end{equation}
+\end{definition}
+
+\begin{definition}
+  \label{def:schauder_estimates}
+  Let
+  $f \in C_T \mathcal{C}^{\gamma}$
+  
+\end{definition}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1824,7 +1851,7 @@ It works just like in
 	Let also
 	$ \beta_{0} \in (0, 1/4) $,
 	$ \beta \in (\beta_{0}, 1/2) $,
-	$ \alpha \in (\beta, 1 - \beta) $
+	$ \alpha \in (1/2, 1 - \beta_0) $
 	and
 	$ \epsilon > 0 $,
 	then it holds that
@@ -1834,13 +1861,13 @@ It works just like in
 		\mathbb{E}
 		\left[ \left| X^{Nm}_{t} - X_{t} \right| \right]
 	  \leq
-	  cm^{-\frac{1}{2} \mu},
+	  cm^{-\frac{1}{2} - \mu},
 	\end{equation}
 	where
 	\begin{equation}
 	  \label{eq:mu}
 	  %\mu = \frac{(2\alpha - 1)(\beta - \beta_{0})}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}
-	  \mu = 1 + \frac{\beta_{0} + \epsilon}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}.
+	  \mu = \frac{1}{2} \cdot \frac{\beta_{0} + \epsilon}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}.
 	\end{equation}
 \end{proposition}
 \begin{proof}
@@ -2057,7 +2084,7 @@ It works just like in
     \begin{aligned}
        m^{-1/2} &= f_m^{\frac{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}{2}}
        \\
-       f_m &= m^{\frac{1}{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}}
+       f_m &= m^{-\frac{1}{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}}
     \end{aligned}
    \end{equation}
    So, if we plug it into the rate (any of the two terms in
@@ -2066,11 +2093,80 @@ It works just like in
    \begin{equation}
        \ostar
        \leq
-       m^{-\frac{1}{2} \frac{(2 \alpha - 1)(\beta - \beta_0)}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
-       \leq
-       m^{-\frac{1}{2} \left(1 + \frac{\beta_0 + \epsilon}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}\right)}
+       %m^{-\frac{1}{2} \frac{(2 \alpha - 1)(\beta - \beta_0)}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
+       %\leq
+       c
+       m^{-\frac{1}{2} + \frac{1}{2} \frac{\beta_0 + \epsilon}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
    \end{equation}
-   As required.
+   %Observe that since
+   %$\beta_0 \in (0, 1/4)$
+   %we can select it to be
+   %$\beta_0 = \epsilon$
+   %and therefore have a rate of
+   %$1/2 - \epsilon'$
+   %for any
+   %$\alpha, \beta$
+   %where
+   %$\epsilon'$
+   %is as small as desired.
+   
 \end{proof}
 
-Additionally, note that if we select
+Note that for any
+$\beta_0 \in (0, 1/4)$
+we can vary the parameters
+$\alpha, \beta, \epsilon$,
+in particular we wish to have an
+$\epsilon \approx 0$,
+so we focus in the other two.
+take the exponent of the right hand side on
+\eqref{eq:er_slowest},
+
+\begin{equation*}
+    -\frac{1}{2} + \frac{1}{2} \frac{\beta_0 + \epsilon}{(2\alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}.
+\end{equation*}
+
+The best case scenario is when the second term is close to zero, having a convergence rate of
+$1/2 + \epsilon'$,
+and the worst case is for the second term is close to 
+$1/2$
+leaving us with a convergence rate of
+$\epsilon'$,
+for
+$\epsilon'$
+small.
+The first case is attained if we set
+$\beta_0 = \epsilon$,
+for any
+$\alpha, \beta$.
+However, in order to have the rate in terms only of
+$\beta_0$,
+let us verify when
+
+\begin{equation*}
+    \sup_{\alpha, \beta}
+    \left[
+    \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+    \right]
+    =
+    1
+\end{equation*}
+
+For that, we have
+
+\begin{equation*}
+    \begin{aligned}
+         \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+         &=
+         \frac{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0) - (2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+         \\
+         &=
+         1 - \frac{(2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)},
+    \end{aligned}
+\end{equation*}
+
+therefore we require the second term in the last line above to be zero,
+which is possible by selecting either
+$\beta = \beta_0 + \epsilon$
+or
+$\alpha = 1/2 + \epsilon$
