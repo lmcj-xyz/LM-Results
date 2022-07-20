@@ -2170,17 +2170,16 @@ It works just like in
    %where
    %$\epsilon'$
    %is as small as desired.
-   
 \end{proof}
 
-Note that for any
+Note that for any fixed
 $\beta_0 \in (0, 1/4)$
-we can vary the parameters
-$\alpha, \beta, \epsilon$,
-in particular we wish to have an
-$\epsilon \approx 0$,
-so we focus in the other two.
-take the exponent of the right hand side on
+we can vary the following parameters inside their constraints
+$\alpha \in (1/2. 1 - \beta_{0}), \beta \in (\beta_{0}, 1/2), \epsilon > 0$,
+%in particular we wish to have an
+%$\epsilon \approx 0$,
+%so we focus in the other two.
+so take the exponent of the right hand side on
 \eqref{eq:er_slowest},
 
 \begin{equation*}
@@ -2196,38 +2195,158 @@ $\epsilon'$,
 for
 $\epsilon'$
 small.
-The first case is attained if we set
-$\beta_0 = \epsilon$,
-for any
-$\alpha, \beta$.
-However, in order to have the rate in terms only of
-$\beta_0$,
-let us verify when
+
+For the best case let us compute the infimum of the term, i. e:
 
 \begin{equation*}
-    \sup_{\alpha, \beta}
-    \left[
+	\inf_{
+	\substack{
+		\alpha \in (1/2, 1 - \beta_{0})
+		\\
+		\beta \in (\beta_{0}, 1/2) 
+		\\
+		\epsilon >0}
+	}
+    \left\{
     \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-    \right]
+	\right\},
+\end{equation*}
+
+for which, naturally, we want the denomanator to be as large as it can be, so we select
+$ \beta \approx 1/2 $,
+and
+$ \alpha \approx 1 - \beta_{0} $,
+therefore we get
+
+\begin{equation*}
+	\begin{aligned}
+		\inf_{
+		\substack{
+			\alpha \in (1/2, 1 - \beta_{0})
+			\\
+			\beta \in (\beta_{0}, 1/2) 
+			\\
+			\epsilon >0}
+		}
+    	\left\{
+    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+		\right\}
+		&=
+		\inf_{\epsilon >0}
+    	\left\{
+    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 2 \beta_{0})(1/2 - \beta_{0})}
+		+ \epsilon'
+		\right\}.
+	\end{aligned}
+\end{equation*}
+
+And the above is minimised for
+$ \epsilon \approx 0 $.
+
+So, the best rate of the scheme is
+
+\begin{equation*}
+	m^{-1/2\left( 1 - \frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0}} \right)}.
+\end{equation*}
+
+In particular consider the two important cases of the limits of
+$ \beta_{0} $, i. e:
+
+\begin{itemize}
+	\item
+		For 
+		$ \beta_{0} \approx 0 $
+		we have
+		$ m^{-1/2 \cdot \left( 1 - \frac{0}{1/2 \cdot 1} + \epsilon'\right)} = m^{-1/2 - \epsilon'} $,
+	\item 
+		and for
+		$ \beta_{0} \approx \frac14 $
+		we have
+		$ m^{-1/2 \cdot \left( 1 - \frac{1/4}{1/4 \cdot (1 - 1/2) + 1/4} + \epsilon'\right)} = m^{-1/2 \cdot (1 - 2/3 + \epsilon')}= m^{-1/6 - \epsilon'} $.
+\end{itemize}
+
+%The first case is attained if we set
+%$\beta_0 = \epsilon$,
+%for any
+%$\alpha, \beta$.
+%However, in order to have the rate in terms only of
+%$\beta_0$,
+%let us verify when
+
+For the case in which we get the worst convergence rate, note that we with to have
+
+\begin{equation*}
+    \sup_{
+	\substack{
+		\alpha \in (1/2, 1 - \beta_{0})
+		\\
+		\beta \in (\beta_{0}, 1/2) 
+		\\
+		\epsilon >0}
+	}
+    \left\{
+    \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+	\right\}
     =
     1
 \end{equation*}
 
-For that, we have
+%For that, we have
+%
+%\begin{equation*}
+%	\begin{aligned}
+%		\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%         &=
+%         \frac{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0) - (2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%         \\
+%         &=
+%         1 - \frac{(2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)},
+%    \end{aligned}
+%\end{equation*}
+
+%therefore we require the second term in the last line above to be zero,
+which is possible by selecting either
+$\beta \approx \beta_0 $
+or
+$\alpha \approx 1/2$,
+since we make the third term in the denominator equal zero, i. e:
 
 \begin{equation*}
-    \begin{aligned}
-         \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-         &=
-         \frac{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0) - (2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-         \\
-         &=
-         1 - \frac{(2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)},
-    \end{aligned}
+	\begin{aligned}
+		\sup_{
+		\substack{
+			\alpha \in (1/2, 1 - \beta_{0})
+			\\
+			\beta \in (\beta_{0}, 1/2) 
+			\\
+			\epsilon >0}
+		}
+    	\left\{
+    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+		\right\}
+		&=
+		\sup_{ \epsilon >0 }
+		\left\{
+    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 1)(\beta_{0} - \beta_0)}
+		+ \epsilon'
+		\right\}
+		\\
+		&=
+		\sup_{ \epsilon >0 }
+		\left\{
+    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon}
+		+
+		\epsilon'
+		\right\}
+		\\
+		&=
+		1 + \epsilon',
+	\end{aligned}
 \end{equation*}
 
-therefore we require the second term in the last line above to be zero,
-which is possible by selecting either
-$\beta = \beta_0 + \epsilon$
-or
-$\alpha = 1/2 + \epsilon$
+for any
+$ \epsilon $
+and any
+$ \beta_{0} $.
+And therefore we have for this case a rate
+$ m^{-1/2 \cdot (1 - 1 + \epsilon')} = m^{-\epsilon'} $.
