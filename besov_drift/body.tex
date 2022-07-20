@@ -88,6 +88,8 @@ $ C_T \mathcal{C}^{\gamma} $.
 % Feynman-Kac formula
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\lm{add Feynamn-Kac formula}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Kolmogorov equations
@@ -180,11 +182,13 @@ $ C_T \mathcal{C}^{\gamma} $.
   $ N \to \infty $.
 \end{assumption}
 
-\lm{the lemma is probably better to type it before the first time it is used since it requires of some results below}
+%\lm{the lemma is probably better to type it before the first time it is used since it requires of some results below}
+%
+%\lm{TYPE THIS}
 
-\lm{TYPE THIS}
-
-\lm{add Schauder estimates to reference in Prop. \ref{prop:diff_u_uN}, add small note of them and refernce}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Heat kernel and heat semigroup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{definition}
   \label{def:heat_kernel}
@@ -199,17 +203,64 @@ $ C_T \mathcal{C}^{\gamma} $.
   The convolution of the heat kernel with a (generalised) function, is called heat semigroup:
   \begin{equation}
       \label{eq:heat_semigroup}
-      P_{f} = p_{f} \ast g = \int_{\Omega} p_{f}(x) g(x - y) dx
+      P_{f} g = p_{f} \ast g = \int_{\Omega} p_{f}(x) g(x - y) dx
   \end{equation}
 \end{definition}
 
-\begin{definition}
-  \label{def:schauder_estimates}
-  Let
-  $f \in C_T \mathcal{C}^{\gamma}$
-  
-\end{definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Schauder estimates and Bernstein inequality
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%\lm{add Schauder estimates to reference in Prop. \ref{prop:diff_u_uN}, add small note of them and refernce}
+
+\begin{lemma}
+    \label{lemma:schauder_estimates}
+    Given a function
+    $f \in \mathcal{C}^{\gamma}$
+    for some
+    $\gamma \in \mathbb{R}$,
+    then for any
+    $\theta \geq 0$
+    there exists a constant
+    $c$
+    such that
+    
+    \begin{equation}
+        \label{eq:se_Pt}
+        \left\| P_t f \right\|_{\gamma + 2 \theta}
+        \leq
+        ct^{-\theta} \left\| f \right\|_{\gamma}.
+    \end{equation}
+    
+   Moreover, for
+   $f \in \mathcal{C}^{\gamma}$ 
+   and any
+   $\theta \in (0,1)$ 
+   we have
+   \begin{equation}
+       \label{eq:se_Pt-I}
+       \left\| P_t f - f \right\|_{\gamma} \leq c t^{\theta} \left\| f \right\|_{\gamma + 2 \theta}.
+   \end{equation}
+\end{lemma}
+
+\begin{lemma}
+    \label{lemma:bernstein_inequality}
+    Given a function
+    $f \in \mathcal{C}^{\gamma}$
+    for some
+    $\gamma \in \mathbb{R}$,
+    there exists a constant
+    $c > 0$
+    such that
+    
+    \begin{equation}
+        \label{eq:bernstein_inequality}
+        \left\| \nabla g \right\|_{\gamma}
+        \leq
+        c
+        \left\| g \right\|_{\gamma + 1}.
+    \end{equation}
+\end{lemma}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bounds for difference of Kolmogorov equations
@@ -352,7 +403,12 @@ $\lambda > 0$.
 
 	Let us take each term from the right hand side of the inequality and bound them.
 
-	\lm{when the Schauder estimates are added, check this again}
+	%\lm{when the Schauder estimates are added, check this again}
+	
+	\lm{change this sentence accoring to the addition of Schauder estimates}
+	
+	Using
+	\ref{lemma:schauder_estimates}
 	For the first term, using
 	$\gamma + 2\theta = 1 + \alpha$,
 	$\gamma = -\beta$,
@@ -499,13 +555,13 @@ Note that in the above we can represent the right hand side of the inequality as
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$
 % Adaptation of Lemma 5.2
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Here is the adaptation of
 \cite[Lemma 5.2]{de_angelis_numerical_2020}.
 
 \begin{proposition}
-{Bounds for $\|u - u^N\|_{L_\infty}$ and $\|\nabla u - \nabla u^N\|_{L_\infty}$}
 \label{prop:diff_uN_graduN}
 
 Let
@@ -671,11 +727,12 @@ $\kappa_\rho = c \cdot c(\rho) \cdot e^{\rho T}$.
    then
    $\nabla f \in \mathcal{C}^{\alpha}$.
    Also, by Bernstein inequality
-   \cite[Eqn. (9)]{issoglio_mckean_2021}
+   \eqref{eq:bernstein_inequality}
+   %\cite[Eqn. (9)]{issoglio_mckean_2021}
    \begin{equation}
     \left\|\nabla f\right\|_{\mathcal{\alpha}}
     \leq
-    c \left\|f\right\|_{\mathcal{1+ \alpha}}.
+    c \left\|f\right\|_{1 + \alpha}.
    \end{equation}
    
   Using the equivalent norm
@@ -1735,10 +1792,14 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 			&+ {\color{teal}\lambda \mathbbm{E}\int_0^t \sgn (Y^N - Y)(u^N(s, \psi^N(s, Y^N_s)) - u(s, \psi(s, Y_s))) ds,}
 	  \end{aligned}
 	\end{equation}
-	then observe that the first term above is a constant, for the second we have a bound in Proposition
-	\ref{prop:bound_local_time_sde},
+	then observe that the first term above is a constant, for the second we have a bound  in
+	Lemma
+	\ref{lemma:uN-n_bound_for_integral}
 	and for the third we use
-	\lm{Add the result to bound $u^N - u$}, and the fact that
+	Lemma
+	\ref{lemma:uN-n_bound_for_integral},
+	%$\lm{Add the result to bound $u^N - u$},
+	and the fact that
 	$\sgn(x) \leq 1$
 	therefore
 	
