@@ -262,6 +262,12 @@ $ C_T \mathcal{C}^{\gamma} $.
     \end{equation}
 \end{lemma}
 
+\lm{add the definition of mild solution for the Kolmogorov eqns}
+
+\lm{theorem: exists a unique mild solution $ u \in C_T \mathcal{C}^{1 + \alpha} $ for all $ \alpha \in (\beta, 1 - \beta) $ cite Issoglio \& Russo PDE Martingale problem}
+
+\lm{from that theorem it follows that $ \nabla u \in C_T \mathcal{C}^{\alpha} $, thus is $ \alpha $-Holder continuous}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bounds for difference of Kolmogorov equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -276,7 +282,7 @@ $L_\infty$
 for the case in which 
 $u \in C_T \mathcal{C}^{1+\alpha}$
 for some
-$\alpha > \beta$
+$\alpha \in (\beta, 1 - \beta)$
 which is an adaptation of
 \cite[Lemma 5.2]{de_angelis_numerical_2020}.
 
@@ -982,7 +988,7 @@ then the following bound is satisfied:
 	for
 	$\beta \in (0, \frac{1}{4})$
 	and for any
-	$\alpha > \beta$
+	$\alpha \in (\beta, 1 - \beta)$
 
 \begin{equation}
 \label{eq:local_time_YNY_bound}
@@ -1164,15 +1170,15 @@ above, and we get the following:
 
 \begin{equation}
   \begin{aligned}
-	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)\|)
+	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\|
 	&\leq
-	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s)\|)
+	\|\nabla u^N(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi^N(s, Y^N_s))\|
 	\\
 	&+
-	\|\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s)\|)
+	\|\nabla u(s, \psi^N(s, Y^N_s)) - \nabla u(s, \psi(s, Y^N_s))\|
 	\\
 	&+
-	\|\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s)\|)
+	\|\nabla u(s, \psi(s, Y^N_s)) - \nabla u(s, \psi(s, Y_s))\|
 	,
   \end{aligned}
 \end{equation}
@@ -1202,6 +1208,8 @@ $\alpha$-Hölder
 continuous and using
 Proposition \ref{prop:bound_psi-psiN}
 we have
+
+\lm{mention for which alpha this is possible and refer to the remark we have to add above}
 
 \begin{equation}
 \begin{aligned}
@@ -1716,7 +1724,7 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 	\ref{as:b_in_ctcb}
 	\ref{as:bN_converges_in_ctcb}
 	hold, then for any
-	$ \alpha > \beta $
+	$ \alpha \in (1/2, 1 - \beta) $
 	there is a constant
 	$ C_\alpha $
 	such that
@@ -1793,8 +1801,8 @@ $ \| b^N - b \|_{C_T \mathcal{C}^{-\beta}} $.
 	  \end{aligned}
 	\end{equation}
 	then observe that the first term above is a constant, for the second we have a bound  in
-	Lemma
-	\ref{lemma:uN-n_bound_for_integral}
+	Proposition
+	\ref{prop:bound_local_time_sde}
 	and for the third we use
 	Lemma
 	\ref{lemma:uN-n_bound_for_integral},
@@ -1901,20 +1909,24 @@ It works just like in
 
 \lm{check assumptions, maybe put them into the assumptions above or smth}
 
-\begin{proposition}
+\lm{mention the SDE somewhere before}
+
+\begin{theorem}
 	Let
+	$ X_{t} $
+	be the solution to the SDE.......with drift coefficient
+	$ b \in C_T \mathcal{C}^{-\beta} $,
+	and
 	$ X^{Nm}_{t} $
 	be the Euler approximation of the solution with
 	$ m $
-	time steps, and
-	$ X_{t} $
-	the real solution.
+	time steps.
 	Let also
 	$ \beta_{0} \in (0, 1/4) $,
-	$ \beta \in (\beta_{0}, 1/2) $,
-	$ \alpha \in (1/2, 1 - \beta_0) $
-	and
-	$ \epsilon > 0 $,
+	%$ \beta \in (\beta_{0}, 1/2) $,
+	%$ \alpha \in (1/2, 1 - \beta_0) $
+	%and
+	%$ \epsilon > 0 $,
 	then it holds that
 	\begin{equation}
 	  \label{eq:euler_rate}
@@ -1922,15 +1934,15 @@ It works just like in
 		\mathbb{E}
 		\left[ \left| X^{Nm}_{t} - X_{t} \right| \right]
 	  \leq
-	  cm^{-\frac{1}{2} - \mu},
+	  cm^{-\frac{1}{2} + \mu + \epsilon},
 	\end{equation}
 	where
 	\begin{equation}
 	  \label{eq:mu}
 	  %\mu = \frac{(2\alpha - 1)(\beta - \beta_{0})}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}
-	  \mu = \frac{1}{2} \cdot \frac{\beta_{0} + \epsilon}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}.
+	  \mu = \frac{1}{2} \cdot \frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0}}.
 	\end{equation}
-\end{proposition}
+\end{theorem}
 \begin{proof}
   First, by triangle inequality we have
 	\begin{equation}
@@ -2152,6 +2164,7 @@ It works just like in
    \eqref{eq:er_slowest}),
    we get
    \begin{equation}
+	   \label{eq:er_rate_raw}
        \ostar
        \leq
        %m^{-\frac{1}{2} \frac{(2 \alpha - 1)(\beta - \beta_0)}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
@@ -2170,7 +2183,43 @@ It works just like in
    %where
    %$\epsilon'$
    %is as small as desired.
+
+   Note that in order to attain the best rate we requier to minimize the second term of the exponent of
+   \eqref{eq:er_rate_raw},
+   i. e:
+	\begin{equation*}
+		\begin{aligned}
+			\inf_{
+			\substack{
+				\alpha \in (1/2, 1 - \beta_{0})
+				\\
+				\beta \in (\beta_{0}, 1/2) 
+				\\
+				\epsilon >0}
+			}
+	    	\left\{
+	    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+			\right\}
+			&=
+			\frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0} + \epsilon}
+	    	%\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 2 \beta_{0})(1/2 - \beta_{0})}
+			%+ \epsilon'
+			.
+		\end{aligned}
+	\end{equation*}
+	
+	Therefore, we have
+	\begin{equation}
+	  \label{eq:er_final_result}
+	  \mathbb{E}\left[\left| X^{Nm}_{t} - X_{t} \right|\right] 
+	  \leq 
+	  m^{-\frac12 
+	  + \frac12 \cdot \frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0}} + \epsilon},
+	\end{equation}
+	as required.
 \end{proof}
+
+\lm{this is not needed or needs adjustment}
 
 Note that for any fixed
 $\beta_0 \in (0, 1/4)$

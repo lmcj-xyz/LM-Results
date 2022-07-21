@@ -21,6 +21,7 @@
 \usepackage{cancel}
 \usepackage{showkeys}
 \usepackage{xcolor}
+\usepackage{soul} %highlight
 %\usepackage{physics}
 %\usepackage{xr}
 %\usepackage{zref}
@@ -50,6 +51,7 @@
 
 % Theorem like environments
 \newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newtheorem{definition}{Definition}
 \newtheorem{assumption}{Assumption}
@@ -90,8 +92,8 @@
 %%%%%%%%%%%%%%%%
 
 %Elena's comments
-\def\ei{{\color{blue}EI: }\textcolor{blue}}
-\def\lm{{\color{violet}LM: }\textcolor{violet}}
+\def\ei{{\color{blue}\hl{EI:} }\textcolor{blue}}
+\def\lm{{\color{violet}\hl{LM:} }\textcolor{violet}}
 \def\question{{\color{olive}Question: }\textcolor{olive}}
 % Some commands
 \newcommand{\sgn}{\mathrm{sgn}}
