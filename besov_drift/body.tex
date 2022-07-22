@@ -15,11 +15,82 @@ The proof builds on a number of results presented in the sections below.
 \ei{add result about convergence of the scheme. This is done in two parts, $X^N \to X$ done in Russo Issoglio, and $X^{N,m} \to X^N$  Euler scheme convergence from De Angelis Germain Issoglio. Attention that the rate of convergence of Euler scheme depends of the smoothness of $b^N$.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Useful results
+% Useful results and setting
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Some useful definitions and results}
+\section{Some useful definitions, results and setting of the problem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Function spaces
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Function spaces we use}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Some Assumptions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Some assumptions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Assumptions on b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{assumption}
+  \label{as:b_in_ctcb}
+  Let
+  $ 0 < \beta < 1/2 $
+  and
+  $ b \in C_T \mathcal{C}^{-\beta} $.
+\end{assumption}
+
+\begin{assumption}
+  \label{as:bN_converges_in_ctcb}
+  There exists a sequence
+  $ (b^N)_{N} \in C_T \mathcal{C}^{-\beta} $
+  such that for each
+  $ N $,
+  $ b^N(t, \cdot) \in C^{\infty}_{b}(\mathbbm{R}) $
+  for all
+  $ t \in [0, T] $
+  and such that
+  $ b^N \to b $
+  as
+  $ N \to \infty $.
+\end{assumption}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Assumptions in u
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{assumption}
+	\label{as:vT_lives}
+	Let
+\end{assumption}
+
+\subsection{Some results and definitions}
 
 Here we present some results and definitions to refer on the text.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The SDE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}
+	Let us consider the SDE
+	\begin{equation}
+		\label{eq:sde}
+		X_{t} = X_{0} + \int_{0}^{t} b(t, X_{t}) dt + W_{t}
+	\end{equation}
+	where
+	$ b \in C_{T} \mathcal{S}' $,
+	and
+	$ W_{t} $
+	is a Brownian motion.
+\end{definition}
+
+In particular we care about
+$ b \in C_T \mathcal{C}^{-\beta} $,
+but it is useful to consider the above equation in the most general case, since we have some definitions in
+$ \mathcal{S}' $.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Definition Local time
@@ -149,38 +220,16 @@ $ C_T \mathcal{C}^{\gamma} $.
   respectivelly.
 	We have
 	\begin{equation}
-    \sup_{(t,x) \in [0,T] \times \mathbbm{R}} \left| \nabla u(t, x) \right| \leq \frac{1}{2}
-    \text{and}
-		\sup_{(t,x) \in [0,T] \times \mathbbm{R}} \left| \nabla u^N(t, x) \right| \leq \frac{1}{2}
+    \sup_{(t,x) \in [0,T] \times \mathbbm{R}} \left| \nabla u(t, x) \right| \leq \frac{1}{2},
+	\end{equation}
+
+	and
+
+	\begin{equation}
+	\sup_{(t,x) \in [0,T] \times \mathbbm{R}} \left| \nabla u^N(t, x) \right| \leq \frac{1}{2}.
 	\end{equation}
 \end{lemma}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Assumptions on b
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{assumption}
-  \label{as:b_in_ctcb}
-  Let
-  $ 0 < \beta < 1/2 $
-  and
-  $ b \in C_T \mathcal{C}^{-\beta} $.
-\end{assumption}
-
-\begin{assumption}
-  \label{as:bN_converges_in_ctcb}
-  There exists a sequence
-  $ (b^N)_{N} \in C_T \mathcal{C}^{-\beta} $
-  such that for each
-  $ N $,
-  $ b^N(t, \cdot) \in C^{\infty}_{b}(\mathbbm{R}) $
-  for all
-  $ t \in [0, T] $
-  and such that
-  $ b^N \to b $
-  as
-  $ N \to \infty $.
-\end{assumption}
 
 %\lm{the lemma is probably better to type it before the first time it is used since it requires of some results below}
 %
@@ -192,7 +241,7 @@ $ C_T \mathcal{C}^{\gamma} $.
 
 \begin{definition}
   \label{def:heat_kernel}
-  The function is called heat kernel
+  The following function is called heat kernel
   \begin{equation}
       \label{eq:heat_kernel}
       p_{f} = \frac{1}{\sqrt{4 \pi f}} e^{-\frac{|x - y|^{2}}{4f}}.
@@ -203,9 +252,77 @@ $ C_T \mathcal{C}^{\gamma} $.
   The convolution of the heat kernel with a (generalised) function, is called heat semigroup:
   \begin{equation}
       \label{eq:heat_semigroup}
-      P_{f} g = p_{f} \ast g = \int_{\Omega} p_{f}(x) g(x - y) dx
+	  \left(P_{f} g\right) (y) = \left(p_{f} \ast g\right) (y) = \int_{\mathbb{R}} p_{f}(x) g(y - x) dx
   \end{equation}
 \end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Mild solutions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The following definition is from
+\cite[Definition 3.2]{issoglio_pde_nodate}.
+
+\begin{definition}
+	\label{def:mild_solution}
+	Let
+	$ b, u: [0,T] \to \mathcal{C}^{-\beta} $,
+	we say that
+	$ u $
+	is a mild solution of
+	\eqref{eq:kolmogorov}
+	if it satisfies
+
+	\begin{equation}
+		\label{eq:mild_solution}
+		v(t) = P_{T-t} v_{T} + \int_{t}^{T} P_{s - t} \left( \nabla v (s) b(s) \right) ds - \int_{t}^{T} P_{s-t} \left( G(v)(s) \right) ds,
+	\end{equation}
+
+	for all
+	$ t \in [0, T] $
+\end{definition}
+
+The uniqueness is given too in
+\cite[Theorem 3.7]{issoglio_pde_nodate}
+
+\begin{theorem}
+	Let
+	$ b $
+	satisfy Assumption
+	\ref{as:b_in_ctcb},
+	and
+	$ u_{T} $
+	satisfy Assumption
+	\ref{as:vT_lives}.
+	\lm{add the proper assumption on $ u $}
+	Then there exists a mild solution to
+	\eqref{eq:kolmogorov}
+	in
+	$ C_T \mathcal{C}^{(1 - \beta)-} $
+	which is unique in
+	$ C_T \mathcal{C}^{\beta+} $.
+\end{theorem}
+
+\lm{it might seem the comments below have been addressed, but not really, we are in a space that is different}
+
+\lm{add the definition of mild solution for the Kolmogorov eqns}
+
+\lm{theorem: exists a unique mild solution $ u \in C_T \mathcal{C}^{1 + \alpha} $ for all $ \alpha \in (\beta, 1 - \beta) $ cite Issoglio \& Russo PDE Martingale problem}
+
+\lm{from that theorem it follows that $ \nabla u \in C_T \mathcal{C}^{\alpha} $, thus is $ \alpha $-Holder continuous}
+
+\begin{remark}
+	\lm{write this remark well}
+	Thanks to the above theorem, as
+	$ u \in C_T \mathcal{C}^{1 + \alpha} $,
+	we have that
+	$ \nabla u \in C_T \mathcal{C}^{\alpha} $.
+	Thus,
+	$ \nabla u $
+	is indeed
+	$ \alpha $-Hölder
+	continuous.
+\end{remark}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Schauder estimates and Bernstein inequality
@@ -262,11 +379,6 @@ $ C_T \mathcal{C}^{\gamma} $.
     \end{equation}
 \end{lemma}
 
-\lm{add the definition of mild solution for the Kolmogorov eqns}
-
-\lm{theorem: exists a unique mild solution $ u \in C_T \mathcal{C}^{1 + \alpha} $ for all $ \alpha \in (\beta, 1 - \beta) $ cite Issoglio \& Russo PDE Martingale problem}
-
-\lm{from that theorem it follows that $ \nabla u \in C_T \mathcal{C}^{\alpha} $, thus is $ \alpha $-Holder continuous}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Bounds for difference of Kolmogorov equations
@@ -553,7 +665,7 @@ Note that in the above we can represent the right hand side of the inequality as
 \end{equation}
 
 	%\todo{Check this norm}
-	\lm{Check this norm, it was in $ -\beta $ now in $ 1+\alpha $}
+	%\lm{Check this norm, it was in $ -\beta $ now in $ 1+\alpha $}
 \begin{equation}
 	\| u_i - u^N_i \|^{(\rho)}_{C_T \mathcal{C}^{1+\alpha}} 
 	\leq
@@ -1909,12 +2021,14 @@ It works just like in
 
 \lm{check assumptions, maybe put them into the assumptions above or smth}
 
-\lm{mention the SDE somewhere before}
+%\lm{mention the SDE somewhere before}
 
 \begin{theorem}
 	Let
 	$ X_{t} $
-	be the solution to the SDE.......with drift coefficient
+	be the solution to the SDE
+	\eqref{eq:sde}
+	with drift coefficient
 	$ b \in C_T \mathcal{C}^{-\beta} $,
 	and
 	$ X^{Nm}_{t} $
@@ -1922,7 +2036,7 @@ It works just like in
 	$ m $
 	time steps.
 	Let also
-	$ \beta_{0} \in (0, 1/4) $,
+	$ \beta \in (0, 1/4) $,
 	%$ \beta \in (\beta_{0}, 1/2) $,
 	%$ \alpha \in (1/2, 1 - \beta_0) $
 	%and
@@ -1940,8 +2054,10 @@ It works just like in
 	\begin{equation}
 	  \label{eq:mu}
 	  %\mu = \frac{(2\alpha - 1)(\beta - \beta_{0})}{(2\alpha - 1)(\beta - \beta_{0}) + \beta_{0} + \epsilon}
-	  \mu = \frac{1}{2} \cdot \frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0}}.
+	  \mu = \frac{1}{2} \cdot \frac{\beta}{(1/2 - \beta)(1 - 2 \beta) + \beta},
 	\end{equation}
+	for any
+	$ \epsilon > 0 $.
 \end{theorem}
 \begin{proof}
   First, by triangle inequality we have
@@ -1964,20 +2080,29 @@ It works just like in
 		\begin{aligned}
 			\ostar &\leq A_{N} m^{-1} + B_{N} m^{-1/2} + c\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta}}^{2\alpha - 1}
 			\\
-						 &\leq c
-						 \Big[
-						 \left\|b^{N}\right\|_{\infty,L^{\infty}}
-						 \left( 1 + \left\|\nabla b^{N}\right\|_{\infty,L^{\infty}} \right)
-						 {\color{purple}m^{-1}}
-						 + \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
-						 {\color{purple}m^{-1/2}}
-						 +\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta_0}}^{2\alpha - 1}
-						 \Big].
+			&\leq c
+		 	\Big[
+		 	\left\|b^{N}\right\|_{\infty,L^{\infty}}
+		 	\left( 1 + \left\|\nabla b^{N}\right\|_{\infty,L^{\infty}} \right)
+		 	{\color{purple}m^{-1}}
+		 	+ \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
+		 	{\color{purple}m^{-1/2}}
+			+\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\hat{\beta}}}^{2\alpha - 1}
+		 	\Big],
 		\end{aligned}
 	\end{equation}
+	for any
+	$ \alpha \in (1/2, 1 - \beta) $
+	and
+	$ \hat{\beta} \in (0, 1/2) $.
+
 	We require to find some bounds for the
 	$ L^{\infty} $
-	(semi) norms, so that we use Schauder estimates and Bernstein inequality \lm{add Bernstein inequality or reference}, this is possible thanks to the definition of
+	(semi) norms, so that we use Schauder estimates
+	\eqref{eq:se_Pt}
+	and Bernstein inequality
+	\eqref{eq:bernstein_inequality}
+	, this is possible thanks to the definition of
 	$ b^{N} := p_{f_{m}} \ast b $,
 	where
 	$ f_{m} \to 0 $
@@ -2003,7 +2128,7 @@ It works just like in
 		\leq
 	  \left\| b^{N} \right\|_{C_T \mathcal{C}^{\epsilon}}
 		\leq
-		c f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}},
+		c f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}},
 	\end{equation}
 
 	\begin{equation}
@@ -2014,7 +2139,7 @@ It works just like in
 		\leq
 		c \left\|b^{N}\right\|_{C_T \mathcal{C}^{\epsilon+1}}
 		\leq
-		c f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}},
+		c f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}},
 	\end{equation}
 
 	\begin{equation}
@@ -2025,9 +2150,9 @@ It works just like in
 			\sup_{t \neq s} \frac{\|b^{N}(t) - b^{N}(s)\|_{C_T \mathcal{C}^{\epsilon}}}{|t - s|^{1/2}}
 			\\
 			&\leq
-			\sup_{t \neq s} c f_{m}^{-\frac{\epsilon + \beta_0}{2}}\frac{\|b(t) - b(s)\|_{C_T \mathcal{C}^{-\beta_0}}}{|t - s|^{1/2}}
+			\sup_{t \neq s} c f_{m}^{-\frac{\epsilon + \beta}{2}}\frac{\|b(t) - b(s)\|_{C_T \mathcal{C}^{-\beta}}}{|t - s|^{1/2}}
 			\\
-			&= c f_{m}^{-\frac{\epsilon + \beta_0}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta_0}}.
+			&= c f_{m}^{-\frac{\epsilon + \beta}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta}}.
 		\end{aligned}
 	\end{equation}
 	
@@ -2041,34 +2166,39 @@ It works just like in
 			&\leq
 			c
 			{\color{magenta}\bigg[}
-			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta_0}}^{2\alpha - 1}
-			\\
-			&\hspace{3em}+
+			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\hat{\beta}}}^{2\alpha - 1}
+			%\\
+			%&\hspace{8em}+
+			+
 			\left\|b^{N}\right\|_{\infty,L^{\infty}}
 			\left( 1 + \left\|\nabla b^{N}\right\|_{\infty,L^{\infty}} \right)
 			{\color{purple}m^{-1}}
-			\\
-			&\hspace{3em}+ \left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
+			%\\
+			%&\hspace{8em}+ 
+			+
+			\left(	\left\| \nabla b^{N} \right\|_{\infty, L^{\infty}} + \left[b^{N}\right]_{1/2, L^{\infty}} \right)
 			{\color{purple}m^{-1/2}}
 		    {\color{magenta}\bigg]}
 		    \\
 			&\leq
 			c
 			{\color{magenta}\bigg[}
-			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\beta_0}}^{2\alpha - 1}
-			\\
-		    &+
-		    f_{m}^{-\frac{\epsilon + \beta_0}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+			\left\|b^{N} - b \right\|_{C_T \mathcal{C}^{-\hat{\beta}}}^{2\alpha - 1}
+			%\\
+			%&\hspace{8em}+
+			+
+		    f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}}
 		    \left(
-		    1 + f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+		    1 + f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}}
 		    \right)
 			{\color{purple}m^{-1}}
-			\\
-			&+
-			\left(
-			f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+			%\\
+			%&\hspace{8em}+
 			+
-	        f_{m}^{-\frac{\epsilon + \beta_0}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta_0}}
+			\left(
+			f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}}
+			+
+	        f_{m}^{-\frac{\epsilon + \beta}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta}}
 	        \right)
 			{\color{purple}m^{-1/2}}
 		    {\color{magenta}\bigg]}
@@ -2076,70 +2206,77 @@ It works just like in
 			&\leq
 			c
 			{\color{magenta}\bigg[}
-			\left(f_m^{\nu/2} \left\| b \right\|_{C_T \mathcal{C}^{-\beta + \nu}}\right)^{2\alpha - 1}
-			\\
-		    &+
-		    f_{m}^{-\frac{\epsilon + \beta_0}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+			\left(f_m^{\nu/2} \left\| b \right\|_{C_T \mathcal{C}^{-\hat{\beta} + \nu}}\right)^{2\alpha - 1}
+			%\\
+			%&\hspace{8em}+
+			+
+		    f_{m}^{-\frac{\epsilon + \beta}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}}
 		    \left(
-		    1 + f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+		    1 + f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}}
 		    \right)
 			{\color{purple}m^{-1}}
-			\\
-			&+
-			\left(
-			f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta_0}}
+			%\\
+			%&\hspace{8em}+
 			+
-	        f_{m}^{-\frac{\epsilon + \beta_0}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta_0}}
+			\left(
+			f_{m}^{-\frac{\epsilon + \beta + 1}{2}} \left\| b \right\|_{C_T \mathcal{C}^{-\beta}}
+			+
+	        f_{m}^{-\frac{\epsilon + \beta}{2}} [b]_{1/2,C_T \mathcal{C}^{-\beta}}
 	        \right)
 			{\color{purple}m^{-1/2}}
 		    {\color{magenta}\bigg]}
 		\end{aligned}
 	\end{equation}
-    Where the first term in the last inequality comes from Schauder estimates \lm{add this earlier and refer to it}. Also, since the norms are finite they can be absorbed by a constant and we have:
+    Where the first term in the last inequality comes from Schauder estimates 
+	\eqref{eq:se_Pt-I}
+	by taking
+	$ \nu := \hat{\beta} - \beta $,
+	Also, since the norms are finite they can be absorbed by a constant and we have:
    \begin{equation}
    \label{eq:er_allnonorms}
         \ostar
 		\leq
 		c
 		{\color{magenta}\bigg[}
-		f_m^{\nu/2(2 \alpha - 1)}
+		f_m^{ \frac{\nu}{2} (2 \alpha - 1)}
 		\\
 		+
 		\left(
-		f_{m}^{-\frac{\epsilon + \beta_0}{2}}
+		f_{m}^{-\frac{\epsilon + \beta}{2}}
 		+
-		f_{m}^{-\frac{2\epsilon + 2\beta_0 + 1}{2}}
+		f_{m}^{-\frac{2\epsilon + 2\beta + 1}{2}}
 		\right)
 		{\color{purple}m^{-1}}
 		\\
 		+
 		\left(
-		f_{m}^{-\frac{\epsilon + \beta_0 + 1}{2}}
+		f_{m}^{-\frac{\epsilon + \beta + 1}{2}}
 		+
-	    f_{m}^{-\frac{\epsilon + \beta_0}{2}}
+	    f_{m}^{-\frac{\epsilon + \beta}{2}}
 	    \right)
 		{\color{purple}m^{-1/2}}
-		{\color{magenta}\bigg]}
+		{\color{magenta}\bigg]}.
    \end{equation} 
-    for some
-    $\nu \in [0, 1)$.
     
-    Now, since we would like to have
-    $f_m = m^{-\theta}$,
-    and that converges to zero as 
-    $m \to \infty$,
-    we know that
-    $f_m^{\nu/2}$
-    converges even faster.
-    Because of that, we want
-    $\nu/2$
-    to be as large as possible.
-    Observe that we can go up to
-    $b \in C_T \mathcal{C}^{-\beta_0}$,
-    i.e.
-    $-\beta + \nu = -\beta_0$
-    or
-    $\nu = \beta -\beta_0$.
+    %Now, since we would like to have
+    %%$f_m = m^{-\theta}$,
+    %%and that converges to zero as 
+	%a function such that
+	%$ f_{m} \to 0 $
+	%as
+    %$m \to \infty$,
+    %and we know that
+    %$f_m^{\nu/2}$
+    %converges even faster.
+    %Because of that, we want
+    %$\nu/2$
+    %to be as large as possible.
+    %Observe that we can go up to
+    %$b \in C_T \mathcal{C}^{-\beta}$,
+    %i.e.
+	%$-\hat{\beta} + \nu = -\beta$
+    %or
+	%$\nu = \hat{\beta} -\beta$.
     Considering only the slowest terms in
    \eqref{eq:er_allnonorms}
    and substituting
@@ -2149,15 +2286,15 @@ It works just like in
        \label{eq:er_slowest}
        \ostar
        \leq
-       f_m^{\frac{\beta - \beta_0}{2}(2 \alpha - 1)} + m^{-1/2} f_m^{-\frac{\epsilon + \beta_0}{2}}
+       f_m^{\frac{\beta - \beta}{2}(2 \alpha - 1)} + m^{-1/2} f_m^{-\frac{\epsilon + \beta}{2}}
    \end{equation}
    The optimal of this quantity is when the two terms on the left hand side are equal, this is
    \begin{equation}
        \label{eq:er_equaloptimal}
     \begin{aligned}
-       m^{-1/2} &= f_m^{\frac{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}{2}}
+       m^{-1/2} &= f_m^{\frac{(2 \alpha - 1)(\beta - \beta) + \epsilon + \beta}{2}}
        \\
-       f_m &= m^{-\frac{1}{(2 \alpha - 1)(\beta - \beta_0) + \epsilon + \beta_0}}
+       f_m &= m^{-\frac{1}{(2 \alpha - 1)(\beta - \beta) + \epsilon + \beta}}
     \end{aligned}
    \end{equation}
    So, if we plug it into the rate (any of the two terms in
@@ -2167,15 +2304,15 @@ It works just like in
 	   \label{eq:er_rate_raw}
        \ostar
        \leq
-       %m^{-\frac{1}{2} \frac{(2 \alpha - 1)(\beta - \beta_0)}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
+       %m^{-\frac{1}{2} \frac{(2 \alpha - 1)(\beta - \beta)}{(2 \alpha - 1)(\beta - \beta) + \beta + \epsilon}}
        %\leq
        c
-       m^{-\frac{1}{2} + \frac{1}{2} \frac{\beta_0 + \epsilon}{(2 \alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}}
+       m^{-\frac{1}{2} + \frac{1}{2} \frac{\beta + \epsilon}{(2 \alpha - 1)(\beta - \beta) + \beta + \epsilon}}
    \end{equation}
    %Observe that since
-   %$\beta_0 \in (0, 1/4)$
+   %$\beta \in (0, 1/4)$
    %we can select it to be
-   %$\beta_0 = \epsilon$
+   %$\beta = \epsilon$
    %and therefore have a rate of
    %$1/2 - \epsilon'$
    %for any
@@ -2198,11 +2335,11 @@ It works just like in
 				\epsilon >0}
 			}
 	    	\left\{
-	    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+	    	\frac{\beta + \epsilon}{\beta + \epsilon + (2\alpha - 1)(\beta - \beta)}
 			\right\}
 			&=
 			\frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0} + \epsilon}
-	    	%\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 2 \beta_{0})(1/2 - \beta_{0})}
+	    	%\frac{\beta + \epsilon}{\beta + \epsilon + (1 - 2 \beta_{0})(1/2 - \beta_{0})}
 			%+ \epsilon'
 			.
 		\end{aligned}
@@ -2219,183 +2356,184 @@ It works just like in
 	as required.
 \end{proof}
 
-\lm{this is not needed or needs adjustment}
+%\lm{this is not needed or needs adjustment}
 
-Note that for any fixed
-$\beta_0 \in (0, 1/4)$
-we can vary the following parameters inside their constraints
-$\alpha \in (1/2. 1 - \beta_{0}), \beta \in (\beta_{0}, 1/2), \epsilon > 0$,
-%in particular we wish to have an
-%$\epsilon \approx 0$,
-%so we focus in the other two.
-so take the exponent of the right hand side on
-\eqref{eq:er_slowest},
-
-\begin{equation*}
-    -\frac{1}{2} + \frac{1}{2} \frac{\beta_0 + \epsilon}{(2\alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}.
-\end{equation*}
-
-The best case scenario is when the second term is close to zero, having a convergence rate of
-$1/2 + \epsilon'$,
-and the worst case is for the second term is close to 
-$1/2$
-leaving us with a convergence rate of
-$\epsilon'$,
-for
-$\epsilon'$
-small.
-
-For the best case let us compute the infimum of the term, i. e:
-
-\begin{equation*}
-	\inf_{
-	\substack{
-		\alpha \in (1/2, 1 - \beta_{0})
-		\\
-		\beta \in (\beta_{0}, 1/2) 
-		\\
-		\epsilon >0}
-	}
-    \left\{
-    \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-	\right\},
-\end{equation*}
-
-for which, naturally, we want the denomanator to be as large as it can be, so we select
-$ \beta \approx 1/2 $,
-and
-$ \alpha \approx 1 - \beta_{0} $,
-therefore we get
-
-\begin{equation*}
-	\begin{aligned}
-		\inf_{
-		\substack{
-			\alpha \in (1/2, 1 - \beta_{0})
-			\\
-			\beta \in (\beta_{0}, 1/2) 
-			\\
-			\epsilon >0}
-		}
-    	\left\{
-    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-		\right\}
-		&=
-		\inf_{\epsilon >0}
-    	\left\{
-    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 2 \beta_{0})(1/2 - \beta_{0})}
-		+ \epsilon'
-		\right\}.
-	\end{aligned}
-\end{equation*}
-
-And the above is minimised for
-$ \epsilon \approx 0 $.
-
-So, the best rate of the scheme is
-
-\begin{equation*}
-	m^{-1/2\left( 1 - \frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0}} \right)}.
-\end{equation*}
-
-In particular consider the two important cases of the limits of
-$ \beta_{0} $, i. e:
-
-\begin{itemize}
-	\item
-		For 
-		$ \beta_{0} \approx 0 $
-		we have
-		$ m^{-1/2 \cdot \left( 1 - \frac{0}{1/2 \cdot 1} + \epsilon'\right)} = m^{-1/2 - \epsilon'} $,
-	\item 
-		and for
-		$ \beta_{0} \approx \frac14 $
-		we have
-		$ m^{-1/2 \cdot \left( 1 - \frac{1/4}{1/4 \cdot (1 - 1/2) + 1/4} + \epsilon'\right)} = m^{-1/2 \cdot (1 - 2/3 + \epsilon')}= m^{-1/6 - \epsilon'} $.
-\end{itemize}
-
-%The first case is attained if we set
-%$\beta_0 = \epsilon$,
-%for any
-%$\alpha, \beta$.
-%However, in order to have the rate in terms only of
-%$\beta_0$,
-%let us verify when
-
-For the case in which we get the worst convergence rate, note that we with to have
-
-\begin{equation*}
-    \sup_{
-	\substack{
-		\alpha \in (1/2, 1 - \beta_{0})
-		\\
-		\beta \in (\beta_{0}, 1/2) 
-		\\
-		\epsilon >0}
-	}
-    \left\{
-    \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-	\right\}
-    =
-    1
-\end{equation*}
-
-%For that, we have
+%%%%%%%%%%%%%%This comment is unnecessary, the useful part is now included in the proof
+%Note that for any fixed
+%$\beta_0 \in (0, 1/4)$
+%we can vary the following parameters inside their constraints
+%$\alpha \in (1/2. 1 - \beta_{0}), \beta \in (\beta_{0}, 1/2), \epsilon > 0$,
+%%in particular we wish to have an
+%%$\epsilon \approx 0$,
+%%so we focus in the other two.
+%so take the exponent of the right hand side on
+%\eqref{eq:er_slowest},
+%
+%\begin{equation*}
+%    -\frac{1}{2} + \frac{1}{2} \frac{\beta_0 + \epsilon}{(2\alpha - 1)(\beta - \beta_0) + \beta_0 + \epsilon}.
+%\end{equation*}
+%
+%The best case scenario is when the second term is close to zero, having a convergence rate of
+%$1/2 + \epsilon'$,
+%and the worst case is for the second term is close to 
+%$1/2$
+%leaving us with a convergence rate of
+%$\epsilon'$,
+%for
+%$\epsilon'$
+%small.
+%
+%For the best case let us compute the infimum of the term, i. e:
+%
+%\begin{equation*}
+%	\inf_{
+%	\substack{
+%		\alpha \in (1/2, 1 - \beta_{0})
+%		\\
+%		\beta \in (\beta_{0}, 1/2) 
+%		\\
+%		\epsilon >0}
+%	}
+%    \left\{
+%    \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%	\right\},
+%\end{equation*}
+%
+%for which, naturally, we want the denomanator to be as large as it can be, so we select
+%$ \beta \approx 1/2 $,
+%and
+%$ \alpha \approx 1 - \beta_{0} $,
+%therefore we get
 %
 %\begin{equation*}
 %	\begin{aligned}
-%		\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-%         &=
-%         \frac{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0) - (2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-%         \\
-%         &=
-%         1 - \frac{(2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)},
-%    \end{aligned}
+%		\inf_{
+%		\substack{
+%			\alpha \in (1/2, 1 - \beta_{0})
+%			\\
+%			\beta \in (\beta_{0}, 1/2) 
+%			\\
+%			\epsilon >0}
+%		}
+%    	\left\{
+%    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%		\right\}
+%		&=
+%		\inf_{\epsilon >0}
+%    	\left\{
+%    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 2 \beta_{0})(1/2 - \beta_{0})}
+%		+ \epsilon'
+%		\right\}.
+%	\end{aligned}
 %\end{equation*}
-
-%therefore we require the second term in the last line above to be zero,
-which is possible by selecting either
-$\beta \approx \beta_0 $
-or
-$\alpha \approx 1/2$,
-since we make the third term in the denominator equal zero, i. e:
-
-\begin{equation*}
-	\begin{aligned}
-		\sup_{
-		\substack{
-			\alpha \in (1/2, 1 - \beta_{0})
-			\\
-			\beta \in (\beta_{0}, 1/2) 
-			\\
-			\epsilon >0}
-		}
-    	\left\{
-    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
-		\right\}
-		&=
-		\sup_{ \epsilon >0 }
-		\left\{
-    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 1)(\beta_{0} - \beta_0)}
-		+ \epsilon'
-		\right\}
-		\\
-		&=
-		\sup_{ \epsilon >0 }
-		\left\{
-    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon}
-		+
-		\epsilon'
-		\right\}
-		\\
-		&=
-		1 + \epsilon',
-	\end{aligned}
-\end{equation*}
-
-for any
-$ \epsilon $
-and any
-$ \beta_{0} $.
-And therefore we have for this case a rate
-$ m^{-1/2 \cdot (1 - 1 + \epsilon')} = m^{-\epsilon'} $.
+%
+%And the above is minimised for
+%$ \epsilon \approx 0 $.
+%
+%So, the best rate of the scheme is
+%
+%\begin{equation*}
+%	m^{-1/2\left( 1 - \frac{\beta_{0}}{(1/2 - \beta_{0})(1 - 2 \beta_{0}) + \beta_{0}} \right)}.
+%\end{equation*}
+%
+%In particular consider the two important cases of the limits of
+%$ \beta_{0} $, i. e:
+%
+%\begin{itemize}
+%	\item
+%		For 
+%		$ \beta_{0} \approx 0 $
+%		we have
+%		$ m^{-1/2 \cdot \left( 1 - \frac{0}{1/2 \cdot 1} + \epsilon'\right)} = m^{-1/2 - \epsilon'} $,
+%	\item 
+%		and for
+%		$ \beta_{0} \approx \frac14 $
+%		we have
+%		$ m^{-1/2 \cdot \left( 1 - \frac{1/4}{1/4 \cdot (1 - 1/2) + 1/4} + \epsilon'\right)} = m^{-1/2 \cdot (1 - 2/3 + \epsilon')}= m^{-1/6 - \epsilon'} $.
+%\end{itemize}
+%
+%%The first case is attained if we set
+%%$\beta_0 = \epsilon$,
+%%for any
+%%$\alpha, \beta$.
+%%However, in order to have the rate in terms only of
+%%$\beta_0$,
+%%let us verify when
+%
+%For the case in which we get the worst convergence rate, note that we with to have
+%
+%\begin{equation*}
+%    \sup_{
+%	\substack{
+%		\alpha \in (1/2, 1 - \beta_{0})
+%		\\
+%		\beta \in (\beta_{0}, 1/2) 
+%		\\
+%		\epsilon >0}
+%	}
+%    \left\{
+%    \frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%	\right\}
+%    =
+%    1
+%\end{equation*}
+%
+%%For that, we have
+%%
+%%\begin{equation*}
+%%	\begin{aligned}
+%%		\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%%         &=
+%%         \frac{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0) - (2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%%         \\
+%%         &=
+%%         1 - \frac{(2\alpha - 1)(\beta - \beta_0)}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)},
+%%    \end{aligned}
+%%\end{equation*}
+%
+%%therefore we require the second term in the last line above to be zero,
+%which is possible by selecting either
+%$\beta \approx \beta_0 $
+%or
+%$\alpha \approx 1/2$,
+%since we make the third term in the denominator equal zero, i. e:
+%
+%\begin{equation*}
+%	\begin{aligned}
+%		\sup_{
+%		\substack{
+%			\alpha \in (1/2, 1 - \beta_{0})
+%			\\
+%			\beta \in (\beta_{0}, 1/2) 
+%			\\
+%			\epsilon >0}
+%		}
+%    	\left\{
+%    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (2\alpha - 1)(\beta - \beta_0)}
+%		\right\}
+%		&=
+%		\sup_{ \epsilon >0 }
+%		\left\{
+%    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon + (1 - 1)(\beta_{0} - \beta_0)}
+%		+ \epsilon'
+%		\right\}
+%		\\
+%		&=
+%		\sup_{ \epsilon >0 }
+%		\left\{
+%    	\frac{\beta_0 + \epsilon}{\beta_0 + \epsilon}
+%		+
+%		\epsilon'
+%		\right\}
+%		\\
+%		&=
+%		1 + \epsilon',
+%	\end{aligned}
+%\end{equation*}
+%
+%for any
+%$ \epsilon $
+%and any
+%$ \beta_{0} $.
+%And therefore we have for this case a rate
+%$ m^{-1/2 \cdot (1 - 1 + \epsilon')} = m^{-\epsilon'} $.
